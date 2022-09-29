@@ -22,6 +22,15 @@ export default function ContactInfo() {
             <p>Arusha Nijro Pepsi</p>
           </div>
         </div>
+        <div className="col-12 col-md-4 contact-Box">
+          <div className="box-info">
+            <div className="info-image">
+              <i className="fas fa-fax"></i>
+            </div>
+            <h5>Fax</h5>
+            <p>04839274</p>
+          </div>
+        </div>
       </div>
     </div>
   );
