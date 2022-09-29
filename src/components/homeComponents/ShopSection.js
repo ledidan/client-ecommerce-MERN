@@ -12,7 +12,34 @@ export default function ShopSection() {
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
               <div className="shopcontainer row">
-                {/* Rendering products here */}
+                {products.map((product) => {
+                  <div
+                    className="shop col-lg-4 col-md-6 col-sm-6"
+                    key={product._id}
+                  >
+                    <div className="border-product">
+                      <Link to={`/product/${product._id}`}>
+                        <div className="shopback">
+                          <img src={product.image} alt={product.image} />
+                        </div>
+                      </Link>
+                      <div className="shoptext">
+                        <p>
+                          <Link to={`/product/${product._id}`}>
+                            <div className="shopback">{product.image}</div>
+                          </Link>
+                        </p>
+                        <Rating
+                          value={product.rating}
+                          text={`${product.numReviews} reviews`}
+                        />
+                        <h3>${product.price}</h3>
+                      </div>
+                    </div>
+                  </div>;
+                })}
+                {/* Pagination */}
+                <Pagination />
               </div>
             </div>
           </div>

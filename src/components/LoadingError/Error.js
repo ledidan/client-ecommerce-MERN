@@ -1,5 +1,11 @@
 import React from "react";
 
-export default function Error() {
-  return <div>Error</div>;
-}
+const Message = ({ variant, chilren }) => {
+  return <div className={`alert ${variant}`}>{chilren}</div>;
+};
+
+Message.defaultProps = {
+  variant: "alert-info",
+};
+
+export default Message;
