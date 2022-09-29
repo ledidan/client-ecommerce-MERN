@@ -1,5 +1,17 @@
 import React from "react";
 
 export default function Toast() {
-  return <div>Toast</div>;
+  return (
+    <div>
+      <ToastContainer
+        position="top-right"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+      />
+      {/* Same As  */}
+      <ToastContainer />
+    </div>
+  );
 }
