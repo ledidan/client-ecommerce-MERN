@@ -4,7 +4,7 @@ export default function CalltoActionSection() {
   return (
     <div className="subscribe-section bg-with-black">
       <div className="container">
-        <div class="row">
+        <div className="row">
           <div className="col-xs-12">
             <div className="subscribe-head">
               <h2>Do you need more tips</h2>

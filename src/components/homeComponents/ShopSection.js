@@ -12,7 +12,7 @@ export default function ShopSection() {
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
               <div className="shopcontainer row">
-                {products.map((product) => {
+                {/* {products.map((product) => {
                   <div
                     className="shop col-lg-4 col-md-6 col-sm-6"
                     key={product._id}
@@ -37,7 +37,7 @@ export default function ShopSection() {
                       </div>
                     </div>
                   </div>;
-                })}
+                })} */}
                 {/* Pagination */}
                 <Pagination />
               </div>
