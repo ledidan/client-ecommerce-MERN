@@ -4,7 +4,7 @@ import Rating from "./Rating";
 import Pagination from "./pagination";
 import products from "../../data/Products";
 
-export default function ShopSection() {
+const ShopSection = () => {
   return (
     <>
       <div className="container">
@@ -12,7 +12,7 @@ export default function ShopSection() {
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
               <div className="shopcontainer row">
-                {/* {products.map((product) => {
+                {/* {products.map((product) => (
                   <div
                     className="shop col-lg-4 col-md-6 col-sm-6"
                     key={product._id}
@@ -24,11 +24,11 @@ export default function ShopSection() {
                         </div>
                       </Link>
                       <div className="shoptext">
-                        <p>
+                        <div>
                           <Link to={`/product/${product._id}`}>
                             <div className="shopback">{product.image}</div>
                           </Link>
-                        </p>
+                        </div>
                         <Rating
                           value={product.rating}
                           text={`${product.numReviews} reviews`}
@@ -36,8 +36,8 @@ export default function ShopSection() {
                         <h3>${product.price}</h3>
                       </div>
                     </div>
-                  </div>;
-                })} */}
+                  </div>
+                ))} */}
                 {/* Pagination */}
                 <Pagination />
               </div>
@@ -47,4 +47,6 @@ export default function ShopSection() {
       </div>
     </>
   );
-}
+};
+
+export default ShopSection;

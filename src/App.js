@@ -1,4 +1,6 @@
 import React from "react";
+import "./App.css";
+import "./responsive.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomeScreen from "./views/HomeScreen";
 import SingleProduct from "./views/SingleProduct";

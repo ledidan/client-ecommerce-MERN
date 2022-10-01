@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 const SingleProduct = ({ match }) => {
   const product = products.find((p) => p._id === match.params.id);
-  const { name, image, description, price, countInStock, rating, numReviews } =
-    product;
+  // const { name, image, description, price, countInStock, rating, numReviews } =
+  // product;
   return (
     <>
       <Header />
