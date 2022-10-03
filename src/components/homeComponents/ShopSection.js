@@ -1,43 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 import Pagination from "./pagination";
-import products from "../../data/Products";
-
+import axios from "axios";
 const ShopSection = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get("/api/products");
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <div className="container">
         <div className="section">
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
-              <div className="shopcontainer row">
-                {/* {products.map((product) => (
+              <div className="shop container row">
+                {products.map((product) => (
                   <div
                     className="shop col-lg-4 col-md-6 col-sm-6"
                     key={product._id}
                   >
                     <div className="border-product">
-                      <Link to={`/product/${product._id}`}>
-                        <div className="shopback">
+                      <Link to={`/products/${product._id}`}>
+                        <div className="shopBack">
                           <img src={product.image} alt={product.image} />
                         </div>
                       </Link>
-                      <div className="shoptext">
-                        <div>
-                          <Link to={`/product/${product._id}`}>
-                            <div className="shopback">{product.image}</div>
+                      <div className="shopText">
+                        <p>
+                          <Link to={`/products/${product._id}`}>
+                            {product.name}
                           </Link>
-                        </div>
+                        </p>
                         <Rating
                           value={product.rating}
                           text={`${product.numReviews} reviews`}
                         />
-                        <h3>${product.price}</h3>
+
+                        <h4>${product.price}</h4>
                       </div>
                     </div>
                   </div>
-                ))} */}
+                ))}
                 {/* Pagination */}
                 <Pagination />
               </div>

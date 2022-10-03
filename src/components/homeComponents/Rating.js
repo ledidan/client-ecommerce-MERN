@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Rating(value, text) {
+const rating = ({ value, text }) => {
   return (
     <div className="rating">
       <i
@@ -48,7 +48,9 @@ export default function Rating(value, text) {
             : "fas fa-star"
         }
       ></i>
-      <span>{text && text}</span>
+      <div>{text && text}</div>
     </div>
   );
-}
+};
+
+export default rating;

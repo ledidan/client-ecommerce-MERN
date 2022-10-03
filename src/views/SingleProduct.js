@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./../components/Header";
 import Rating from "../components/homeComponents/Rating";
-import Loading from "./../components/LoadingError/Loading";
 import Message from "./../components/LoadingError/Error";
-import products from "../data/Products";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SingleProduct = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
-  // const { name, image, description, price, countInStock, rating, numReviews } =
-  // product;
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      setProduct(data);
+    };
+    fetchProducts();
+  }, [match]);
   return (
     <>
       <Header />
