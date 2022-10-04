@@ -1,7 +1,7 @@
 import React from "react";
 
-const Message = ({ variant, chilren }) => {
-  return <div className={`alert ${variant}`}>{chilren}</div>;
+const Message = ({ variant, children }) => {
+  return <div className={`alert ${variant}`}>{children}</div>;
 };
 
 Message.defaultProps = {
