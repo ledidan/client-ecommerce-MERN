@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { listProductDetails } from "../redux/actions/ProductAction";
 import Loading from "./../components/LoadingError/Loading";
 const SingleProduct = ({ history, match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const productId = match.params.id;
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
@@ -20,7 +20,6 @@ const SingleProduct = ({ history, match }) => {
   const AddToCartHandle = (e) => {
     e.preventDefault();
     history.push(`/cart/${productId}?qty=${qty}`);
-    setQty(qty + 1);
   };
   return (
     <>
@@ -69,7 +68,10 @@ const SingleProduct = ({ history, match }) => {
                       <>
                         <div className="flex-box d-flex justify-content-between align-items-center">
                           <h6>Quantity</h6>
-                          <select>
+                          <select
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
                             {[...Array(product.countInStock).keys()].map(
                               (x) => (
                                 <option key={x + 1} value={x + 1}>
