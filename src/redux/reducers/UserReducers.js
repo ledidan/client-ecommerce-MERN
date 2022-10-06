@@ -6,10 +6,13 @@ import {
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
-  USER_DETAILS_UPDATE_REQUEST,
-  USER_DETAILS_UPDATE_SUCCESS,
-  USER_DETAILS_UPDATE_FAIL,
-  USER_DETAILS_UPDATE_RESET,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_FAIL,
+  USER_DETAILS_RESET,
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS,
+  USER_UPDATE_PROFILE_FAIL,
 } from "../constants/UserContants";
 
 const stateDefault = {
@@ -41,8 +44,8 @@ export const userLoginReducer = (state = stateDefault, action) => {
   }
 };
 
-// USER DETAILS UPDATE
-export const userRegisterReducer = (state = stateDefault, action) => {
+// USER REGISTER UPDATE
+export const userRegisterReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_REGISTER_REQUEST:
       return {
@@ -58,7 +61,31 @@ export const userRegisterReducer = (state = stateDefault, action) => {
         loading: false,
         error: action.payload,
       };
-    case USER_DETAILS_UPDATE_RESET:
+    default:
+      return state;
+  }
+};
+
+// GET USER DETAIL
+export const userDetailReducer = (state = stateDefault, action) => {
+  switch (action.type) {
+    case USER_DETAILS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case USER_DETAILS_SUCCESS:
+      return {
+        loading: false,
+        userInfo: action.payload,
+        user: {},
+      };
+    case USER_DETAILS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    case USER_DETAILS_RESET:
       return {
         user: {},
       };
@@ -67,19 +94,20 @@ export const userRegisterReducer = (state = stateDefault, action) => {
   }
 };
 
-// USER REGISTER
-export const userDetailUpdateReducer = (state = stateDefault, action) => {
+// UPDATE PROFILE
+export const userUpdateProfileReducer = (state = {}, action) => {
   switch (action.type) {
-    case USER_DETAILS_UPDATE_REQUEST:
+    case USER_UPDATE_PROFILE_REQUEST:
       return {
         loading: true,
       };
-    case USER_DETAILS_UPDATE_SUCCESS:
+    case USER_UPDATE_PROFILE_SUCCESS:
       return {
         loading: false,
+        success: true,
         userInfo: action.payload,
       };
-    case USER_DETAILS_UPDATE_FAIL:
+    case USER_UPDATE_PROFILE_FAIL:
       return {
         loading: false,
         error: action.payload,

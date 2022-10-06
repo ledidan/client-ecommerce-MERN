@@ -7,9 +7,10 @@ import {
 } from "./reducers/ProductReducers";
 import { cartReducer } from "./reducers/CartReducers";
 import {
-  userDetailUpdateReducer,
+  userDetailReducer,
   userLoginReducer,
   userRegisterReducer,
+  userUpdateProfileReducer,
 } from "./reducers/UserReducers";
 
 const reducer = combineReducers({
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  userUpdate: userDetailUpdateReducer,
+  userDetails: userDetailReducer,
+  userUpdate: userUpdateProfileReducer,
 });
 
 // SAVE CartItem
