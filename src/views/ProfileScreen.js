@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../components/Header";
 import ProfileTabs from "../components/profileComponents/ProfileTabs";
 import Orders from "./../components/profileComponents/Orders";
-
+import { userUpdate } from "../redux/actions/UserAction";
 const ProfileScreen = () => {
   window.scrollTo(0, 0);
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  useEffect(() => {
+    dispatch(userUpdate("profile"));
+  }, []);
+
   return (
     <>
       <Header />

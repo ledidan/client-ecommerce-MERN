@@ -8,6 +8,10 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USER_DETAILS_UPDATE_REQUEST,
+  USER_DETAILS_UPDATE_SUCCESS,
+  USER_DETAILS_UPDATE_FAIL,
+  // USER_DETAILS_UPDATE_RESET,
 } from "../constants/UserContants";
 
 export const login = (email, password) => async (dispatch) => {
@@ -83,6 +87,41 @@ export const register = (name, email, password) => async (dispatch) => {
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
+    });
+  }
+};
+
+// USER DETAIL UPDATE
+export const userUpdate = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_DETAILS_UPDATE_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Using callback Auth headers config to identify json content
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    // use axios.[POST] to compare user with server's user,
+    const { data } = await axios.get(`/api/users/${id}`, config);
+
+    dispatch({ type: USER_DETAILS_UPDATE_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, no token") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: USER_DETAILS_UPDATE_FAIL,
+      payload: message,
     });
   }
 };
