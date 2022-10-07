@@ -12,6 +12,7 @@ import {
   userRegisterReducer,
   userUpdateProfileReducer,
 } from "./reducers/UserReducers";
+import { orderCreateReducer } from "./reducers/OrderReducers";
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailReducer,
   userUpdate: userUpdateProfileReducer,
+  orderCreate: orderCreateReducer,
 });
 
 // SAVE CartItem
