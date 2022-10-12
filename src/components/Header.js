@@ -1,9 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/UserAction";
 const Header = () => {
+  const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
+  let history = useHistory();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
@@ -12,6 +14,14 @@ const Header = () => {
   const logoutHandler = (e) => {
     e.preventDefault();
     dispatch(logout());
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/search/${keyword}`);
+    } else {
+      history.push("/");
+    }
   };
   return (
     <div>
@@ -58,49 +68,57 @@ const Header = () => {
                 <div className="col-6 d-flex align-items-center justify-content-end Login-Register">
                   {userInfo ? (
                     <div className="btn-group">
-                      <button
-                        type="button"
-                        className="name-button dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fas fa-user"></i>
-                      </button>
-                      <div className="dropdown-menu">
-                        <Link className="dropdown-item" to="/profile">
-                          Profile
-                        </Link>
-
-                        <Link
-                          className="dropdown-item"
-                          to="#"
-                          onClick={logoutHandler}
-                        >
-                          Logout
-                        </Link>
-                      </div>
+                      <ul className="nav nav-pills">
+                        <li className="nav-item dropdown">
+                          <Link
+                            className="nav-link dropdown-toggle name-button text-dark"
+                            data-bs-toggle="dropdown"
+                          >
+                            <i className="fas fa-user"></i>
+                          </Link>
+                          <ul className="dropdown-menu">
+                            <li>
+                              <Link className="dropdown-item" to="/profile">
+                                Profile
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                className="dropdown-item"
+                                to="#"
+                                onClick={logoutHandler}
+                              >
+                                Logout
+                              </Link>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
                     </div>
                   ) : (
                     <div className="btn-group">
-                      <button
-                        type="button"
-                        className="name-button dropdown-toggle"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fas fa-user"></i>
-                      </button>
-                      <div className="dropdown-menu">
-                        <Link className="dropdown-item" to="/login">
-                          Login
-                        </Link>
-
-                        <Link className="dropdown-item" to="/register">
-                          Register
-                        </Link>
-                      </div>
+                      <ul className="nav nav-pills">
+                        <li className="nav-item dropdown">
+                          <Link
+                            className="nav-link dropdown-toggle name-button text-dark"
+                            data-bs-toggle="dropdown"
+                          >
+                            <i className="fas fa-user"></i>
+                          </Link>
+                          <ul className="dropdown-menu">
+                            <li>
+                              <Link className="dropdown-item" to="/login">
+                                Login
+                              </Link>
+                            </li>
+                            <li>
+                              <Link className="dropdown-item" to="/register">
+                                Register
+                              </Link>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
                     </div>
                   )}
 
@@ -110,11 +128,12 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="col-12 d-flex align-items-center">
-                  <form className="input-group">
+                  <form onSubmit={submitHandler} className="input-group">
                     <input
                       type="search"
                       className="form-control rounded search"
                       placeholder="Search"
+                      onChange={(e) => setKeyword(e.target.value)}
                     />
                     <button type="submit" className="search-button">
                       search
@@ -134,11 +153,12 @@ const Header = () => {
                 </Link>
               </div>
               <div className="col-md-6 col-8 d-flex align-items-center">
-                <form className="input-group">
+                <form onSubmit={submitHandler} className="input-group">
                   <input
                     type="search"
                     className="form-control rounded search"
                     placeholder="Search"
+                    onChange={(e) => setKeyword(e.target.value)}
                   />
                   <button type="submit" className="search-button">
                     search
@@ -148,31 +168,35 @@ const Header = () => {
               <div className="col-md-3 d-flex align-items-center justify-content-end Login-Register">
                 {userInfo ? (
                   <div className="btn-group">
-                    <button
-                      type="button"
-                      className="name-button dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      Hi,{" "}
-                      {userInfo.isAdmin
-                        ? `Admin ${userInfo.name}`
-                        : `${userInfo.name}`}
-                    </button>
-                    <div className="dropdown-menu">
-                      <Link className="dropdown-item" to="/profile">
-                        Profile
-                      </Link>
-
-                      <Link
-                        className="dropdown-item"
-                        to="#"
-                        onClick={logoutHandler}
-                      >
-                        Logout
-                      </Link>
-                    </div>
+                    <ul className="nav nav-pills">
+                      <li className="nav-item dropdown">
+                        <Link
+                          className="nav-link dropdown-toggle name-button text-dark"
+                          data-bs-toggle="dropdown"
+                        >
+                          Hi,{" "}
+                          {userInfo.isAdmin
+                            ? `Admin ${userInfo.name}`
+                            : `${userInfo.name}`}
+                        </Link>
+                        <ul className="dropdown-menu">
+                          <li>
+                            <Link className="dropdown-item" to="/profile">
+                              Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              className="dropdown-item"
+                              to="#"
+                              onClick={logoutHandler}
+                            >
+                              Logout
+                            </Link>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
                   </div>
                 ) : (
                   <>

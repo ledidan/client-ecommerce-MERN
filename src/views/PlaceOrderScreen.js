@@ -8,12 +8,11 @@ import { createOrder } from "../redux/actions/OrderAction";
 const PlaceOrderScreen = ({ history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
 
+  const cart = useSelector((state) => state.cart);
   const userLogin = useSelector((state) => state.userLogin);
 
   const { userInfo } = userLogin;
-  const { paymentMethod, shippingAddress, cartItems } = cart;
 
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
@@ -21,19 +20,18 @@ const PlaceOrderScreen = ({ history }) => {
 
   // Product Price
   cart.itemsPrice = addDecimals(
-    cartItems.reduce((a, b) => a + b.qty * b.price, 0)
+    cart.cartItems.reduce((a, b) => a + b.qty * b.price, 0)
   );
-
   // Shipping Price
   cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
   // Tax Price
-  cart.taxPrice = addDecimals(Number(0.15 * cart.itemsPrice).toFixed(0));
+  cart.taxPrice = addDecimals(Number(0.15 * cart.itemsPrice).toFixed(2));
   // Total Price
   cart.totalPrice = (
     Number(cart.itemsPrice) +
     Number(cart.shippingPrice) +
     Number(cart.taxPrice)
-  ).toFixed(0);
+  ).toFixed(2);
 
   const orderCreate = useSelector((state) => state.orderCreate);
 
@@ -45,11 +43,11 @@ const PlaceOrderScreen = ({ history }) => {
       dispatch({ type: ORDER_CREATE_RESET });
     }
   }, [history, order, dispatch, success]);
-  const placeOrderHandler = (e) => {
-    e.preventDefault();
+
+  const placeOrderHandler = () => {
     dispatch(
       createOrder({
-        orderItems: cartItems,
+        orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
@@ -93,8 +91,8 @@ const PlaceOrderScreen = ({ history }) => {
                 <h5>
                   <strong>Order info</strong>
                 </h5>
-                <p>Shipping: {shippingAddress.country}</p>
-                <p>Pay method: {paymentMethod}</p>
+                <p>Shipping: {cart.shippingAddress.country}</p>
+                <p>Pay method: {cart.paymentMethod}</p>
               </div>
             </div>
           </div>
@@ -111,8 +109,9 @@ const PlaceOrderScreen = ({ history }) => {
                   <strong>Deliver to</strong>
                 </h5>
                 <p>
-                  Address: {shippingAddress.address} st, {shippingAddress.city},{" "}
-                  POX: {shippingAddress.postalCode}
+                  Address: {cart.shippingAddress.address} st,{" "}
+                  {cart.shippingAddress.city}, POX:{" "}
+                  {cart.shippingAddress.postalCode}
                 </p>
               </div>
             </div>
@@ -121,11 +120,11 @@ const PlaceOrderScreen = ({ history }) => {
 
         <div className="row order-products justify-content-between">
           <div className="col-lg-8">
-            {cartItems.length === 0 ? (
+            {cart.cartItems.length === 0 ? (
               <Message variant="alert-info mt-5">Your cart is empty</Message>
             ) : (
               <>
-                {cartItems.map((item, index) => {
+                {cart.cartItems.map((item, index) => {
                   return (
                     <div className="order-product row" key={index}>
                       <div className="col-md-3 col-6">
@@ -181,7 +180,7 @@ const PlaceOrderScreen = ({ history }) => {
                 </tr>
               </tbody>
             </table>
-            {cartItems.length === 0 ? null : (
+            {cart.cartItems.length === 0 ? null : (
               <button type="submit" onClick={placeOrderHandler}>
                 <Link to="/order" className="text-white">
                   PLACE ORDER
