@@ -21,14 +21,18 @@ import {
 } from "./reducers/OrderReducers";
 
 const reducer = combineReducers({
+  // PRODUCT
   productList: productListReducer,
   productDetails: productDetailReducer,
   productCreateReview: productCreateReviewReducer,
+  // CART
   cart: cartReducer,
+  // USERS
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailReducer,
   userUpdate: userUpdateProfileReducer,
+  // MY ORDERS
   orderCreate: orderCreateReducer,
   orderDetails: getOrderDetailReducer,
   orderPay: orderPayReducer,
