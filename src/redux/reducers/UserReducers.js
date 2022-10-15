@@ -67,7 +67,7 @@ export const userRegisterReducer = (state = {}, action) => {
 };
 
 // GET USER DETAIL
-export const userDetailReducer = (state = stateDefault, action) => {
+export const userDetailReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
       return {
