@@ -1,41 +1,54 @@
 import React from "react";
-
-const Footer = () => {
+import {
+  ButtonGroup,
+  Container,
+  IconButton,
+  Stack,
+  Text,
+  Box,
+} from "@chakra-ui/react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Logo } from "./homeComponents/Logo";
+const Footer = (props) => {
   return (
-    <div className="footer">
-      <div className="justify-content-center d-flex">
-        <div className="card-name">
-          <img
-            alt="mastercard"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/1200px-MasterCard_Logo.svg.png"
-          />
-        </div>
-        <div className="card-name">
-          <img
-            alt="visa"
-            src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png"
-          />
-        </div>
-        <div className="card-name">
-          <img
-            alt="paypal"
-            src="https://pbs.twimg.com/media/EfTZlEnWAAMn1lX.png"
-          />
-        </div>
-        <div className="card-name">
-          <img
-            alt="express"
-            src="https://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/American-Express-icon.png"
-          />
-        </div>
-        <div className="card-name">
-          <img
-            alt="discover"
-            src="https://icons-for-free.com/iconfiles/png/512/cash+checkout+discover+network+online+shopping+payment+method-1320191225548835050.png"
-          />
-        </div>
-      </div>
-    </div>
+    <Box as="footer" role="contentinfo" bg="blue.500" {...props}>
+      <Container
+        maxW="container.xl"
+        as="footer"
+        role="contentinfo"
+        py={{ base: "12", md: "12" }}
+      >
+        <Stack spacing={{ base: "4", md: "5" }}>
+          <Stack justify="space-between" direction="row" align="center">
+            <Logo />
+            <ButtonGroup variant="white">
+              <IconButton
+                as="a"
+                href="#"
+                aria-label="LinkedIn"
+                icon={<FaLinkedin fontSize="1.25rem" color="white" />}
+              />
+              <IconButton
+                as="a"
+                href="#"
+                aria-label="GitHub"
+                icon={<FaGithub fontSize="1.25rem" color="white" />}
+              />
+              <IconButton
+                as="a"
+                href="#"
+                aria-label="Twitter"
+                icon={<FaTwitter fontSize="1.25rem" color="white" />}
+              />
+            </ButtonGroup>
+          </Stack>
+          <Text fontSize="sm" color="white">
+            &copy; {new Date().getFullYear()} DiDan Store, Inc. All rights
+            reserved.
+          </Text>
+        </Stack>
+      </Container>
+    </Box>
   );
 };
 

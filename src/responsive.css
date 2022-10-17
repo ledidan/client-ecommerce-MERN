@@ -12,8 +12,9 @@
     font-size: 13px;
   }
   .badge {
-    top: -10px;
-    padding: 5px;
+    top: 0px;
+    padding: 4px;
+    left: 30px;
     font-size: 7px;
   }
   .input-group {
@@ -71,6 +72,16 @@
   .search-button {
     width: 30%;
   }
+  .hero-banner-container {
+    height: 400px;
+  }
+  .hero-banner-image {
+    width: 40%;
+    height: 62%;
+    top: 60%;
+    right: 2%;
+  }
+
   .subscribe-head .form-section input[type="email"] {
     height: 45px;
     width: 70%;
