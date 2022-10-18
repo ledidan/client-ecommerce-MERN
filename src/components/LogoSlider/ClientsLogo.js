@@ -1,4 +1,11 @@
-import { Box, Center, Heading, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Container,
+  Divider,
+  Heading,
+  Image,
+} from "@chakra-ui/react";
 import React from "react";
 import { SliderItem } from "./SliderItem";
 import Marquee from "react-fast-marquee";
@@ -28,16 +35,16 @@ const ClientsLogo = () => {
   ];
 
   return (
-    <>
+    <Container maxW="container.xl" mb={20}>
       <Center h="200px">
-        <Heading as="h2" size="3xl" textTransform="uppercase" fontWeight={700}>
+        <Heading as="h2" size="2xl" textTransform="uppercase" fontWeight={700}>
           Thương hiệu đối tác
         </Heading>
       </Center>
 
       <SliderItem>
         {logoRender.map((item) => (
-          <Marquee speed={100} pauseOnHover={true}>
+          <Marquee speed={100} gradientWidth="50px" pauseOnHover={true}>
             <Image
               src={item.sourceImages}
               width={200}
@@ -48,7 +55,7 @@ const ClientsLogo = () => {
           </Marquee>
         ))}
       </SliderItem>
-    </>
+    </Container>
   );
 };
 

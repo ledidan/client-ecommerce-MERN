@@ -17,20 +17,20 @@ export default function ContactInfo() {
   const headingIconInfo = [
     {
       heading: `Free Delivery From $100`,
-      icon: <CiDeliveryTruck size={30} />,
+      icon: <CiDeliveryTruck size={40} />,
     },
     {
       heading: `-10% for newsletter subcription`,
-      icon: <SlEnvolopeLetter size={30} />,
+      icon: <SlEnvolopeLetter size={40} />,
     },
     {
       heading: `Free return in showroom`,
-      icon: <TfiPackage size={30} />,
+      icon: <TfiPackage size={40} />,
     },
   ];
 
   return (
-    <Container className="contactInfo container">
+    <Container className="contactInfo container" mt={50}>
       <Stack>
         <Box className="col-lg-12 col-md-12 col-sm-12 contact-Box">
           {headingIconInfo.map((item) => (
@@ -49,7 +49,7 @@ export default function ContactInfo() {
                       <HStack className="info-image">{item.icon}</HStack>
                       <Heading
                         as="h3"
-                        size={{ base: "sm", md: "md" }}
+                        size="md"
                         textTransform="uppercase"
                         textAlign="center"
                       >

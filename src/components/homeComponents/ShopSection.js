@@ -6,6 +6,19 @@ import Pagination from "./pagination";
 import { listProduct } from "../../redux/actions/ProductAction";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
+import { MdAddShoppingCart } from "react-icons/md";
+import {
+  Button,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  Image,
+  Spacer,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+
 const ShopSection = (props) => {
   const { keyword, pageNumber } = props;
   const dispatch = useDispatch();
@@ -20,11 +33,17 @@ const ShopSection = (props) => {
 
   return (
     <>
-      <div className="container">
-        <div className="section">
+      <Container maxW="max-content">
+        <Stack className="section">
           <div className="row">
             <div className="col-lg-12 col-md-12 article">
               <div className="shop container row">
+                <Center mb={45} mt={20}>
+                  <Heading as="h2" size="2xl" textTransform="uppercase">
+                    sneakers bán chạy nhất
+                  </Heading>
+                </Center>
+
                 {loading ? (
                   <div className="mb-3">
                     <Loading />
@@ -41,21 +60,33 @@ const ShopSection = (props) => {
                         <div className="border-product">
                           <Link to={`/products/${product._id}`}>
                             <div className="shopBack">
-                              <img src={product.image} alt={product.name} />
+                              <Image src={product.image} alt={product.name} />
                             </div>
                           </Link>
                           <div className="shopText">
-                            <p>
+                            <Text fontSize="xl" isTruncated>
                               <Link to={`/products/${product._id}`}>
                                 {product.name}
                               </Link>
-                            </p>
+                            </Text>
                             <Rating
                               value={product.rating}
                               text={`${product.numReviews} reviews`}
                             />
-
-                            <h4>${product.price}</h4>
+                            <Flex align="center">
+                              <Heading as="h4" size="sm">
+                                ${product.price}
+                              </Heading>
+                              <Spacer />
+                              <Button
+                                colorScheme="red"
+                                leftIcon={<MdAddShoppingCart />}
+                                variant="outline"
+                                p="4"
+                              >
+                                Add to cart
+                              </Button>
+                            </Flex>
                           </div>
                         </div>
                       </div>
@@ -72,8 +103,8 @@ const ShopSection = (props) => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </Stack>
+      </Container>
     </>
   );
 };

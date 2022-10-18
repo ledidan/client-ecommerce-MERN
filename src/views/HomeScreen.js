@@ -7,9 +7,9 @@ import CallToActionSection from "../components/homeComponents/CalltoActionSectio
 import ContactInfo from "../components/homeComponents/ContactInfo";
 import HeroCarousel from "../components/homeComponents/HeroCarousel";
 import ClientsLogo from "../components/LogoSlider/ClientsLogo";
-
+import GenderCategory from "../components/homeComponents/genderCategory";
 const HomeScreen = ({ match }) => {
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
   const keyword = match.params.keyword;
   const pageNumber = match.params.pageNumber;
   return (
@@ -19,6 +19,7 @@ const HomeScreen = ({ match }) => {
       <ContactInfo />
       <ClientsLogo />
       <ShopSection keyword={keyword} pageNumber={pageNumber} />
+      <GenderCategory />
       <CallToActionSection />
       <Footer />
     </Flex>
