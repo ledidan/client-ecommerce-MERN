@@ -6,6 +6,7 @@ import ShopSection from "../components/homeComponents/ShopSection";
 import CallToActionSection from "../components/homeComponents/CalltoActionSection";
 import ContactInfo from "../components/homeComponents/ContactInfo";
 import HeroCarousel from "../components/homeComponents/HeroCarousel";
+import ClientsLogo from "../components/LogoSlider/ClientsLogo";
 
 const HomeScreen = ({ match }) => {
   window.scrollTo(0, 0);
@@ -15,9 +16,10 @@ const HomeScreen = ({ match }) => {
     <Flex direction="column" flex="1">
       <Header />
       <HeroCarousel />
+      <ContactInfo />
+      <ClientsLogo />
       <ShopSection keyword={keyword} pageNumber={pageNumber} />
       <CallToActionSection />
-      <ContactInfo />
       <Footer />
     </Flex>
   );

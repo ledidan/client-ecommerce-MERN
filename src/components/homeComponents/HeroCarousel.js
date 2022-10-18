@@ -61,11 +61,11 @@ const HeroCarousel = () => {
         </Link>
       </Button>
       <Box className="carousel-inner hero-banner-image">
-        <HStack className="carousel-item active" maxW="500px">
-          <Image src="/images/7.png" className="d-block w-10" alt="..." />
+        <HStack className="carousel-item" maxW="700px">
+          <Image src="/images/air2.png" className="d-block " alt="..." />
         </HStack>
-        <HStack className="carousel-item" maxW="500px">
-          <Image src="/images/10.png" className="d-block w-10" alt="..." />
+        <HStack className="carousel-item active" maxW="700px">
+          <Image src="/images/nike.png" className="d-block " alt="..." />
         </HStack>
       </Box>
       {/* <button

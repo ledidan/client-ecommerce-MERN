@@ -1,37 +1,68 @@
+import {
+  Box,
+  Center,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import React from "react";
-
+import { CiDeliveryTruck } from "react-icons/ci";
+import { SlEnvolopeLetter } from "react-icons/sl";
+import { TfiPackage } from "react-icons/tfi";
 export default function ContactInfo() {
+  const headingIconInfo = [
+    {
+      heading: `Free Delivery From $100`,
+      icon: <CiDeliveryTruck size={30} />,
+    },
+    {
+      heading: `-10% for newsletter subcription`,
+      icon: <SlEnvolopeLetter size={30} />,
+    },
+    {
+      heading: `Free return in showroom`,
+      icon: <TfiPackage size={30} />,
+    },
+  ];
+
   return (
-    <div className="contactInfo container">
-      <div className="row">
-        <div className="col-12 col-md-4 contact-Box">
-          <div className="box-info">
-            <div className="info-image">
-              <i className="fas fa-phone-alt"></i>
-            </div>
-            <h2>Call us 24/7</h2>
-            <p>053455483</p>
-          </div>
-        </div>
-        <div className="col-12 col-md-4 contact-Box">
-          <div className="box-info">
-            <div className="info-image">
-              <i className="fas fa-map-marker-alt"></i>
-            </div>
-            <h5>Headquarter</h5>
-            <p>Arusha Nijro Pepsi</p>
-          </div>
-        </div>
-        <div className="col-12 col-md-4 contact-Box">
-          <div className="box-info">
-            <div className="info-image">
-              <i className="fas fa-fax"></i>
-            </div>
-            <h5>Fax</h5>
-            <p>04839274</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container className="contactInfo container">
+      <Stack>
+        <Box className="col-lg-12 col-md-12 col-sm-12 contact-Box">
+          {headingIconInfo.map((item) => (
+            <>
+              <Wrap spacing="30px">
+                <WrapItem>
+                  <Center
+                    w={{ base: "350px", md: "280px", lg: "380px" }}
+                    h={{ base: "200px", md: "350px", lg: "350px" }}
+                  >
+                    <Box
+                      className="box-info"
+                      gap="20px"
+                      maxW={{ base: "300px", md: "400px", lg: "500px" }}
+                    >
+                      <HStack className="info-image">{item.icon}</HStack>
+                      <Heading
+                        as="h3"
+                        size={{ base: "sm", md: "md" }}
+                        textTransform="uppercase"
+                        textAlign="center"
+                      >
+                        {item.heading}
+                      </Heading>
+                    </Box>
+                  </Center>
+                </WrapItem>
+              </Wrap>
+            </>
+          ))}
+        </Box>
+      </Stack>
+    </Container>
   );
 }

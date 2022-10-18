@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Cabin", sans-serif;
   /* font-family: 'Open Sans', sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -205,10 +205,10 @@ textarea:focus {
 
 .hero-banner-image {
   position: absolute;
-  top: 0%;
-  right: 5%;
-  width: 500px;
-  height: 500px;
+  top: -5%;
+  right: -5%;
+  width: 700px;
+  height: 700px;
 }
 .hero-button {
   position: absolute;
@@ -273,9 +273,7 @@ textarea:focus {
   font-size: 12px;
 }
 /* CONTACT */
-.contactInfo {
-  padding: 70px 0;
-}
+
 .contact-Box,
 .box-info,
 .info-image {
@@ -284,27 +282,18 @@ textarea:focus {
   align-items: center;
 }
 .box-info {
-  width: 80%;
+  width: 100%;
   flex-direction: column;
-  padding: 40px 0;
-  box-shadow: 0px 0px 27px 0px rgb(243, 243, 243);
+  padding: 40px 0px;
+  /* box-shadow: 0px 0px 27px 0px rgb(243, 243, 243); */
 }
 .info-image {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   border: 2px solid #4576ae;
   border-radius: 100px;
   font-size: 20px;
   color: #4576ae;
-}
-.box-info h5 {
-  font-weight: bold;
-  font-size: 19px;
-  margin-top: 20px;
-  margin-bottom: 4px;
-}
-.box-info p {
-  font-size: 16px;
 }
 
 /* SINGLE PRODUCT */
