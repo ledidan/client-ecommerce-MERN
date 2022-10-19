@@ -9,6 +9,7 @@ import {
   Image,
   Stack,
 } from "@chakra-ui/react";
+
 const GenderCategory = () => {
   const renderCategories = {
     image1: `/images/1.png`,
