@@ -6,6 +6,7 @@ import {
   Heading,
   HStack,
   Stack,
+  Text,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -16,15 +17,21 @@ import { TfiPackage } from "react-icons/tfi";
 export default function ContactInfo() {
   const headingIconInfo = [
     {
-      heading: `Free Delivery From $100`,
+      heading: "Free Delivery From $100",
+      description:
+        "Free shipping to all over the world with many specials only for our dear customers",
       icon: <CiDeliveryTruck size={40} />,
     },
     {
-      heading: `-10% for newsletter subcription`,
+      heading: "-10% for newsletter subcription",
+      description:
+        "Many customers entrust varius shoes needs to us, and customer satisfaction is our pride",
       icon: <SlEnvolopeLetter size={40} />,
     },
     {
-      heading: `Free return in showroom`,
+      heading: "Free return in showroom",
+      description:
+        "You can get various shoes with the highest quality an affoddable price",
       icon: <TfiPackage size={40} />,
     },
   ];
@@ -38,24 +45,30 @@ export default function ContactInfo() {
               <Wrap spacing="30px">
                 <WrapItem>
                   <Center
-                    w={{ base: "350px", md: "280px", lg: "380px" }}
-                    h={{ base: "200px", md: "350px", lg: "350px" }}
+                    w={{ base: "350px", md: "280px", lg: "450px" }}
+                    h={{ base: "300px", md: "400px", lg: "450px" }}
                   >
-                    <Box
+                    <Center
                       className="box-info"
+                      alignItems="center"
                       gap="20px"
-                      maxW={{ base: "300px", md: "400px", lg: "500px" }}
+                      W={{ base: "300px", md: "400px", lg: "500px" }}
                     >
                       <HStack className="info-image">{item.icon}</HStack>
                       <Heading
                         as="h3"
                         size="md"
+                        w={[200, 300, 400]}
                         textTransform="uppercase"
                         textAlign="center"
+                        fontWeight="bold"
                       >
                         {item.heading}
                       </Heading>
-                    </Box>
+                      <Text size="sm" textAlign="center">
+                        {item.description}
+                      </Text>
+                    </Center>
                   </Center>
                 </WrapItem>
               </Wrap>

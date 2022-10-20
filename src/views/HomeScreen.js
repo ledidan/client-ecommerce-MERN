@@ -20,7 +20,7 @@ const HomeScreen = ({ match }) => {
       <ClientsLogo />
       <ShopSection keyword={keyword} pageNumber={pageNumber} />
       <GenderCategory />
-      <CallToActionSection />
+      {/* <CallToActionSection /> */}
       <Footer />
     </Flex>
   );

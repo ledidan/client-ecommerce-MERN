@@ -155,7 +155,7 @@ textarea:focus {
 .border-product {
   padding: 15px;
   /* border: 1px solid #333;  */
-  border-radius: 10px;
+  border-radius: 6px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.117);
 }
 .shop-button {
@@ -200,7 +200,13 @@ textarea:focus {
   margin-left: 10px;
 }
 /* END OF SHOP */
-
+/* Category */
+.BoxItem {
+  transition: all 0.1s ease-in-out;
+}
+.BoxItem:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 /* 1o Section */
 .hero-section {
   background-color: rgb(43 108 176);

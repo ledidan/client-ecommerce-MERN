@@ -8,13 +8,9 @@ import {
   Link,
   Text,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 const HeroCarousel = () => {
-  const { products } = useSelector((state) => state.productList);
-
-  useEffect(() => {}, []);
   return (
     <Container
       maxW="container.xl"

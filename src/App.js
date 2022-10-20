@@ -13,7 +13,7 @@ import PaymentScreen from "./views/PaymentScreen";
 import PlaceOrderScreen from "./views/PlaceOrderScreen";
 import OrderScreen from "./views/OrderScreen";
 import NotFound from "./views/NotFound";
-import PrivateRouter from "./PrivateRouter";
+import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
 
 // Chakra Font CSS
@@ -21,6 +21,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import "@fontsource/montserrat/500.css";
 import "@fontsource/cabin/500.css";
 import theme from "./utils/ChakraUI/theme";
+import HomeRouter from "./routes/HomeRouter";
 
 const App = () => {
   return (
@@ -36,8 +37,8 @@ const App = () => {
             exact
           />
           <Route path="/products/:id" component={SingleProduct} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <HomeRouter path="/login" component={Login} />
+          <HomeRouter path="/register" component={Register} />
           <PrivateRouter path="/profile" component={ProfileScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <PrivateRouter path="/shipping" component={ShippingScreen} />

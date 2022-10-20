@@ -19,6 +19,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import styled from "@emotion/styled";
+
 const ShopSection = (props) => {
   const { keyword, pageNumber } = props;
   const dispatch = useDispatch();
@@ -56,7 +58,7 @@ const ShopSection = (props) => {
                     {products.map((product) => (
                       <motion.div
                         whileInView={{ scale: [0, 1] }}
-                        whileHover={{ scale: [1, 1.05] }}
+                        whileHover={{ scale: [1, 1.02] }}
                         transition={{ duration: 0.25 }}
                         className="shop col-lg-4 col-md-6 col-sm-6"
                         key={product._id}
