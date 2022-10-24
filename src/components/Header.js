@@ -63,17 +63,14 @@ const Header = () => {
               justify="center"
               className="col-12 col-lg-6 justify-content-lg-end display-none"
             >
-              <Link to="">
+              <Link to="https://www.facebook.com/ledidan">
                 <FaFacebook />
               </Link>
-              <Link to="">
+              <Link to="https://instagram.com/blackdouble.d">
                 <FaInstagram />
               </Link>
               <Link to="">
                 <FaLinkedin />
-              </Link>
-              <Link to="">
-                <FaYoutube />
               </Link>
             </Flex>
           </Flex>
@@ -167,7 +164,7 @@ const Header = () => {
                   <form onSubmit={submitHandler} className="input-group">
                     <input
                       type="search"
-                      className="form-control rounded search"
+                      className="form-control search"
                       placeholder="Tìm kiếm..."
                       onChange={(e) => setKeyword(e.target.value)}
                     />

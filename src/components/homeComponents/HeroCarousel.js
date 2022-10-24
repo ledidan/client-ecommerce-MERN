@@ -21,7 +21,6 @@ const HeroCarousel = () => {
     >
       <Box className="hero-title" w={[300, 400, 700]}>
         <Text
-          color="whiteAlpha.600"
           fontWeight={100}
           fontSize={{ base: "18px", md: "20px", lg: "30px" }}
           className="mb-4"
@@ -40,7 +39,6 @@ const HeroCarousel = () => {
           as="h1"
           size="4xl"
           fontSize={{ base: "50px", md: "70px", lg: "90px" }}
-          color="white"
           className="mt-4"
           textTransform="uppercase"
         >
@@ -51,42 +49,17 @@ const HeroCarousel = () => {
         leftIcon={<FiShoppingCart />}
         className="hero-button"
         colorScheme="red"
+        borderRadius="none"
       >
         <Link href="/shop" className="shopNow">
           Mua sắm ngay
         </Link>
       </Button>
       <Box className="carousel-inner hero-banner-image">
-        <HStack className="carousel-item" maxW="700px">
-          <Image src="/images/air2.png" className="d-block " alt="..." />
-        </HStack>
         <HStack className="carousel-item active" maxW="700px">
           <Image src="/images/nike.png" className="d-block " alt="..." />
         </HStack>
       </Box>
-      {/* <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleFade"
-        data-bs-slide="prev"
-      >
-        <span
-          className="carousel-control-prev-icon"
-          aria-hidden="true"
-          color="black"
-        />
-
-        <span className="visually-hidden">Previous</span>
-      </button>
-      <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleFade"
-        data-bs-slide="next"
-      >
-        <span className="carousel-control-next-icon" aria-hidden="true" />
-        <span className="visually-hidden">Next</span>
-      </button> */}
     </Container>
   );
 };

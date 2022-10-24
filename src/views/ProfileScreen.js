@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "../components/Header";
 import ProfileTabs from "../components/profileComponents/ProfileTabs";
 import Orders from "./../components/profileComponents/Orders";
 import { getUserDetails } from "../redux/actions/UserAction";
 import moment from "moment";
 import { listMyOrderAction } from "../redux/actions/OrderAction";
+import { Container, Heading, Text } from "@chakra-ui/react";
 const ProfileScreen = () => {
   window.scrollTo(0, 0);
 
@@ -24,8 +24,7 @@ const ProfileScreen = () => {
 
   return (
     <>
-      <Header />
-      <div className="container mt-lg-5 mt-3">
+      <Container className="container mt-lg-5 mt-3" maxW="container.2xl">
         <div className="row align-items-start">
           <div className="col-lg-4 p-0 shadow ">
             <div className="author-card pb-0 pb-md-3">
@@ -35,11 +34,11 @@ const ProfileScreen = () => {
                   <img src="./images/user.png" alt="userprofileimage" />
                 </div>
                 <div className="author-card-details col-md-7">
-                  <h5 className="author-card-name mb-2">
-                    <strong>{userInfo.name}</strong>
-                  </h5>
+                  <Heading as="h5" size="md" className="author-card-name mb-2">
+                    <Text fontSize="16px">{userInfo.name}</Text>
+                  </Heading>
                   <span className="author-card-position">
-                    <>Joined {timeFormat}</>
+                    <Text>Joined {timeFormat}</Text>
                   </span>
                 </div>
               </div>
@@ -47,7 +46,7 @@ const ProfileScreen = () => {
             <div className="wizard pt-3 ">
               <div className="d-flex align-items-start">
                 <div
-                  className="nav align-items-start flex-column col-12 nav-pills me-3 "
+                  className="nav align-items-start flex-column col-12 nav-pills me-3"
                   id="v-pills-tab"
                   role="tablist"
                   aria-orientation="vertical"
@@ -105,7 +104,7 @@ const ProfileScreen = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </>
   );
 };

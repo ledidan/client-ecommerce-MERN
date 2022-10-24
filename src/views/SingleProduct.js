@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "./../components/Header";
 import Rating from "../components/homeComponents/Rating";
 import Message from "./../components/LoadingError/Error";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +10,28 @@ import {
 import Loading from "./../components/LoadingError/Loading";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../redux/constants/ProductConstants";
 import moment from "moment";
-const SingleProduct = ({ history, match }) => {
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Select,
+  Stack,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
+import { addToCart } from "../redux/actions/CartAction";
+const SingleProduct = ({ match }) => {
   // Set up Hooks State
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-
+  const toast = useToast();
   // GET PRODUCT ID
   const productId = match.params.id;
   const dispatch = useDispatch();
@@ -48,7 +63,14 @@ const SingleProduct = ({ history, match }) => {
   // Handle Add Cart Button
   const AddToCartHandle = (e) => {
     e.preventDefault();
-    history.push(`/cart/${productId}?qty=${qty}`);
+    dispatch(addToCart(productId, qty));
+    toast({
+      title: `Thêm ${qty} sản phẩm thành công.`,
+      description: `Bạn đã thêm ${product.name} vào giỏ hàng`,
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
   };
   // Handle Submit Review
   const submitHandler = (e) => {
@@ -62,7 +84,6 @@ const SingleProduct = ({ history, match }) => {
   };
   return (
     <>
-      <Header />
       <div className="container single-product">
         {loading ? (
           <Loading />
@@ -73,62 +94,110 @@ const SingleProduct = ({ history, match }) => {
             <div className="row">
               <div className="col-md-6">
                 <div className="single-image">
-                  <img src={product.image} alt={product.name} />
+                  <Image src={product.image} alt={product.name} />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="product-dtl">
                   <div className="product-info">
-                    <h2 className="product-name">{product.name}</h2>
+                    <Heading as="h2" size="20px" className="product-name">
+                      {product.name}
+                    </Heading>
                   </div>
-                  <p>{product.description}</p>
+                  <Text fontSize="16px">{product.description}</Text>
 
-                  <div className="product-count col-lg-7 ">
-                    <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Price</h6>
-                      <span>${product.price}</span>
-                    </div>
-                    <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Status</h6>
+                  <Stack className="product-count col-lg-10">
+                    <Flex className="flex-box d-flex justify-content-between align-items-center">
+                      <Heading as="h6">Giá</Heading>
+                      <Text as="b" fontSize="16px">
+                        ${product.price}
+                      </Text>
+                    </Flex>
+                    <Flex className="flex-box d-flex justify-content-between align-items-center">
+                      <Heading as="h6">Tình trạng</Heading>
                       {product.countInStock > 0 ? (
-                        <span>In Stock</span>
+                        <Text color="green.600">Còn hàng</Text>
                       ) : (
-                        <span>unavailable</span>
+                        <Text color="tomato" textTransform="uppercase">
+                          Tạm hết hàng
+                        </Text>
                       )}
-                    </div>
-                    <div className="flex-box d-flex justify-content-between align-items-center">
-                      <h6>Reviews</h6>
+                    </Flex>
+                    <Flex className="flex-box d-flex justify-content-between align-items-center">
+                      <Heading as="h6">Đánh giá</Heading>
                       <Rating
                         value={product.rating}
                         text={`${product.numReviews} reviews`}
                       />
-                    </div>
+                    </Flex>
                     {product.countInStock > 0 ? (
                       <>
-                        <div className="flex-box d-flex justify-content-between align-items-center">
-                          <h6>Quantity</h6>
-                          <select
-                            value={qty}
-                            onChange={(e) => setQty(e.target.value)}
-                          >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
-                          </select>
-                        </div>
+                        <Flex className="flex-box d-flex justify-content-between align-items-center">
+                          <Heading as="h6">Số lượng</Heading>
+                          <Box>
+                            <Select
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              {[...Array(product.countInStock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                )
+                              )}
+                            </Select>
+                          </Box>
+                        </Flex>
+
                         <button
                           onClick={AddToCartHandle}
                           className="round-black-btn"
                         >
-                          Add To Cart
+                          Thêm giỏ hàng
                         </button>
                       </>
                     ) : null}
-                  </div>
+                    <Stack className="col-lg-12">
+                      <Accordion allowToggle>
+                        <AccordionItem>
+                          <Heading as="h3" size="18px">
+                            <AccordionButton>
+                              <Box flex="1" textAlign="left">
+                                Thông tin sản phẩm
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </Heading>
+                          <AccordionPanel pb={4}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                          </AccordionPanel>
+                        </AccordionItem>
+
+                        <AccordionItem>
+                          <Heading as="h3" size="18px">
+                            <AccordionButton>
+                              <Box flex="1" textAlign="left">
+                                Chính sách shipping và đổi trả
+                              </Box>
+                              <AccordionIcon />
+                            </AccordionButton>
+                          </Heading>
+                          <AccordionPanel pb={4}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                          </AccordionPanel>
+                        </AccordionItem>
+                      </Accordion>
+                    </Stack>
+                  </Stack>
                 </div>
               </div>
             </div>
@@ -136,27 +205,37 @@ const SingleProduct = ({ history, match }) => {
             {/* RATING */}
             <div className="row my-5">
               <div className="col-md-6">
-                <h6 className="mb-3">REVIEWS</h6>
+                <Heading as="h6" size="md" className="mb-3">
+                  ĐÁNH GIÁ
+                </Heading>
                 {product.reviews.length === 0 && (
-                  <Message variant={"alert-info mt-3"}>No Reviews</Message>
+                  <Message variant={"alert-secondary mt-3"}>
+                    Không có đánh giá
+                  </Message>
                 )}
                 {product.reviews.map((review) => (
-                  <div
-                    className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded"
+                  <Box
+                    className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded-0"
                     key={review._id}
                   >
-                    <strong>{review.name}</strong>
+                    <Text fontSize="lg" fontWeight="bold">
+                      {review.name}
+                    </Text>
                     <Rating value={review.rating} />
-                    <span>{moment(review.createdAt).calendar()}</span>
-                    <div className="alert alert-info mt-3">
+                    <Text fontSize="14px" fontWeight="light">
+                      {moment(review.createdAt).calendar()}
+                    </Text>
+                    <Text fontSize="16px" className="alert alert-info mt-3">
                       {review.comment}
-                    </div>
-                  </div>
+                    </Text>
+                  </Box>
                 ))}
               </div>
               {userInfo ? (
                 <form className="col-md-6" onSubmit={submitHandler}>
-                  <h6>WRITE A CUSTOMER REVIEW</h6>
+                  <Heading as="h6" size="md" textTransform="uppercase">
+                    Viết đánh giá sản phẩm
+                  </Heading>
                   <div className="my-4">
                     {loadingCreateReview && <Loading />}
                     {errorCreateReview && (
@@ -166,11 +245,11 @@ const SingleProduct = ({ history, match }) => {
                     )}
                   </div>
                   <div className="my-4">
-                    <strong>Rating</strong>
+                    <strong>Xếp hạng</strong>
                     <select
                       value={rating}
                       onChange={(e) => setRating(e.target.value)}
-                      className="col-12 bg-light p-3 mt-2 border-0 rounded"
+                      className="col-12 bg-light p-3 mt-2 border-0 rounded-0"
                     >
                       <option value="">Select...</option>
                       <option value="1">1 - Poor</option>
@@ -181,31 +260,31 @@ const SingleProduct = ({ history, match }) => {
                     </select>
                   </div>
                   <div className="my-4">
-                    <strong>Comment</strong>
+                    <strong>Bình luận</strong>
                     <textarea
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}
                       row="3"
-                      className="col-12 bg-light p-3 mt-2 border-0 rounded"
+                      className="col-12 bg-light p-3 mt-2 border-0 rounded-0"
                     ></textarea>
                   </div>
                   <div className="my-3">
                     <button
                       disabled={loadingCreateReview}
-                      className="col-12 bg-success border-0 p-3 rounded text-white"
+                      className="col-12 bg-dark border-0 p-3 rounded-0 text-white"
                     >
-                      SUBMIT
+                      Gửi
                     </button>
                   </div>
                 </form>
               ) : (
                 <div className="my-3">
                   <Message variant={"alert-warning"}>
-                    Please{" "}
+                    Xin vui lòng{" "}
                     <Link to="/login">
-                      <strong>Login </strong>
+                      <strong>Đăng nhập </strong>
                     </Link>
-                    to write a review{" "}
+                    để viết đánh giá{" "}
                   </Message>
                 </div>
               )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "./Rating";
@@ -6,9 +6,8 @@ import Pagination from "./pagination";
 import { listProduct } from "../../redux/actions/ProductAction";
 import Loading from "../LoadingError/Loading";
 import Message from "../LoadingError/Error";
-import { MdAddShoppingCart } from "react-icons/md";
 import {
-  Button,
+  Box,
   Center,
   Container,
   Flex,
@@ -18,20 +17,15 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import styled from "@emotion/styled";
 
 const ShopSection = (props) => {
   const { keyword, pageNumber } = props;
   const dispatch = useDispatch();
-  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const productList = useSelector((state) => state.productList);
-
   const { loading, error, products, page, pages } = productList;
 
   useEffect(() => {
     dispatch(listProduct(keyword, pageNumber));
-    setAnimateCard([{ X: 100, opacity: 1 }]);
   }, [dispatch, keyword, pageNumber]);
 
   return (
@@ -56,10 +50,7 @@ const ShopSection = (props) => {
                 ) : (
                   <>
                     {products.map((product) => (
-                      <motion.div
-                        whileInView={{ scale: [0, 1] }}
-                        whileHover={{ scale: [1, 1.02] }}
-                        transition={{ duration: 0.25 }}
+                      <Box
                         className="shop col-lg-4 col-md-6 col-sm-6"
                         key={product._id}
                       >
@@ -84,19 +75,10 @@ const ShopSection = (props) => {
                                 ${product.price}
                               </Heading>
                               <Spacer />
-                              <Button
-                                colorScheme="black"
-                                leftIcon={<MdAddShoppingCart />}
-                                variant="outline"
-                                className="shop-button"
-                                p="4"
-                              >
-                                Add to cart
-                              </Button>
                             </Flex>
                           </div>
                         </div>
-                      </motion.div>
+                      </Box>
                     ))}
                   </>
                 )}

@@ -1,11 +1,4 @@
-import {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Heading,
-  Image,
-} from "@chakra-ui/react";
+import { Center, Container, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 import { SliderItem } from "./SliderItem";
 import Marquee from "react-fast-marquee";
@@ -44,10 +37,10 @@ const ClientsLogo = () => {
 
       <SliderItem>
         {logoRender.map((item) => (
-          <Marquee speed={100} gradientWidth="50px" pauseOnHover={true}>
+          <Marquee speed={100} gradientWidth="50px">
             <Image
               src={item.sourceImages}
-              width={200}
+              width={100}
               height={70}
               alt="didanstore"
               objectFit="contain"

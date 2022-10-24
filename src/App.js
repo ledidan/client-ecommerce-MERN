@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "./responsive.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import HomeScreen from "./views/HomeScreen";
 import SingleProduct from "./views/SingleProduct";
 import Login from "./views/Login";
@@ -28,24 +28,24 @@ const App = () => {
     <ChakraProvider theme={theme}>
       <Router>
         <Switch>
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/search/:keyword" component={HomeScreen} exact />
-          <Route path="/page/:pageNumber" component={HomeScreen} exact />
-          <Route
+          <HomeRouter path="/" component={HomeScreen} exact />
+          <HomeRouter path="/search/:keyword" component={HomeScreen} exact />
+          <HomeRouter path="/page/:pageNumber" component={HomeScreen} exact />
+          <HomeRouter
             path="/search/:keyword/page/:pageNumber"
             component={HomeScreen}
             exact
           />
-          <Route path="/products/:id" component={SingleProduct} />
+          <HomeRouter path="/products/:id" component={SingleProduct} />
           <HomeRouter path="/login" component={Login} />
           <HomeRouter path="/register" component={Register} />
+          <HomeRouter path="/cart/:id?" component={CartScreen} />
           <PrivateRouter path="/profile" component={ProfileScreen} />
-          <Route path="/cart/:id?" component={CartScreen} />
           <PrivateRouter path="/shipping" component={ShippingScreen} />
           <PrivateRouter path="/payment" component={PaymentScreen} />
           <PrivateRouter path="/place-order" component={PlaceOrderScreen} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
-          <Route path="*" component={NotFound} />
+          <HomeRouter path="*" component={NotFound} />
         </Switch>
       </Router>
     </ChakraProvider>

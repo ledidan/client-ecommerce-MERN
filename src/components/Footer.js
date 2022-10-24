@@ -11,7 +11,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Logo } from "./homeComponents/Logo";
 const Footer = (props) => {
   return (
-    <Box as="footer" role="contentinfo" bg="blue.500" {...props}>
+    <Box as="footer" role="contentinfo" bg="blackAlpha.700" {...props}>
       <Container
         maxW="container.xl"
         as="footer"

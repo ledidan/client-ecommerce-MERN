@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Header from "./../components/Header";
 import Message from "../components/LoadingError/Error";
 import { ORDER_CREATE_RESET } from "../redux/constants/OrderConstants";
 import { createOrder } from "../redux/actions/OrderAction";
+import { Box, Container, Heading, Text } from "@chakra-ui/react";
 const PlaceOrderScreen = ({ history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
@@ -60,22 +60,23 @@ const PlaceOrderScreen = ({ history }) => {
 
   return (
     <>
-      <Header />
-      <div className="container">
-        <div className="row  order-detail">
+      <Container className="container" maxW="container.xl">
+        <div className="row order-detail">
           <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
             <div className="row ">
               <div className="col-md-4 center">
-                <div className="alert-success order-box">
+                <Box className="alert-success order-box">
                   <i class="fas fa-user"></i>
-                </div>
+                </Box>
               </div>
               <div className="col-md-8 center">
-                <h5>
-                  <strong>Customer</strong>
-                </h5>
-                <p>{userInfo.name}</p>
-                <p>{userInfo.email}</p>
+                <Heading as="h5" size="md">
+                  <Text fontWeight="bold" fontSize="18px">
+                    Customer
+                  </Text>
+                </Heading>
+                <Text fontSize="16px">{userInfo.name}</Text>
+                <Text fontSize="16px">{userInfo.email}</Text>
               </div>
             </div>
           </div>
@@ -83,16 +84,20 @@ const PlaceOrderScreen = ({ history }) => {
           <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
             <div className="row">
               <div className="col-md-4 center">
-                <div className="alert-success order-box">
+                <Box className="alert-success order-box">
                   <i className="fas fa-truck-moving"></i>
-                </div>
+                </Box>
               </div>
               <div className="col-md-8 center">
-                <h5>
-                  <strong>Order info</strong>
-                </h5>
-                <p>Shipping: {cart.shippingAddress.country}</p>
-                <p>Pay method: {cart.paymentMethod}</p>
+                <Heading as="h5" size="md">
+                  <Text fontWeight="bold" fontSize="18px">
+                    Order info
+                  </Text>
+                </Heading>
+                <Text fontSize="16px">
+                  Shipping: {cart.shippingAddress.country}
+                </Text>
+                <Text fontSize="16px">Pay method: {cart.paymentMethod}</Text>
               </div>
             </div>
           </div>
@@ -100,19 +105,21 @@ const PlaceOrderScreen = ({ history }) => {
           <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
             <div className="row">
               <div className="col-md-4 center">
-                <div className="alert-success order-box">
+                <Box className="alert-success order-box">
                   <i className="fas fa-map-marker-alt"></i>
-                </div>
+                </Box>
               </div>
               <div className="col-md-8 center">
-                <h5>
-                  <strong>Deliver to</strong>
-                </h5>
-                <p>
+                <Heading as="h5" size="md">
+                  <Text fontSize="18px" fontWeight="bold">
+                    Deliver to
+                  </Text>
+                </Heading>
+                <Text fontSize="16px">
                   Address: {cart.shippingAddress.address} st,{" "}
                   {cart.shippingAddress.city}, POX:{" "}
                   {cart.shippingAddress.postalCode}
-                </p>
+                </Text>
               </div>
             </div>
           </div>
@@ -194,7 +201,7 @@ const PlaceOrderScreen = ({ history }) => {
             )}
           </div>
         </div>
-      </div>
+      </Container>
     </>
   );
 };

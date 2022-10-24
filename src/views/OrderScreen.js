@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "./../components/Header";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrder, payOrder } from "../redux/actions/OrderAction";
@@ -63,7 +62,6 @@ const OrderScreen = ({ match }) => {
   };
   return (
     <>
-      <Header />
       <div className="container">
         {loading ? (
           <Loading />

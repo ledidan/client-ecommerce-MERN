@@ -2,7 +2,6 @@ import {
   Box,
   Center,
   Container,
-  Flex,
   Heading,
   HStack,
   Stack,
@@ -20,19 +19,19 @@ export default function ContactInfo() {
       heading: "Free Delivery From $100",
       description:
         "Free shipping to all over the world with many specials only for our dear customers",
-      icon: <CiDeliveryTruck size={40} />,
+      icon: <CiDeliveryTruck size={80} />,
     },
     {
       heading: "-10% for newsletter subcription",
       description:
         "Many customers entrust varius shoes needs to us, and customer satisfaction is our pride",
-      icon: <SlEnvolopeLetter size={40} />,
+      icon: <SlEnvolopeLetter size={50} />,
     },
     {
       heading: "Free return in showroom",
       description:
         "You can get various shoes with the highest quality an affoddable price",
-      icon: <TfiPackage size={40} />,
+      icon: <TfiPackage size={50} />,
     },
   ];
 

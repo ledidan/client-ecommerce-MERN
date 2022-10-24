@@ -1,15 +1,17 @@
+import { Box, Heading, VStack } from "@chakra-ui/react";
 import React from "react";
 
 export default function Loading() {
   return (
-    <div className="d-flex justify-content-center">
-      <div
-        className="spinner-border text-success"
+    <VStack className="justify-content-center">
+      <Box
+        className="spinner-border text-danger"
         role="status"
         style={{ width: "50px", height: "50px" }}
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-    </div>
+      ></Box>
+      <Heading as="h4" size="md">
+        Loading...
+      </Heading>
+    </VStack>
   );
 }

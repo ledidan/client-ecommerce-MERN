@@ -8,21 +8,19 @@ import {
   Heading,
   Image,
   Stack,
+  Text,
   VStack,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 
 // Declare styled components
 const CategoryBtn = styled.button`
-  padding: 10px 30px;
+  padding: 10px 5rem;
   border: 1px solid #333;
   text-align: center;
   color: black;
-  border-radius: 10px;
   margin: 12px 0px !important;
-  transition: all 0.1s ease-in-out;
   &:hover {
-    scale: 0, 2;
     background-color: #333;
     color: white;
   }
@@ -52,47 +50,44 @@ const GenderCategory = () => {
           gap={4}
         >
           <GridItem colSpan={1}>
-            <Box
-              maxW="md"
-              borderWidth="1px"
-              borderRadius="xl"
-              className="BoxItem"
-            >
+            <Box maxW="md" borderWidth="1px" className="BoxItem">
               <VStack>
                 <Center>
                   <Image src={renderCategories.image1} flex={1} flexBasis={1} />
                 </Center>
-                <CategoryBtn>Women</CategoryBtn>
+                <CategoryBtn>
+                  <Text letterSpacing={2} fontSize="18px">
+                    Women
+                  </Text>
+                </CategoryBtn>
               </VStack>
             </Box>
           </GridItem>
           <GridItem rowSpan={2} mt={20}>
-            <Box
-              maxW="md"
-              borderWidth="1px"
-              borderRadius="xl"
-              className="BoxItem"
-            >
+            <Box maxW="md" borderWidth="1px" className="BoxItem">
               <Center>
                 <Image src={renderCategories.image2} flex={1} flexBasis={1} />
               </Center>
               <VStack>
-                <CategoryBtn>Men</CategoryBtn>
+                <CategoryBtn>
+                  <Text letterSpacing={2} fontSize="18px">
+                    Men
+                  </Text>
+                </CategoryBtn>
               </VStack>
             </Box>
           </GridItem>
           <GridItem rowSpan={1}>
-            <Box
-              maxW="md"
-              borderWidth="1px"
-              borderRadius="xl"
-              className="BoxItem"
-            >
+            <Box maxW="md" borderWidth="1px" className="BoxItem">
               <VStack>
                 <Center>
                   <Image src={renderCategories.image3} flex={1} flexBasis={1} />
                 </Center>
-                <CategoryBtn>Kids</CategoryBtn>
+                <CategoryBtn>
+                  <Text letterSpacing={2} fontSize="18px">
+                    Kids
+                  </Text>
+                </CategoryBtn>
               </VStack>
             </Box>
           </GridItem>

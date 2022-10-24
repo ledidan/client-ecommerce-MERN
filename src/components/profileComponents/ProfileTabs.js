@@ -22,17 +22,17 @@ const ProfileTabs = () => {
   };
 
   const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userDetails;
+  const { loading, error, userInfo } = userDetails;
 
   const userUpdate = useSelector((state) => state.userUpdate);
   const { loading: updateLoading } = userUpdate;
 
   useEffect(() => {
-    if (user) {
-      setName(user.name);
-      setEmail(user.email);
+    if (userInfo) {
+      setName(userInfo.name);
+      setEmail(userInfo.email);
     }
-  }, [dispatch, user]);
+  }, [dispatch, userInfo]);
 
   const submitUpdateHandler = (e) => {
     e.preventDefault();
@@ -45,10 +45,10 @@ const ProfileTabs = () => {
     } else {
       // ? UPDATE PROFILE
       console.log("Updated Profile Successfully");
-      dispatch(updateProfile({ id: user._id, name, email, password }));
+      dispatch(updateProfile({ id: userInfo._id, name, email, password }));
       if (!toast.isActive(toastId.current)) {
         toastId.current = toast.success(
-          "Password updated successful",
+          "Profile updated successful",
           ToastObjects
         );
       }

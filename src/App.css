@@ -25,10 +25,22 @@ span {
   padding: 0;
   margin: 0;
 }
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active,
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 0px;
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
 }
 .row,
 .col-6,
@@ -90,7 +102,6 @@ textarea:focus {
   padding: 5px 15px;
   border: 1px solid #e4e4e4;
   background-color: white;
-  border-radius: 2px;
   margin: 0 15px;
 }
 
@@ -154,13 +165,9 @@ textarea:focus {
 }
 .border-product {
   padding: 15px;
-  /* border: 1px solid #333;  */
-  border-radius: 6px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.117);
+  border: 1px solid #e2e8f0;
 }
-.shop-button {
-  transition: all 0.5s ease-in-out;
-}
+
 .shop-button:hover {
   background-color: #333;
   color: white;
@@ -201,16 +208,10 @@ textarea:focus {
 }
 /* END OF SHOP */
 /* Category */
-.BoxItem {
-  transition: all 0.1s ease-in-out;
-}
-.BoxItem:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
 /* 1o Section */
 .hero-section {
-  background-color: rgb(43 108 176);
-  border-radius: 15px;
+  /* border-radius: 15px; */
+  border: 4px dashed rgb(43 108 176);
   position: relative;
   height: 500px;
   line-height: 0.9;
@@ -275,7 +276,7 @@ textarea:focus {
   width: 460px;
 }
 .form-section input[type="submit"] {
-  background: #4576ae;
+  background: #333;
   border: 0 none;
   border-radius: 25px;
   color: #fff;
@@ -304,8 +305,6 @@ textarea:focus {
 .info-image {
   width: 90px;
   height: 90px;
-  border: 2px solid #333;
-  border-radius: 50px;
   font-size: 20px;
   color: #333;
 }
@@ -343,11 +342,9 @@ textarea:focus {
 }
 .product-dtl p {
   line-height: 24px;
-  color: #7a7a7a;
 }
 .product-count {
-  border: 2px solid #f3f3f3;
-  border-radius: 5px;
+  /* border: 1px solid #f3f3f3; */
   margin-top: 40px;
 }
 .product-count .flex-box {
@@ -359,7 +356,6 @@ textarea:focus {
 }
 .product-count .flex-box span {
   font-weight: 600;
-  color: #000000;
 }
 .product-count .flex-box select {
   background-color: #f3f3f3;
@@ -367,10 +363,8 @@ textarea:focus {
   height: 40px;
   text-align: center;
   border: 0px;
-  border-radius: 5px;
 }
 .round-black-btn {
-  border-radius: 4px;
   background: #000000;
   color: #fff;
   width: 100%;
@@ -379,11 +373,10 @@ textarea:focus {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 15px;
-  transition: all 0.5s ease-in-out 0s;
 }
 .round-black-btn:hover,
-.round-black-btn:focus {
-  background: #4576ae;
+# .round-black-btn:focus {
+  background: #333;
 }
 
 /* LOGIN */
@@ -393,7 +386,6 @@ textarea:focus {
 .Login,
 .Login2 {
   background: #fff;
-  border-radius: 5px;
   position: relative;
   padding: 35px 30px 30px;
   box-shadow: 0 1px 11px rgba(168, 168, 168, 0.27);
@@ -404,7 +396,6 @@ textarea:focus {
   padding: 20px 20px;
   margin-top: 20px;
   border: 1px solid #e4e4e4;
-  border-radius: 5px;
   color: #8a8a8a;
 }
 .Login input:focus {
@@ -416,8 +407,7 @@ textarea:focus {
   margin-top: 20px;
   padding: 20px 0;
   border: 0;
-  background-color: #4576ae;
-  border-radius: 5px;
+  background-color: #333;
   text-transform: uppercase;
   color: white;
 }
@@ -468,8 +458,8 @@ textarea:focus {
   border-top: 1px solid #e4e4e4;
 }
 .wizard .nav .active {
-  background-color: #e5fee9;
-  color: black;
+  background-color: #333;
+  color: white;
 }
 .badge2 {
   width: 20px;
@@ -493,15 +483,17 @@ textarea:focus {
 .form input {
   padding: 20px 10px;
   font-size: 17px;
-  background-color: #e5fee9;
+  background-color: #f8f9fa;
+  box-shadow: none;
 }
+
 .form-container button {
   padding: 15px 0;
   border: 0px;
   margin-top: 20px;
   text-transform: uppercase;
   font-size: 13px;
-  background-color: #4576ae;
+  background-color: #333;
   color: #ffffff;
 }
 /* orders */
@@ -594,7 +586,7 @@ textarea:focus {
   border: 0px;
   text-transform: uppercase;
   font-size: 13px;
-  background-color: #4576ae;
+  background-color: #333;
   color: #ffffff;
 }
 .cart-buttons a:nth-child(1) button {
@@ -671,7 +663,7 @@ textarea:focus {
   border: 0px;
   text-transform: uppercase;
   font-size: 13px;
-  background-color: #4576ae;
+  background-color: #333;
   color: #ffffff;
 }
 

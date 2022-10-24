@@ -9,6 +9,38 @@ const products = [
     countInStock: 3,
     rating: 4,
     numReviews: 4,
+    variants: [
+      {
+        color: "Black",
+        sizes: [
+          {
+            size: "S",
+            stock: 3,
+          },
+          {
+            size: "L",
+            stock: 12,
+          },
+        ],
+      },
+      {
+        color: "White",
+        sizes: [
+          {
+            size: "M",
+            stock: 8,
+          },
+          {
+            size: "L",
+            stock: 2,
+          },
+          {
+            size: "XL",
+            stock: 10,
+          },
+        ],
+      },
+    ],
   },
   {
     _id: "2",

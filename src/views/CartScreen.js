@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Header from "./../components/Header";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/actions/CartAction";
@@ -8,12 +7,9 @@ const CartScreen = ({ match, location, history }) => {
   // keep window screen always top
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
-
   const productId = match.params.id;
-
   // Finding URL contain " = "
-  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
-
+  const qty = location.qty;
   // Update Cart
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -42,7 +38,6 @@ const CartScreen = ({ match, location, history }) => {
 
   return (
     <>
-      <Header />
       {/* Cart */}
       <div className="container">
         {cartItems.length === 0 ? (
@@ -60,7 +55,7 @@ const CartScreen = ({ match, location, history }) => {
           </div>
         ) : (
           <>
-            <div className=" alert alert-info text-center mt-3">
+            <div className=" alert alert-success text-center mt-3">
               Total Cart Products
               <Link className="text-success mx-2" to="/cart">
                 ({cartItems.length})
