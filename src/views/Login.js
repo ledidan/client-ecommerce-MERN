@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { login } from "../redux/actions/UserAction";
 import Message from "../components/LoadingError/Error";
 import Loading from "../components/LoadingError/Loading";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 const Login = ({ location, history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const Login = ({ location, history }) => {
         >
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -49,14 +49,18 @@ const Login = ({ location, history }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Login</button>
-          <p>
+          <button type="submit" className="bg-dark">
+            ĐĂNG NHẬP
+          </button>
+          <Text size="sm" fontSize="14px">
+            Không phải là thành viên?
             <Link
               to={redirect ? `/register?redirect=${redirect}` : "/register"}
             >
-              Create Account
+              {" "}
+              Tạo tài khoản
             </Link>
-          </p>
+          </Text>
         </form>
       </Flex>
     </>

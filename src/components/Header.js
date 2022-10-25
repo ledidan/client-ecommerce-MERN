@@ -7,7 +7,6 @@ import {
   FaInstagram,
   FaFacebook,
   FaLinkedin,
-  FaYoutube,
   FaRegUserCircle,
 } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
@@ -63,15 +62,15 @@ const Header = () => {
               justify="center"
               className="col-12 col-lg-6 justify-content-lg-end display-none"
             >
-              <Link to="https://www.facebook.com/ledidan">
+              <a href="https://www.facebook.com/ledidan">
                 <FaFacebook />
-              </Link>
-              <Link to="https://instagram.com/blackdouble.d">
+              </a>
+              <a href="https://instagram.com/blackdouble.d">
                 <FaInstagram />
-              </Link>
-              <Link to="">
+              </a>
+              <a href="">
                 <FaLinkedin />
-              </Link>
+              </a>
             </Flex>
           </Flex>
         </Container>

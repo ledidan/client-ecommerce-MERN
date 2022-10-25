@@ -6,12 +6,13 @@ import {
   Stack,
   Text,
   Box,
+  Image,
 } from "@chakra-ui/react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { Logo } from "./homeComponents/Logo";
+
 const Footer = (props) => {
   return (
-    <Box as="footer" role="contentinfo" bg="blackAlpha.700" {...props}>
+    <Box as="footer" role="contentinfo" bg="blackAlpha.800" {...props}>
       <Container
         maxW="container.xl"
         as="footer"
@@ -20,7 +21,7 @@ const Footer = (props) => {
       >
         <Stack spacing={{ base: "4", md: "5" }}>
           <Stack justify="space-between" direction="row" align="center">
-            <Logo />
+            <Image src="/images/logoLight-Didan.png" width={150} height={50} />
             <ButtonGroup variant="white">
               <IconButton
                 as="a"
