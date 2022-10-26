@@ -15,7 +15,6 @@ import OrderScreen from "./views/OrderScreen";
 import NotFound from "./views/NotFound";
 import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
-
 // Chakra Font CSS
 
 import "@fontsource/montserrat/500.css";
