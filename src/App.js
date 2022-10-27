@@ -45,8 +45,12 @@ const App = () => {
           <PrivateRouter path="/payment" component={PaymentScreen} />
           <PrivateRouter path="/place-order" component={PlaceOrderScreen} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
-          <HomeRouter path="/shop" component={ShopScreen} />
-          <HomeRouter path="*" component={NotFound} />
+          <HomeRouter path="/shop/page/:pageNumber" component={ShopScreen} />
+          <HomeRouter
+            path="/search/:keyword/shop/page/:pageNumber"
+            component={ShopScreen}
+          />
+          <HomeRouter path="*" component={ShopScreen} />
         </Switch>
       </Router>
     </ChakraProvider>

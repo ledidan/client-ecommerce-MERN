@@ -3,7 +3,6 @@ import {
   Badge,
   Box,
   Checkbox,
-  Container,
   Flex,
   Heading,
   Image,
@@ -12,7 +11,6 @@ import {
   RangeSliderThumb,
   RangeSliderTrack,
   Select,
-  Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -21,6 +19,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../redux/actions/ProductAction";
 import { categoryListAllAction } from "../redux/actions/CategoryAction";
+import Loading from "../components/LoadingError/Loading";
+import Message from "../components/LoadingError/Error";
+import Pagination from "../components/homeComponents/pagination";
 const ApplyButton = styled.button`
   width: 100%;
   padding: 10px;
@@ -31,8 +32,15 @@ const ApplyButton = styled.button`
   font-size: 12px;
   margin-top: 15px;
 `;
-
-const ShopScreen = ({ keyword, pageNumber }) => {
+const CartButton = styled.button`
+  padding: 10px;
+  background-color: black;
+  font-size: 14px;
+  text-transform: uppercase;
+`;
+const ShopScreen = ({ match }) => {
+  const keyword = match.params.keyword;
+  const pageNumber = match.params.pageNumber;
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const categoryList = useSelector((state) => state.categoryList);
@@ -108,27 +116,11 @@ const ShopScreen = ({ keyword, pageNumber }) => {
                         </div>
                       </form>
                       <ul className="list-menu">
-                        <li>
-                          <a href="#1">People</a>
-                        </li>
-                        <li>
-                          <a href="#1">Watches </a>
-                        </li>
-                        <li>
-                          <a href="#1">Cinema</a>
-                        </li>
-                        <li>
-                          <a href="#1">Clothes</a>
-                        </li>
-                        <li>
-                          <a href="#1">Home items </a>
-                        </li>
-                        <li>
-                          <a href="#1">Animals</a>
-                        </li>
-                        <li>
-                          <a href="#1">People </a>
-                        </li>
+                        {products.map((product) => (
+                          <li key={product._id}>
+                            <Link to="#">{product.name}</Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -153,17 +145,23 @@ const ShopScreen = ({ keyword, pageNumber }) => {
                     id="collapseTwo"
                   >
                     <ul class="list-group p-1">
-                      <li className="list-item d-flex align-items-center justify-content-between">
-                        <label className="list-group-item">
-                          <input
-                            className="form-check-input me-1"
-                            type="checkbox"
-                            defaultValue
-                          />
-                          First checkbox
-                        </label>
-                        <Badge>143</Badge>
-                      </li>
+                      {categories.map((category) => (
+                        <li
+                          key={category._id}
+                          className="list-item d-flex align-items-center justify-content-between"
+                        >
+                          <label className="list-group-item">
+                            <input
+                              className="form-check-input me-3"
+                              type="checkbox"
+                              defaultValue
+                            />
+                            {category.name}
+                          </label>
+                          <Badge className="px-3">{categories.length}</Badge>
+                        </li>
+                      ))}
+                      ;
                     </ul>
                   </div>
                 </article>
@@ -296,9 +294,9 @@ const ShopScreen = ({ keyword, pageNumber }) => {
             </aside>
             <main className="col-md-9">
               <header className="border-bottom mb-4 pb-3 mt-4">
-                <Flex align="center" textAlign="center" justify="space-between">
-                  <Text className="mr-md-auto">32 Items found</Text>
-                  <Select size="md" maxW={{ base: "sm", md: "md", lg: "2xl" }}>
+                <Flex align="center" textAlign="center" justify="end" gap={5}>
+                  <Text className="mr-md-auto ">32 Items found</Text>
+                  <Select size="md" maxW={{ base: "sm", md: "md", lg: "3xs" }}>
                     <option>Latest items</option>
                     <option>Trending</option>
                     <option>Most Popular</option>
@@ -324,192 +322,62 @@ const ShopScreen = ({ keyword, pageNumber }) => {
                   </div>
                 </Flex>
               </header>
-              <div className="row">
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <span className="badge badge-danger"> NEW </span>
-                      <img src="assets/images/items/1.jpg" />
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Great item name goes here
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                          <del className="price-old">$1980</del>
-                        </div>
+              {loading ? (
+                <Loading />
+              ) : error ? (
+                <Message variant="alert-danger">{error}</Message>
+              ) : (
+                <>
+                  <div className="row">
+                    {products.map((item) => (
+                      <div
+                        className="col-sm-6 col-md-6 col-lg-4"
+                        key={item._id}
+                      >
+                        <figure className="card card-product-grid">
+                          <Badge
+                            backgroundColor="red"
+                            color="white"
+                            className="badge"
+                          >
+                            NEW{" "}
+                          </Badge>
+                          <Link
+                            to={`/products/${item._id}`}
+                            className="img-wrap"
+                          >
+                            <Image
+                              src={item.image}
+                              objectFit="cover"
+                              alt={item.name}
+                            />
+                          </Link>
+                          <figcaption className="info-wrap">
+                            <div className="fix-height">
+                              <Link
+                                to={`/products/${item._id}`}
+                                className="title"
+                              >
+                                {item.name}
+                              </Link>
+                              <Text className="price">${item.price}</Text>
+                              {/* <del className="price-old">$1980</del> */}
+                            </div>
+                            <CartButton className="text-white">
+                              Thêm giỏ hàng
+                            </CartButton>
+                          </figcaption>
+                        </figure>
                       </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <img src="assets/images/items/2.jpg" />
-                      <a className="btn-overlay" href="#1">
-                        <i className="fa fa-search-plus" /> Quick view
-                      </a>
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Product name goes here just for demo item
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                        </div>
-                      </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <img src="assets/images/items/3.jpg" />
-                      <a className="btn-overlay" href="#1">
-                        <i className="fa fa-search-plus" /> Quick view
-                      </a>
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Product name goes here just for demo item
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                        </div>
-                      </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <img src="assets/images/items/5.jpg" />
-                      <a className="btn-overlay" href="#1">
-                        <i className="fa fa-search-plus" /> Quick view
-                      </a>
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Product name goes here just for demo item
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                        </div>
-                      </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <img src="assets/images/items/6.jpg" />
-                      <a className="btn-overlay" href="#1">
-                        <i className="fa fa-search-plus" /> Quick view
-                      </a>
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Product name goes here just for demo item
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                        </div>
-                      </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <img src="assets/images/items/7.jpg" />
-                      <a className="btn-overlay" href="#1">
-                        <i className="fa fa-search-plus" /> Quick view
-                      </a>
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Product name goes here just for demo item
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                        </div>
-                      </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-                <div className="col-md-4">
-                  <figure className="card card-product-grid">
-                    <div className="img-wrap">
-                      <img src="assets/images/items/1.jpg" />
-                      <a className="btn-overlay" href="#1">
-                        <i className="fa fa-search-plus" /> Quick view
-                      </a>
-                    </div>
-                    <figcaption className="info-wrap">
-                      <div className="fix-height">
-                        <a href="#1" className="title">
-                          Product name goes here just for demo item
-                        </a>
-                        <div className="price-wrap mt-2">
-                          <span className="price">$1280</span>
-                        </div>
-                      </div>
-                      <a href="#1" className="btn btn-block btn-primary">
-                        Add to cart{" "}
-                      </a>
-                    </figcaption>
-                  </figure>
-                </div>
-              </div>
-              <nav className="mt-4" aria-label="Page navigation sample">
-                <ul className="pagination">
-                  <li className="page-item disabled">
-                    <a className="page-link" href="#1">
-                      Previous
-                    </a>
-                  </li>
-                  <li className="page-item active">
-                    <a className="page-link" href="#1">
-                      1
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#1">
-                      2
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#d">
-                      Next
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+                    ))}
+                  </div>
+                  <Pagination
+                    page={page}
+                    pages={pages}
+                    keyword={keyword ? keyword : ""}
+                  />
+                </>
+              )}
             </main>
           </div>
         </div>

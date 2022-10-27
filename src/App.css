@@ -889,7 +889,9 @@ p:last-child {
 .list-group-item {
   border: none;
 }
-
+.list-group .list-item {
+  max-width: 300px;
+}
 .list-menu {
   list-style: none;
   margin: 0;

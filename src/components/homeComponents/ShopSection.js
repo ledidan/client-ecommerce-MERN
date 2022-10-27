@@ -18,15 +18,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const ShopSection = (props) => {
-  const { keyword, pageNumber } = props;
+const ShopSection = () => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 
   useEffect(() => {
-    dispatch(listProduct(keyword, pageNumber));
-  }, [dispatch, keyword, pageNumber]);
+    dispatch(listProduct());
+  }, [dispatch]);
 
   return (
     <>
@@ -82,13 +81,6 @@ const ShopSection = (props) => {
                     ))}
                   </>
                 )}
-
-                {/* Pagination */}
-                <Pagination
-                  page={page}
-                  pages={pages}
-                  keyword={keyword ? keyword : ""}
-                />
               </div>
             </div>
           </div>

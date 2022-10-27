@@ -18,7 +18,7 @@ export default function pagination(props) {
                   to={
                     keyword
                       ? `/search/${keyword}/page/${x + 1}`
-                      : `/page/${x + 1}`
+                      : `/shop/page/${x + 1}`
                   }
                 >
                   {x + 1}
