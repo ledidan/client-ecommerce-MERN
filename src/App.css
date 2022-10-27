@@ -914,11 +914,17 @@ a[class*="card"]:hover .title {
 }
 
 /* GRID STYLE PRODUCT ITEM */
+.accordion-button:not(.collapsed) {
+  color: black;
+  background-color: #f3f3f3;
+}
+.accordion-button-active-icon::after {
+  fill: white !important;
+}
 .card-product-grid {
   margin-bottom: 20px;
 }
 .card-product-grid .img-wrap {
-  border-radius: 0.2rem 0.2rem 0 0;
   height: 220px;
 }
 .card-product-grid .info-wrap {
@@ -978,7 +984,6 @@ a[class*="card"]:hover .title {
 }
 .card-product-list .img-wrap {
   height: 220px;
-  border-radius: 0.37rem 0 0 0.37rem;
 }
 .card-product-list .info-main {
   padding: 1.5rem 1rem;
@@ -1011,7 +1016,7 @@ a[class*="card"]:hover .title {
   border-bottom: 0;
 }
 .filter-group:last-child {
-  border-bottom: 0;
+  border-bottom: 1px solid #e4e4e4;
 }
 
 .form-inline input[type="number"] {
@@ -1027,8 +1032,8 @@ a[class*="card"]:hover .title {
   opacity: 0;
 }
 .checkbox-btn input:checked ~ .btn {
-  border-color: #3167eb;
-  background-color: #3167eb;
+  border-color: #333;
+  background-color: #333;
   color: #fff;
 }
 

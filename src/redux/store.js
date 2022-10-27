@@ -19,6 +19,7 @@ import {
   orderCreateReducer,
   orderPayReducer,
 } from "./reducers/OrderReducers";
+import { categoryListAllReducer } from "./reducers/CategoryReducer";
 
 const reducer = combineReducers({
   // PRODUCT
@@ -37,6 +38,8 @@ const reducer = combineReducers({
   orderDetails: getOrderDetailReducer,
   orderPay: orderPayReducer,
   myListOrder: myListOrderReducer,
+  // CATEGORIES
+  categoryList: categoryListAllReducer,
 });
 
 // SAVE CartItem

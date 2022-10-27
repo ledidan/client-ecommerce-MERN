@@ -68,16 +68,13 @@ const Header = () => {
               <a href="https://instagram.com/blackdouble.d">
                 <FaInstagram />
               </a>
-              <a href="">
-                <FaLinkedin />
-              </a>
             </Flex>
           </Flex>
         </Container>
       </Box>
       {/* Header */}
       <Flex className="header">
-        <Container maxW="container.xl" className="container">
+        <Container maxW="container.xl">
           {/* MOBILE HEADER */}
           <div className="mobile-header">
             <div className="container ">
