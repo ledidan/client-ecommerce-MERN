@@ -21,6 +21,7 @@ import "@fontsource/montserrat/500.css";
 import "@fontsource/cabin/500.css";
 import theme from "./utils/ChakraUI/theme";
 import HomeRouter from "./routes/HomeRouter";
+import ShopScreen from "./views/ShopScreen";
 
 const App = () => {
   return (
@@ -44,6 +45,7 @@ const App = () => {
           <PrivateRouter path="/payment" component={PaymentScreen} />
           <PrivateRouter path="/place-order" component={PlaceOrderScreen} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
+          <HomeRouter path="/shop" component={ShopScreen} />
           <HomeRouter path="*" component={NotFound} />
         </Switch>
       </Router>
