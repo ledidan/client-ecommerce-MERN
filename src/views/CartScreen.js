@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/actions/CartAction";
+import { Select } from "@chakra-ui/react";
 
 const CartScreen = ({ match, location, history }) => {
   // keep window screen always top
@@ -76,14 +77,14 @@ const CartScreen = ({ match, location, history }) => {
                       <img src={item.image} alt={item.name} />
                     </Link>
                   </div>
-                  <div className="cart-text col-md-5 d-flex align-items-center">
+                  <div className="cart-text col-md-5 mt-3 d-flex align-items-center">
                     <Link to={`/products/${item.product}`}>
                       <h4>{item.name}</h4>
                     </Link>
                   </div>
-                  <div className="cart-qty col-md-2 col-sm-5 mt-md-5 mt-3 mt-md-0 d-flex flex-column justify-content-center">
+                  <div className="cart-qty col-md-2 col-sm-5 mt-md-3 d-flex flex-column justify-content-center">
                     <h6>QUANTITY</h6>
-                    <select
+                    <Select
                       value={item.qty}
                       onChange={(e) =>
                         dispatch(
@@ -96,7 +97,7 @@ const CartScreen = ({ match, location, history }) => {
                           {x + 1}
                         </option>
                       ))}
-                    </select>
+                    </Select>
                   </div>
                   <div className="cart-price mt-3 mt-md-0 col-md-2 align-items-sm-end align-items-start  d-flex flex-column justify-content-center col-sm-7">
                     <h6>Price</h6>

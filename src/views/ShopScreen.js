@@ -3,25 +3,20 @@ import {
   Badge,
   Box,
   Checkbox,
-  Flex,
   Heading,
-  Image,
   RangeSlider,
   RangeSliderFilledTrack,
   RangeSliderThumb,
   RangeSliderTrack,
-  Select,
   Stack,
-  Text,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../redux/actions/ProductAction";
 import { categoryListAllAction } from "../redux/actions/CategoryAction";
-import Loading from "../components/LoadingError/Loading";
-import Message from "../components/LoadingError/Error";
-import Pagination from "../components/homeComponents/pagination";
+
+import ShopProduct from "./ShopProduct";
 const ApplyButton = styled.button`
   width: 100%;
   padding: 10px;
@@ -32,12 +27,7 @@ const ApplyButton = styled.button`
   font-size: 12px;
   margin-top: 15px;
 `;
-const CartButton = styled.button`
-  padding: 10px;
-  background-color: black;
-  font-size: 14px;
-  text-transform: uppercase;
-`;
+
 const ShopScreen = ({ match }) => {
   const keyword = match.params.keyword;
   const pageNumber = match.params.pageNumber;
@@ -61,14 +51,14 @@ const ShopScreen = ({ match }) => {
           <Stack>
             <ol className="breadcrumb text-dark mt-3">
               <li className="breadcrumb-item">
-                <Link to="#dsad">Home</Link>
-              </li>
-              <li className="breadcrumb-item">
-                <Link to="#sdsd">Best category</Link>
+                <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                <Link to="#dsad">Great articles</Link>
+                <Link to="/shop">Shopping</Link>
               </li>
+              {/* <li className="breadcrumb-item active" >
+                <Link to="#dsad">Great articles</Link>
+              </li> */}
             </ol>
           </Stack>
         </div>
@@ -118,7 +108,9 @@ const ShopScreen = ({ match }) => {
                       <ul className="list-menu">
                         {products.map((product) => (
                           <li key={product._id}>
-                            <Link to="#">{product.name}</Link>
+                            <Link to={`/products/${product._id}`}>
+                              {product.name}
+                            </Link>
                           </li>
                         ))}
                       </ul>
@@ -275,13 +267,10 @@ const ShopScreen = ({ match }) => {
                     <div className="card-body">
                       <Stack spacing={[1, 5]} direction={["row", "column"]}>
                         <Checkbox size="md" colorScheme="gray">
-                          Used items
-                        </Checkbox>
-                        <Checkbox size="md" colorScheme="gray">
                           New items
                         </Checkbox>
                         <Checkbox size="md" colorScheme="gray">
-                          Very old
+                          Old Items
                         </Checkbox>
                         <Checkbox size="md" colorScheme="gray">
                           Other conditions
@@ -292,93 +281,15 @@ const ShopScreen = ({ match }) => {
                 </article>
               </Box>
             </aside>
-            <main className="col-md-9">
-              <header className="border-bottom mb-4 pb-3 mt-4">
-                <Flex align="center" textAlign="center" justify="end" gap={5}>
-                  <Text className="mr-md-auto ">32 Items found</Text>
-                  <Select size="md" maxW={{ base: "sm", md: "md", lg: "3xs" }}>
-                    <option>Latest items</option>
-                    <option>Trending</option>
-                    <option>Most Popular</option>
-                    <option>Cheapest</option>
-                  </Select>
-                  <div className="btn-group">
-                    <a
-                      href="#1"
-                      className="btn btn-outline-secondary"
-                      data-toggle="tooltip"
-                      title="List view"
-                    >
-                      <i className="fa fa-bars" />
-                    </a>
-                    <a
-                      href="#1"
-                      className="btn  btn-outline-secondary active"
-                      data-toggle="tooltip"
-                      title="Grid view"
-                    >
-                      <i className="fa fa-th" />
-                    </a>
-                  </div>
-                </Flex>
-              </header>
-              {loading ? (
-                <Loading />
-              ) : error ? (
-                <Message variant="alert-danger">{error}</Message>
-              ) : (
-                <>
-                  <div className="row">
-                    {products.map((item) => (
-                      <div
-                        className="col-sm-6 col-md-6 col-lg-4"
-                        key={item._id}
-                      >
-                        <figure className="card card-product-grid">
-                          <Badge
-                            backgroundColor="red"
-                            color="white"
-                            className="badge"
-                          >
-                            NEW{" "}
-                          </Badge>
-                          <Link
-                            to={`/products/${item._id}`}
-                            className="img-wrap"
-                          >
-                            <Image
-                              src={item.image}
-                              objectFit="cover"
-                              alt={item.name}
-                            />
-                          </Link>
-                          <figcaption className="info-wrap">
-                            <div className="fix-height">
-                              <Link
-                                to={`/products/${item._id}`}
-                                className="title"
-                              >
-                                {item.name}
-                              </Link>
-                              <Text className="price">${item.price}</Text>
-                              {/* <del className="price-old">$1980</del> */}
-                            </div>
-                            <CartButton className="text-white">
-                              Thêm giỏ hàng
-                            </CartButton>
-                          </figcaption>
-                        </figure>
-                      </div>
-                    ))}
-                  </div>
-                  <Pagination
-                    page={page}
-                    pages={pages}
-                    keyword={keyword ? keyword : ""}
-                  />
-                </>
-              )}
-            </main>
+            <ShopProduct
+              loading={loading}
+              page={page}
+              pages={pages}
+              products={products}
+              keyword={keyword}
+              pageNumber={pageNumber}
+              error={error}
+            />
           </div>
         </div>
       </section>

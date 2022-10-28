@@ -22,6 +22,11 @@ import {
   Image,
   Select,
   Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
   useToast,
 } from "@chakra-ui/react";
@@ -109,9 +114,7 @@ const SingleProduct = ({ match }) => {
                   <Stack className="product-count col-lg-10">
                     <Flex className="flex-box d-flex justify-content-between align-items-center">
                       <Heading as="h6">Giá</Heading>
-                      <Text as="b" fontSize="16px">
-                        ${product.price}
-                      </Text>
+                      <Text fontSize="18px">${product.price}</Text>
                     </Flex>
                     <Flex className="flex-box d-flex justify-content-between align-items-center">
                       <Heading as="h6">Tình trạng</Heading>
@@ -170,11 +173,7 @@ const SingleProduct = ({ match }) => {
                             </AccordionButton>
                           </Heading>
                           <AccordionPanel pb={4}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat.
+                            {product.description}
                           </AccordionPanel>
                         </AccordionItem>
 
@@ -204,79 +203,105 @@ const SingleProduct = ({ match }) => {
 
             {/* RATING */}
             <div className="row my-5">
-              <div className="col-md-6">
-                <Heading as="h6" size="md" className="mb-3">
-                  ĐÁNH GIÁ
-                </Heading>
-                {product.reviews.length === 0 && (
-                  <Message variant={"alert-secondary mt-3"}>
-                    Không có đánh giá
-                  </Message>
-                )}
-                {product.reviews.map((review) => (
-                  <Box
-                    className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded-0"
-                    key={review._id}
-                  >
-                    <Text fontSize="lg" fontWeight="bold">
-                      {review.name}
-                    </Text>
-                    <Rating value={review.rating} />
-                    <Text fontSize="14px" fontWeight="light">
-                      {moment(review.createdAt).calendar()}
-                    </Text>
-                    <Text fontSize="16px" className="alert alert-info mt-3">
-                      {review.comment}
-                    </Text>
-                  </Box>
-                ))}
-              </div>
               {userInfo ? (
-                <form className="col-md-6" onSubmit={submitHandler}>
-                  <Heading as="h6" size="md" textTransform="uppercase">
-                    Viết đánh giá sản phẩm
-                  </Heading>
-                  <div className="my-4">
-                    {loadingCreateReview && <Loading />}
-                    {errorCreateReview && (
-                      <Message variant="alert-danger">
-                        {errorCreateReview}
-                      </Message>
-                    )}
-                  </div>
-                  <div className="my-4">
-                    <strong>Xếp hạng</strong>
-                    <select
-                      value={rating}
-                      onChange={(e) => setRating(e.target.value)}
-                      className="col-12 bg-light p-3 mt-2 border-0 rounded-0"
-                    >
-                      <option value="">Select...</option>
-                      <option value="1">1 - Poor</option>
-                      <option value="2">2 - Fair</option>
-                      <option value="3">3 - Good</option>
-                      <option value="4">4 - Very Good</option>
-                      <option value="5">5 - Excellent</option>
-                    </select>
-                  </div>
-                  <div className="my-4">
-                    <strong>Bình luận</strong>
-                    <textarea
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
-                      row="3"
-                      className="col-12 bg-light p-3 mt-2 border-0 rounded-0"
-                    ></textarea>
-                  </div>
-                  <div className="my-3">
-                    <button
-                      disabled={loadingCreateReview}
-                      className="col-12 bg-dark border-0 p-3 rounded-0 text-white"
-                    >
-                      Gửi
-                    </button>
-                  </div>
-                </form>
+                <Tabs isFitted variant="enclosed">
+                  <TabList mb="1em">
+                    <Tab>
+                      <Heading as="h3" size="md">
+                        Đánh giá sản phẩm
+                      </Heading>
+                    </Tab>
+                    <Tab>
+                      <Heading as="h3" size="md">
+                        Mô tả sản phẩm
+                      </Heading>
+                    </Tab>
+                  </TabList>
+                  <TabPanels>
+                    <TabPanel>
+                      <div className="row">
+                        <div className="col-md-6">
+                          <Heading as="h6" size="md" className="mb-3">
+                            ĐÁNH GIÁ
+                          </Heading>
+                          {product.reviews.length === 0 && (
+                            <Message variant={"alert-secondary mt-3"}>
+                              Không có đánh giá
+                            </Message>
+                          )}
+                          {product.reviews.map((review) => (
+                            <Box
+                              className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded-0"
+                              key={review._id}
+                            >
+                              <Text fontSize="lg" fontWeight="bold">
+                                {review.name}
+                              </Text>
+                              <Rating value={review.rating} />
+                              <Text fontSize="14px" fontWeight="light">
+                                {moment(review.createdAt).calendar()}
+                              </Text>
+                              <Text
+                                fontSize="16px"
+                                className="alert alert-info mt-3"
+                              >
+                                {review.comment}
+                              </Text>
+                            </Box>
+                          ))}
+                        </div>
+                        <form className="col-md-6" onSubmit={submitHandler}>
+                          <Heading as="h6" size="md" textTransform="uppercase">
+                            Viết đánh giá sản phẩm
+                          </Heading>
+                          <div className="my-4">
+                            {loadingCreateReview && <Loading />}
+                            {errorCreateReview && (
+                              <Message variant="alert-danger">
+                                {errorCreateReview}
+                              </Message>
+                            )}
+                          </div>
+                          <div className="my-4">
+                            <strong>Xếp hạng</strong>
+                            <select
+                              value={rating}
+                              onChange={(e) => setRating(e.target.value)}
+                              className="col-12 bg-light p-3 mt-2 border-0 rounded-0"
+                            >
+                              <option value="">Select...</option>
+                              <option value="1">1 - Poor</option>
+                              <option value="2">2 - Fair</option>
+                              <option value="3">3 - Good</option>
+                              <option value="4">4 - Very Good</option>
+                              <option value="5">5 - Excellent</option>
+                            </select>
+                          </div>
+                          <div className="my  -4">
+                            <strong>Bình luận</strong>
+                            <textarea
+                              value={comment}
+                              onChange={(e) => setComment(e.target.value)}
+                              row="3"
+                              className="col-12 bg-light p-3 mt-2 border-0 rounded-0"
+                            ></textarea>
+                          </div>
+                          <div className="my-3">
+                            <button
+                              disabled={loadingCreateReview}
+                              className="col-12 bg-dark border-0 p-3 rounded-0 text-white"
+                            >
+                              Gửi
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <p>two!</p>
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
               ) : (
                 <div className="my-3">
                   <Message variant={"alert-warning"}>
