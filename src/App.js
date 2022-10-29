@@ -30,7 +30,6 @@ const App = () => {
         <Switch>
           <HomeRouter path="/" component={HomeScreen} exact />
           <HomeRouter path="/search/:keyword" component={HomeScreen} exact />
-          <HomeRouter path="/page/:pageNumber" component={HomeScreen} exact />
           <HomeRouter
             path="/search/:keyword/page/:pageNumber"
             component={HomeScreen}

@@ -153,7 +153,6 @@ const ShopScreen = ({ match }) => {
                           <Badge className="px-3">{categories.length}</Badge>
                         </li>
                       ))}
-                      ;
                     </ul>
                   </div>
                 </article>
@@ -285,9 +284,8 @@ const ShopScreen = ({ match }) => {
               loading={loading}
               page={page}
               pages={pages}
-              products={products}
               keyword={keyword}
-              pageNumber={pageNumber}
+              products={products}
               error={error}
             />
           </div>
