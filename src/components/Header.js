@@ -3,12 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/UserAction";
 import { Box, Container, Flex, Text } from "@chakra-ui/react";
-import {
-  FaInstagram,
-  FaFacebook,
-  FaLinkedin,
-  FaRegUserCircle,
-} from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
@@ -174,7 +169,11 @@ const Header = () => {
           </div>
 
           {/* PC HEADER */}
-          <Container className="pc-header" maxW="container.xl">
+          <Container
+            id="navbar_top"
+            class="navbar navbar-expand-lg navbar-dark bg-primary"
+            maxW="container.xl"
+          >
             <div className="row">
               <div className="col-md-2 col-6 d-flex align-items-center">
                 <Link className="navbar-brand" to="/">
