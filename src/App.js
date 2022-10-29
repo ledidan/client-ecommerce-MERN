@@ -12,7 +12,6 @@ import ProfileScreen from "./views/ProfileScreen";
 import PaymentScreen from "./views/PaymentScreen";
 import PlaceOrderScreen from "./views/PlaceOrderScreen";
 import OrderScreen from "./views/OrderScreen";
-import NotFound from "./views/NotFound";
 import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
 // Chakra Font CSS

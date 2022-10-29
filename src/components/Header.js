@@ -169,11 +169,7 @@ const Header = () => {
           </div>
 
           {/* PC HEADER */}
-          <Container
-            id="navbar_top"
-            class="navbar navbar-expand-lg navbar-dark bg-primary"
-            maxW="container.xl"
-          >
+          <Container class="navbar-expand-lg" maxW="container.xl">
             <div className="row">
               <div className="col-md-2 col-6 d-flex align-items-center">
                 <Link className="navbar-brand" to="/">

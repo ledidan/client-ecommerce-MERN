@@ -177,6 +177,7 @@ const ShopScreen = ({ match }) => {
                   >
                     <div className="card-body">
                       <RangeSlider
+                        // eslint-disable-next-line
                         aria-label={["min", "max"]}
                         defaultValue={[10, 30]}
                       >
