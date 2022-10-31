@@ -56,7 +56,13 @@ const SingleProduct = ({ match }) => {
   // ComponentDidMount, async/await
   useEffect(() => {
     if (successCreateReview) {
-      alert("Review submitted");
+      toast({
+        title: `Gửi đánh giá thành công !`,
+        description: `Bạn đã thêm thành công đánh giá cho sản phẩm ${product.name}`,
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
       setRating(0);
       setComment("");
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
@@ -298,7 +304,7 @@ const SingleProduct = ({ match }) => {
                       </div>
                     </TabPanel>
                     <TabPanel>
-                      <p>two!</p>
+                      <Text fontSize="16px">{product.description}</Text>
                     </TabPanel>
                   </TabPanels>
                 </Tabs>

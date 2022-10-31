@@ -4,21 +4,27 @@ import { Link } from "react-router-dom";
 import { login } from "../redux/actions/UserAction";
 import Message from "../components/LoadingError/Error";
 import Loading from "../components/LoadingError/Loading";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, toast, useToast } from "@chakra-ui/react";
 const Login = ({ location, history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const redirect = location.search ? location.search.split("=")[1] : "/";
-
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
-
+  const toast = useToast();
   // Executing side-effect in process of user login
   useEffect(() => {
     if (userInfo) {
       history.push(redirect);
+      toast({
+        title: `Đăng nhập thành công!`,
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      });
     }
   }, [userInfo, redirect, history]);
 
