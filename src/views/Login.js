@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { login } from "../redux/actions/UserAction";
 import Message from "../components/LoadingError/Error";
 import Loading from "../components/LoadingError/Loading";
-import { Flex, Text, toast, useToast } from "@chakra-ui/react";
+
+import { Flex, Text, useToast } from "@chakra-ui/react";
 const Login = ({ location, history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
@@ -13,11 +14,14 @@ const Login = ({ location, history }) => {
   const redirect = location.search ? location.search.split("=")[1] : "/";
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+  // eslint-disable-next-line
+
   const toast = useToast();
   // Executing side-effect in process of user login
   useEffect(() => {
     if (userInfo) {
       history.push(redirect);
+
       toast({
         title: `Đăng nhập thành công!`,
         status: "success",
@@ -26,6 +30,7 @@ const Login = ({ location, history }) => {
         position: "top-right",
       });
     }
+    // eslint-disable-next-line
   }, [userInfo, redirect, history]);
 
   const submitHandler = (e) => {
@@ -35,7 +40,10 @@ const Login = ({ location, history }) => {
   };
   return (
     <>
-      <Flex className="container d-flex flex-column justify-content-center align-items-center login-center">
+      <Flex
+        className="container d-flex flex-column justify-content-center align-items-center login-center"
+        h="70vh"
+      >
         {error && <Message variant={"alert-danger"}>{error}</Message>}
         {loading && <Loading></Loading>}
 

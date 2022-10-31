@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../redux/actions/CartAction";
-import { Select } from "@chakra-ui/react";
+import { Container, Select } from "@chakra-ui/react";
 
 const CartScreen = ({ match, location, history }) => {
   // keep window screen always top
@@ -40,18 +40,18 @@ const CartScreen = ({ match, location, history }) => {
   return (
     <>
       {/* Cart */}
-      <div className="container">
+      <Container className="container" h="100vh">
         {cartItems.length === 0 ? (
-          <div className=" alert alert-danger text-center mt-3">
-            Your cart is empty
+          <div className=" alert alert-dark text-center mt-3">
+            Bạn chưa thêm sản phẩm nào !
             <Link
               className="btn btn-success mx-5 px-5 py-3"
               to="/"
               style={{
-                fontSize: "12px",
+                fontSize: "15px",
               }}
             >
-              SHOPPING NOW
+              Trở lại cửa hàng
             </Link>
           </div>
         ) : (
@@ -124,7 +124,7 @@ const CartScreen = ({ match, location, history }) => {
             </div>
           </>
         )}
-      </div>
+      </Container>
     </>
   );
 };

@@ -2,13 +2,14 @@ import { Badge, Flex, Image, Select, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React from "react";
 import { Link } from "react-router-dom";
-import Message from "../components/LoadingError/Error";
-import Loading from "../components/LoadingError/Loading";
-import Pagination from "../components/homeComponents/pagination";
-
+import Message from "../LoadingError/Error";
+import Loading from "../LoadingError/Loading";
+import Pagination from "../homeComponents/pagination";
+import Rating from "../homeComponents/Rating";
 const CartButton = styled.button`
   padding: 10px;
   background-color: black;
+  border-radius: 3px;
   font-size: 14px;
   text-transform: uppercase;
 `;
@@ -18,7 +19,7 @@ const ShopProduct = (props) => {
     <main className="col-md-9">
       <header className="border-bottom mb-4 pb-3 mt-4">
         <Flex align="center" textAlign="center" justify="end" gap={5}>
-          <Text className="mr-md-auto ">32 Items found</Text>
+          <Text className="mr-md-auto ">{products.length} Items found</Text>
           <Select size="md" maxW={{ base: "sm", md: "md", lg: "3xs" }}>
             <option>Latest items</option>
             <option>Trending</option>
@@ -56,7 +57,7 @@ const ShopProduct = (props) => {
               <div className="col-sm-6 col-md-6 col-lg-4" key={item._id}>
                 <figure className="card card-product-grid">
                   <Badge backgroundColor="red" color="white" className="badge">
-                    NEW{" "}
+                    NEW
                   </Badge>
                   <Link to={`/products/${item._id}`} className="img-wrap">
                     <Image src={item.image} objectFit="cover" alt={item.name} />
@@ -68,8 +69,12 @@ const ShopProduct = (props) => {
                       </Link>
                       <Text className="price">${item.price}</Text>
                       {/* <del className="price-old">$1980</del> */}
+                      <Rating
+                        value={item.rating}
+                        text={`${item.numReviews} reviews`}
+                      />
                     </div>
-                    <CartButton className="text-white">
+                    <CartButton className="text-white my-2">
                       Thêm giỏ hàng
                     </CartButton>
                   </figcaption>

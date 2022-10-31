@@ -1,8 +1,9 @@
+import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 
 const rating = ({ value, text }) => {
   return (
-    <div className="rating">
+    <Flex className="rating" align="center">
       <i
         className={
           value >= 1
@@ -48,8 +49,10 @@ const rating = ({ value, text }) => {
             : "fas fa-star"
         }
       ></i>
-      <div>{text && text}</div>
-    </div>
+      <Text fontSize="md" color="gray.600" fontWeight="100" marginLeft={2}>
+        {text && text}
+      </Text>
+    </Flex>
   );
 };
 

@@ -7,6 +7,7 @@ import Toast from "../components/LoadingError/Toast";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import Message from "../components/LoadingError/Error";
+import { Flex } from "@chakra-ui/react";
 const Register = ({ location, history }) => {
   window.scrollTo(0, 0);
   const ToastObjects = {
@@ -40,7 +41,10 @@ const Register = ({ location, history }) => {
   return (
     <>
       <Toast />
-      <div className="container d-flex flex-column justify-content-center align-items-center login-center">
+      <Flex
+        className="container d-flex flex-column justify-content-center align-items-center login-center"
+        h="70vh"
+      >
         {error && <Message variant="alert-danger">{error}</Message>}
         {loading && <Loading />}
         <form
@@ -73,7 +77,7 @@ const Register = ({ location, history }) => {
             </Link>
           </p>
         </form>
-      </div>
+      </Flex>
     </>
   );
 };

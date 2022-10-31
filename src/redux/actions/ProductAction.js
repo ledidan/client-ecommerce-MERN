@@ -35,7 +35,28 @@ export const listProduct =
       });
     }
   };
-
+export const listProductByCategory =
+  (categories = " ") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_REQUEST });
+      const { data } = await axios.get(
+        `/api/products?categories=${categories}`
+      );
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 // [GET] SINGLE PRODUCT
 
 export const listProductDetails = (id) => async (dispatch) => {
