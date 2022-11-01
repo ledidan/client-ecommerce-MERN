@@ -218,14 +218,19 @@ textarea:focus {
   width: 700px;
   height: 700px;
 }
+
 .hero-button {
   position: absolute;
   top: 80%;
   left: 4%;
+  color: white;
+  background-color: red;
+  padding: 0.8rem;
+  border-radius: 8px;
 }
 .hero-button .shopNow {
   text-decoration: none !important;
-  color: white;
+  color: black;
 }
 .hero-title {
   position: absolute;

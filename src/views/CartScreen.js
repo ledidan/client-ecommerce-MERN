@@ -40,7 +40,9 @@ const CartScreen = ({ match, location, history }) => {
   return (
     <>
       {/* Cart */}
-      <Container className="container" h="100vh">
+      <Container
+        maxW={{ base: "container.sm", md: "container.xl", lg: "container.2xl" }}
+      >
         {cartItems.length === 0 ? (
           <div className=" alert alert-dark text-center mt-3">
             Bạn chưa thêm sản phẩm nào !

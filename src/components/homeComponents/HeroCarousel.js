@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Container,
+  Flex,
   Heading,
   HStack,
   Image,
@@ -13,7 +14,7 @@ import { FiShoppingCart } from "react-icons/fi";
 const HeroCarousel = () => {
   return (
     <Container
-      maxW="container.xl"
+      maxW={{ base: "container.xs", md: "container.xl", lg: "container.2xl" }}
       marginTop={5}
       className="hero-section bg-with-black carousel slide carousel-fade"
       id="carouselExampleFade"
@@ -45,16 +46,11 @@ const HeroCarousel = () => {
           Air Jordan 1
         </Heading>
       </Box>
-      <Button
-        leftIcon={<FiShoppingCart />}
-        className="hero-button"
-        colorScheme="red"
-        borderRadius="none"
-      >
-        <Link href="/shop" className="shopNow">
-          Mua sắm ngay
-        </Link>
-      </Button>
+      <a className="hero-button" href="/shop">
+        <Flex>
+          <FiShoppingCart /> Mua sắm ngay
+        </Flex>
+      </a>
       <Box className="carousel-inner hero-banner-image">
         <HStack className="carousel-item active" maxW="700px">
           <Image src="/images/nike.png" className="d-block " alt="..." />

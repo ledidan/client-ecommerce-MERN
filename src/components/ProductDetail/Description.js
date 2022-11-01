@@ -5,16 +5,21 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
+  Flex,
   Heading,
   Stack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
-
+import { BiPackage } from "react-icons/bi";
+import { BsShieldCheck } from "react-icons/bs";
+import { Ri24HoursFill } from "react-icons/ri";
 const Description = (props) => {
   const { product } = props;
   return (
     <Stack className="col-lg-12">
-      <Accordion allowToggle>
+      <Accordion allowToggle defaultIndex={[1]} allowMultiple>
         <AccordionItem>
           <Heading as="h3" size="18px">
             <AccordionButton>
@@ -37,10 +42,36 @@ const Description = (props) => {
             </AccordionButton>
           </Heading>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            <Stack bgColor="gray.50" p={4} borderRadius="5px">
+              <VStack align="stretch">
+                <Flex align="center" className="my-2">
+                  <BiPackage fontSize="22px" className="mx-2" color="gray.50" />
+                  <Text fontSize="18px" color="gray.600" fontWeight="200">
+                    Miễn phí giao hàng & đổi trả
+                  </Text>
+                </Flex>
+                <Flex align="center" className="my-2">
+                  <BsShieldCheck
+                    fontSize="22px"
+                    className="mx-2"
+                    color="gray.50"
+                  />
+                  <Text fontSize="18px" color="gray.600" fontWeight="200">
+                    Bảo hành 12 tháng
+                  </Text>
+                </Flex>
+                <Flex align="center" className="my-2">
+                  <Ri24HoursFill
+                    fontSize="22px"
+                    className="mx-2"
+                    color="gray.50"
+                  />
+                  <Text fontSize="18px" color="gray.600" fontWeight="200">
+                    Hỗ trợ 24/7
+                  </Text>
+                </Flex>
+              </VStack>
+            </Stack>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

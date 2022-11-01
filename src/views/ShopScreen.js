@@ -21,6 +21,7 @@ const ShopScreen = ({ match }) => {
     dispatch(listProduct(keyword, pageNumber));
     dispatch(categoryListAllAction());
   }, [dispatch, keyword, pageNumber]);
+
   return (
     <>
       <section className="section-pagetop bg mt-5 container-fluid">

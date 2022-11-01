@@ -1,4 +1,4 @@
-import { Badge, Flex, Image, Select, Text } from "@chakra-ui/react";
+import { Badge, Flex, Image, Select, Text, useToast } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import Message from "../LoadingError/Error";
 import Loading from "../LoadingError/Loading";
 import Pagination from "../homeComponents/pagination";
 import Rating from "../homeComponents/Rating";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/actions/CartAction";
 const CartButton = styled.button`
   padding: 10px;
   background-color: black;
@@ -15,6 +17,8 @@ const CartButton = styled.button`
 `;
 const ShopProduct = (props) => {
   const { loading, error, keyword, products, page, pages } = props;
+  const toast = useToast();
+  const dispatch = useDispatch();
   return (
     <main className="col-md-9">
       <header className="border-bottom mb-4 pb-3 mt-4">
@@ -74,7 +78,19 @@ const ShopProduct = (props) => {
                         text={`${item.numReviews} reviews`}
                       />
                     </div>
-                    <CartButton className="text-white my-2">
+                    <CartButton
+                      className="text-white my-2"
+                      onClick={() => {
+                        dispatch(addToCart(item._id, 1)) &&
+                          toast({
+                            title: `Thêm ${1} sản phẩm thành công.`,
+                            description: `Bạn đã thêm ${item.name} vào giỏ hàng`,
+                            status: "success",
+                            duration: 3000,
+                            isClosable: true,
+                          });
+                      }}
+                    >
                       Thêm giỏ hàng
                     </CartButton>
                   </figcaption>
