@@ -25,7 +25,7 @@ const Login = ({ location, history }) => {
       toast({
         title: `Đăng nhập thành công!`,
         status: "success",
-        duration: 4000,
+        duration: 3000,
         isClosable: true,
         position: "top-right",
       });

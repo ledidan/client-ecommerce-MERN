@@ -48,7 +48,7 @@ const HeroCarousel = () => {
       </Box>
       <a className="hero-button" href="/shop">
         <Flex>
-          <FiShoppingCart /> Mua sắm ngay
+          <FiShoppingCart /> <Text marginLeft={2}>Mua sắm ngay</Text>
         </Flex>
       </a>
       <Box className="carousel-inner hero-banner-image">

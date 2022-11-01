@@ -15,7 +15,7 @@ import OrderScreen from "./views/OrderScreen";
 import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
 // Chakra Font CSS
-
+import CartItem from "./components/Cart/CartItem";
 import "@fontsource/montserrat/500.css";
 import "@fontsource/cabin/500.css";
 import theme from "./utils/ChakraUI/theme";
@@ -44,6 +44,7 @@ const App = () => {
           <PrivateRouter path="/place-order" component={PlaceOrderScreen} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
           <HomeRouter path="/shop/page/:pageNumber" component={ShopScreen} />
+          <HomeRouter path="/cartitem" component={CartItem} />
           <HomeRouter
             path="/search/:keyword/shop/page/:pageNumber"
             component={ShopScreen}

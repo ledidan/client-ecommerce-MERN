@@ -16,7 +16,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-
+import { BsArrowRight } from "react-icons/bs";
 const ShopSection = () => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -74,6 +74,19 @@ const ShopSection = () => {
                               </Heading>
                               <Spacer />
                             </Flex>
+                            <Link to={`/products/${product._id}`}>
+                              <Flex align="center">
+                                <Text
+                                  fontSize="sm"
+                                  color="blue.500"
+                                  px={1}
+                                  py={2}
+                                >
+                                  Xem sản phẩm
+                                </Text>
+                                <BsArrowRight color="#3182ce" />
+                              </Flex>
+                            </Link>
                           </div>
                         </div>
                       </Box>
