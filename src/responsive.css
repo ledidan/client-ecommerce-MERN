@@ -257,4 +257,15 @@
   .navbar-expand .navbar-collapse {
     flex-direction: column;
   }
+  .order-id-content .order-price {
+    position: relative;
+    margin-top: 16px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .order-id-content .order-price {
+    position: absolute;
+    margin-top: 0;
+  }
 }

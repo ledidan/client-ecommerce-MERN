@@ -22,6 +22,7 @@ import theme from "./utils/ChakraUI/theme";
 import HomeRouter from "./routes/HomeRouter";
 import ShopScreen from "./views/ShopScreen";
 import NotFound from "./views/NotFound";
+import PlaceOrder from "./components/placeorder";
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
             path="/search/:keyword/shop/page/:pageNumber"
             component={ShopScreen}
           />
+          <HomeRouter path="/placeorder" component={PlaceOrder} />
           <HomeRouter path="*" component={ShopScreen} />
         </Switch>
       </Router>
