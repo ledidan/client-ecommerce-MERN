@@ -1134,10 +1134,10 @@ a[class*="card"]:hover .title {
 }
 
 .single-order .order-id {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 22px;
   color: #000;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .single-order .order-meta {
@@ -1194,42 +1194,6 @@ a[class*="card"]:hover .title {
   }
 }
 
-.single-order:hover {
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.32);
-}
-
-.order-history-dark {
-  background-color: #161359;
-}
-
-.order-history-dark .history-title .title {
-  color: #fff;
-}
-
-.order-history-dark .history-title p {
-  color: #fff;
-}
-
-.order-history-dark .single-order {
-  background-color: rgba(0, 0, 0, 0.24);
-}
-
-.order-history-dark .single-order .order-id {
-  color: #fff;
-}
-
-.order-history-dark .single-order .order-meta li .product {
-  color: rgba(255, 255, 255, 0.74);
-}
-
-.order-history-dark .single-order .order-meta li .date {
-  color: rgba(255, 255, 255, 0.74);
-}
-
-.order-history-dark .single-order .order-price {
-  color: #fff;
-}
-
 /*===== All Order ID Style =====*/
 .order-id-content {
   position: relative;
@@ -1255,8 +1219,7 @@ a[class*="card"]:hover .title {
 }
 
 .order-id-content .order-meta li .product {
-  font-size: 14px;
-  color: #4c4c4c;
+  font-size: 16px;
 }
 
 .order-id-content .order-meta li .date {
@@ -1423,19 +1386,18 @@ a[class*="card"]:hover .title {
   .order-details-content
   .single-details-item
   .details-title {
-  width: 40%;
+  width: 35%;
 }
 
 .order-btn .main-btn {
-  user-select: none;
   font-size: 16px;
   font-weight: 500;
-  line-height: 40px;
-  height: 100px;
+  line-height: 50px;
   letter-spacing: 1px;
   position: relative;
   background-color: transparent;
 }
+
 .error-btn-text {
   color: #ff4b22;
 }

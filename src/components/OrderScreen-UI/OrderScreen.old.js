@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrder, payOrder } from "../redux/actions/OrderAction";
-import Loading from "../components/LoadingError/Loading";
-import Message from "../components/LoadingError/Error";
+import { getOrder, payOrder } from "../../redux/actions/OrderAction";
+import Loading from "../LoadingError/Loading";
+import Message from "../LoadingError/Error";
 import moment from "moment";
 import axios from "axios";
-import { ORDER_PAY_RESET } from "../redux/constants/OrderConstants";
+import { ORDER_PAY_RESET } from "../../redux/constants/OrderConstants";
 
 const OrderScreen = ({ match }) => {
   window.scrollTo(0, 0);

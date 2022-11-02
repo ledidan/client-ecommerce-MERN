@@ -10,8 +10,7 @@ import CartScreen from "./views/CartScreen";
 import ShippingScreen from "./views/ShippingScreen";
 import ProfileScreen from "./views/ProfileScreen";
 import PaymentScreen from "./views/PaymentScreen";
-import PlaceOrderScreen from "./views/PlaceOrderScreen";
-import OrderScreen from "./views/OrderScreen";
+// import OrderScreen from "./views/OrderScreen";
 import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
 // Chakra Font CSS
@@ -22,7 +21,8 @@ import theme from "./utils/ChakraUI/theme";
 import HomeRouter from "./routes/HomeRouter";
 import ShopScreen from "./views/ShopScreen";
 import NotFound from "./views/NotFound";
-import PlaceOrder from "./components/placeorder";
+import PlaceOrder from "./components/PlaceOrder-UI/PlaceOrder.v1";
+import OrderScreen from "./components/OrderScreen-UI/OrderScreen.v1";
 
 const App = () => {
   return (
@@ -43,15 +43,14 @@ const App = () => {
           <PrivateRouter path="/profile" component={ProfileScreen} />
           <PrivateRouter path="/shipping" component={ShippingScreen} />
           <PrivateRouter path="/payment" component={PaymentScreen} />
-          <PrivateRouter path="/place-order" component={PlaceOrderScreen} />
           <HomeRouter path="/cartitem" component={CartItem} />
+          <PrivateRouter path="/dat-hang" component={PlaceOrder} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
           <HomeRouter path="/shop/page/:pageNumber" component={ShopScreen} />
           <HomeRouter
             path="/search/:keyword/shop/page/:pageNumber"
             component={ShopScreen}
           />
-          <HomeRouter path="/placeorder" component={PlaceOrder} />
           <HomeRouter path="*" component={ShopScreen} />
         </Switch>
       </Router>

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Message from "../components/LoadingError/Error";
-import { ORDER_CREATE_RESET } from "../redux/constants/OrderConstants";
-import { createOrder } from "../redux/actions/OrderAction";
+import Message from "../LoadingError/Error";
+import { ORDER_CREATE_RESET } from "../../redux/constants/OrderConstants";
+import { createOrder } from "../../redux/actions/OrderAction";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
 const PlaceOrderScreen = ({ history }) => {
   window.scrollTo(0, 0);
@@ -124,7 +124,7 @@ const PlaceOrderScreen = ({ history }) => {
             </div>
           </div>
         </div>
-
+        w
         <div className="row order-products justify-content-between">
           <div className="col-lg-8">
             {cart.cartItems.length === 0 ? (

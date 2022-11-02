@@ -18,7 +18,7 @@ const PaymentScreen = ({ history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    history.push("/place-order");
+    history.push("/dat-hang");
     dispatch(savePaymentMethod(payment));
   };
 
