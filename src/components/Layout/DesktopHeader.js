@@ -54,11 +54,6 @@ const DesktopHeader = (props) => {
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link to="/shop" className="dropdown-item">
-                      <Text>Cửa hàng</Text>
-                    </Link>
-                  </li>
-                  <li>
                     <Link className="dropdown-item" to="/profile">
                       Tài khoản
                     </Link>
@@ -79,14 +74,11 @@ const DesktopHeader = (props) => {
         ) : (
           <Flex marginRight={8}>
             <Link to="/login" className="mx-4">
-              <Text fontSize={15}>Đăng nhập</Text>
+              <Text fontSize="16px">Đăng nhập</Text>
             </Link>
 
             <Link to="/register" className="mx-3">
-              <Text fontSize={15}>Đăng ký</Text>
-            </Link>
-            <Link to="/shop">
-              <Text fontSize={15}>Shop</Text>
+              <Text fontSize="16px">Đăng ký</Text>
             </Link>
           </Flex>
         )}

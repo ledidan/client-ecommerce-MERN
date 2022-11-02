@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import Rating from "../components/homeComponents/Rating";
 import Message from "./../components/LoadingError/Error";
 import { useDispatch, useSelector } from "react-redux";
-import { listProductDetails } from "../redux/actions/ProductAction";
+import {
+  listProduct,
+  listProductDetails,
+} from "../redux/actions/ProductAction";
 import Loading from "./../components/LoadingError/Loading";
 import { PRODUCT_CREATE_REVIEW_RESET } from "../redux/constants/ProductConstants";
 import {
   Box,
+  Center,
   Flex,
   Heading,
   Image,
@@ -18,6 +22,7 @@ import {
 import { addToCart } from "../redux/actions/CartAction";
 import Description from "../components/ProductDetail/Description";
 import RatingDetail from "../components/ProductDetail/RatingDetail";
+import PreferProduct from "../components/ProductDetail/PreferProduct";
 const SingleProduct = ({ match }) => {
   // Set up Hooks State
   const [qty, setQty] = useState(1);
@@ -32,7 +37,9 @@ const SingleProduct = ({ match }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const userLogin = useSelector((state) => state.userLogin);
   const productCreateReview = useSelector((state) => state.productCreateReview);
+  const productList = useSelector((state) => state.productList);
   const { loading, error, product } = productDetails;
+  const { products } = productList;
   const { userInfo } = userLogin;
   const {
     loading: loadingCreateReview,
@@ -54,7 +61,7 @@ const SingleProduct = ({ match }) => {
       setComment("");
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
-
+    dispatch(listProduct());
     dispatch(listProductDetails(productId));
     // eslint-disable-next-line
   }, [dispatch, productId, successCreateReview]);
@@ -166,6 +173,20 @@ const SingleProduct = ({ match }) => {
             />
           </>
         )}
+        <div className="maylike-products-wrapper">
+          <Center>
+            <Heading as="h4" size="md" textTransform="uppercase">
+              Sản phẩm bạn có thể thích
+            </Heading>
+          </Center>
+          <div className="marquee">
+            <div className="maylike-products-container track">
+              {products.map((item) => (
+                <PreferProduct key={item._id} productPrefer={item} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

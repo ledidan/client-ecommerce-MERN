@@ -7,7 +7,7 @@ import Toast from "../components/LoadingError/Toast";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import Message from "../components/LoadingError/Error";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 const Register = ({ location, history }) => {
   window.scrollTo(0, 0);
   const ToastObjects = {
@@ -51,9 +51,10 @@ const Register = ({ location, history }) => {
           className="Login col-md-8 col-lg-4 col-11"
           onSubmit={submitRegisterHandler}
         >
+          <Heading as="h4">ĐĂNG KÝ</Heading>
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Tên đăng nhập"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -65,17 +66,19 @@ const Register = ({ location, history }) => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">Register</button>
-          <p>
+          <button type="submit">Đăng ký</button>
+
+          <Text size="sm" fontSize="14px">
+            Bạn đã có tài khoản ?{" "}
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              I Have Account <strong>Login</strong>
+              Đăng nhập
             </Link>
-          </p>
+          </Text>
         </form>
       </Flex>
     </>

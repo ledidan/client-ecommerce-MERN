@@ -68,13 +68,6 @@ const MobileHeader = (props) => {
                     <span className="badge">{cartItems.length}</span>
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/shop" className="nav-link">
-                    <Text fontSize={15} color="black">
-                      Shop
-                    </Text>
-                  </Link>
-                </li>
               </ul>
             </div>
           ) : (
@@ -89,18 +82,25 @@ const MobileHeader = (props) => {
                   </Link>
                   <ul className="dropdown-menu">
                     <li>
-                      <Link to="/shop" className="dropdown-item">
-                        <Text>Cửa hàng</Text>
-                      </Link>
-                    </li>
-                    <li>
                       <Link className="dropdown-item" to="/login">
-                        Đăng nhập
+                        <Text
+                          fontSize="12px"
+                          fontWeight="600"
+                          textTransform="uppercase"
+                        >
+                          đăng nhập
+                        </Text>
                       </Link>
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/register">
-                        Đăng ký
+                        <Text
+                          fontSize="12px"
+                          fontWeight="600"
+                          textTransform="uppercase"
+                        >
+                          đăng ký
+                        </Text>
                       </Link>
                     </li>
                   </ul>

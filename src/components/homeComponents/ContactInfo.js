@@ -16,19 +16,19 @@ import { TfiPackage } from "react-icons/tfi";
 export default function ContactInfo() {
   const headingIconInfo = [
     {
-      heading: "Free Delivery From $100",
+      heading: "Miễn phí ship trên $100",
       description:
         "Free shipping to all over the world with many specials only for our dear customers",
       icon: <CiDeliveryTruck size={80} />,
     },
     {
-      heading: "-10% for newsletter subcription",
+      heading: "-10% đăng ký nhận thông tin email",
       description:
         "Many customers entrust varius shoes needs to us, and customer satisfaction is our pride",
       icon: <SlEnvolopeLetter size={50} />,
     },
     {
-      heading: "Free return in showroom",
+      heading: "Đổi trả miễn phí tại cửa hàng",
       description:
         "You can get various shoes with the highest quality an affoddable price",
       icon: <TfiPackage size={50} />,
@@ -36,7 +36,7 @@ export default function ContactInfo() {
   ];
 
   return (
-    <Container className="contactInfo container" mt={50}>
+    <Container className="contactInfo container" mt={100}>
       <Stack>
         <Box className="col-lg-12 col-md-12 col-sm-12 contact-Box">
           {headingIconInfo.map((item) => (
@@ -45,7 +45,9 @@ export default function ContactInfo() {
                 <WrapItem>
                   <Center
                     w={{ base: "350px", md: "280px", lg: "450px" }}
-                    h={{ base: "300px", md: "400px", lg: "450px" }}
+                    h={{ base: "320px", md: "350px", lg: "400px" }}
+                    bg="gray.50"
+                    borderRadius={10}
                   >
                     <Center
                       className="box-info"

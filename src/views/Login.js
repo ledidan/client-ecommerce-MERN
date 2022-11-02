@@ -5,7 +5,7 @@ import { login } from "../redux/actions/UserAction";
 import Message from "../components/LoadingError/Error";
 import Loading from "../components/LoadingError/Loading";
 
-import { Flex, Text, useToast } from "@chakra-ui/react";
+import { Flex, Heading, Text, useToast } from "@chakra-ui/react";
 const Login = ({ location, history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Login = ({ location, history }) => {
       history.push(redirect);
 
       toast({
-        title: `Đăng nhập thành công!`,
+        title: `Xác minh tài khoản thành công!`,
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -51,15 +51,16 @@ const Login = ({ location, history }) => {
           className="Login col-md-8 col-lg-4 col-11"
           onSubmit={submitHandler}
         >
+          <Heading as="h4">ĐĂNG NHẬP</Heading>
           <input
             type="email"
-            placeholder="Email address"
+            placeholder="Địa chỉ email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

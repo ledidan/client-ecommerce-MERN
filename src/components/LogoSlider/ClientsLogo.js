@@ -28,14 +28,14 @@ const ClientsLogo = () => {
   ];
 
   return (
-    <Container maxW="container.xl" mb={20}>
-      <Center h="200px">
+    <Container maxW="container.xl" className="mt-5">
+      <Center height={200}>
         <Heading as="h2" size="2xl" textTransform="uppercase" fontWeight={700}>
           Thương hiệu đối tác
         </Heading>
       </Center>
 
-      <SliderItem>
+      <SliderItem height={300}>
         {logoRender.map((item) => (
           <Marquee speed={100} gradientWidth="50px">
             <Image

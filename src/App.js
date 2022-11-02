@@ -21,6 +21,7 @@ import "@fontsource/cabin/500.css";
 import theme from "./utils/ChakraUI/theme";
 import HomeRouter from "./routes/HomeRouter";
 import ShopScreen from "./views/ShopScreen";
+import NotFound from "./views/NotFound";
 
 const App = () => {
   return (
@@ -42,9 +43,9 @@ const App = () => {
           <PrivateRouter path="/shipping" component={ShippingScreen} />
           <PrivateRouter path="/payment" component={PaymentScreen} />
           <PrivateRouter path="/place-order" component={PlaceOrderScreen} />
+          <HomeRouter path="/cartitem" component={CartItem} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
           <HomeRouter path="/shop/page/:pageNumber" component={ShopScreen} />
-          <HomeRouter path="/cartitem" component={CartItem} />
           <HomeRouter
             path="/search/:keyword/shop/page/:pageNumber"
             component={ShopScreen}
