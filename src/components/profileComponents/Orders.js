@@ -1,3 +1,12 @@
+import {
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import moment from "moment";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -26,53 +35,47 @@ const Orders = (props) => {
               </Link>
             </div>
           ) : (
-            <div className="table-responsive">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>TOTAL</th>
-                  </tr>
-                </thead>
-                <tbody>
+            <TableContainer className="table-responsive">
+              <Table className="table" overflowX="auto">
+                <Thead>
+                  <Tr>
+                    <Th>ID</Th>
+                    <Th>TRẠNG THÁI</Th>
+                    <Th>NGÀY</Th>
+                    <Th>TỔNG TIỀN</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
                   {orders.map((order) => (
-                    <tr
+                    <Tr
                       className={`${
                         order.isPaid ? "alert-success" : "alert-danger"
                       }`}
                       key={order._id}
                     >
-                      <td>
+                      <Td>
                         <a href={`/order/${order._id}`} className="link">
                           {order._id}
                         </a>
-                      </td>
-                      <td>{order.isPaid ? <>Paid</> : <>Not Paid</>}</td>
-                      <td>
+                      </Td>
+                      <Td>
+                        {order.isPaid ? (
+                          <>Đã thanh toán</>
+                        ) : (
+                          <>Chưa thanh toán</>
+                        )}
+                      </Td>
+                      <Td>
                         {order.isPaid
                           ? moment(order.paidAt).calendar()
                           : moment(order.createdAt).calendar()}
-                      </td>
-                      <td>${order.totalPrice}</td>
-                    </tr>
+                      </Td>
+                      <Td>${order.totalPrice}</Td>
+                    </Tr>
                   ))}
-
-                  {/* Canceled */}
-                  <tr className={"alert-danger"}>
-                    <td>
-                      <a href={"/"} className="link">
-                        2
-                      </a>
-                    </td>
-                    <td>Not Paid</td>
-                    <td>Oct 22 2022</td>
-                    <td>$234</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                </Tbody>
+              </Table>
+            </TableContainer>
           )}
         </>
       )}

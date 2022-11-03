@@ -458,15 +458,17 @@ const OrderScreen = ({ match }) => {
                   </div>
                   <Stack className="col-md-12 border-top mb-4 mt-4">
                     <Flex className="order-btn pt-3" gap={5}>
-                      <Link to={""}>
-                        <Text
-                          fontSize="18px"
-                          textTransform="uppercase"
-                          className="main-btn error-btn-text"
-                        >
-                          huỷ đơn hàng
-                        </Text>
-                      </Link>
+                      {!order.isPaid && (
+                        <Link to={""}>
+                          <Text
+                            fontSize="18px"
+                            textTransform="uppercase"
+                            className="main-btn error-btn-text"
+                          >
+                            huỷ đơn hàng
+                          </Text>
+                        </Link>
+                      )}
                       <Link className="btn btn-light" to="/shop">
                         <i className="fa fa-chevron-left p-2" />
                         Tiếp tục mua hàng

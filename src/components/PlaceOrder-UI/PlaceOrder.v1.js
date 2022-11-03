@@ -11,7 +11,6 @@ import {
   Text,
   Tr,
 } from "@chakra-ui/react";
-import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Message from "../LoadingError/Error";
@@ -48,7 +47,6 @@ const PlaceOrder = ({ history }) => {
   const orderCreate = useSelector((state) => state.orderCreate);
 
   const { order, success, error } = orderCreate;
-
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
@@ -366,56 +364,6 @@ const PlaceOrder = ({ history }) => {
                       </Stack>
                     </Stack>
                   </div>
-                  {/* <div className="col-md-12">
-                    <div className="order-policy mt-3">
-                      <div className="order-title mb-3">
-                        <Heading as="h5" size="md" className="title">
-                          Chính sách huỷ đơn hàng
-                        </Heading>
-                      </div>
-                      <div className="policy-content">
-                        <Text
-                          fontSize="17px"
-                          color="purple.500"
-                          fontWeight={600}
-                        >
-                          1. Người mua chỉ có thể hủy đơn khi:
-                        </Text>
-                        <ul className="p-4">
-                          <li>
-                            <Text fontSize="15">
-                              Đơn hàng đang ở trạng thái Chờ xác nhận (Người bán
-                              chưa xác nhận đơn)
-                            </Text>
-                          </li>
-                          <li>
-                            <Text fontSize="15">
-                              Khi đơn hàng ở trạng thái Chờ lấy hàng (Người bán
-                              đang đóng gói và chuẩn bị giao cho đơn vị vận
-                              chuyển), yêu cầu sẽ cần được Người bán phản hồi:
-                            </Text>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <Stack className="col-md-12 border-top mb-4 mt-4">
-                    <Flex className="order-btn pt-3" gap={5}>
-                      <Link to="#0">
-                        <Text
-                          fontSize="18px"
-                          textTransform="uppercase"
-                          className="main-btn error-btn-text"
-                        >
-                          huỷ đơn hàng
-                        </Text>
-                      </Link>
-                      <Link className="btn btn-light">
-                        <i className="fa fa-chevron-left p-2" />
-                        Trở lại cửa hàng
-                      </Link>
-                    </Flex>
-                  </Stack> */}
                 </>
               )}
             </div>
