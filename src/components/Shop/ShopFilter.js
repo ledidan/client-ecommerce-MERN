@@ -25,6 +25,7 @@ const ShopFilter = (props) => {
     margin-top: 15px;
   `;
   const { products, categories } = props;
+
   return (
     <aside className="col-md-3">
       <Box className="card border-0">
@@ -86,9 +87,9 @@ const ShopFilter = (props) => {
           </header>
           <div className="filter-content collapse show" id="collapseTwo">
             <ul class="list-group p-1">
-              {categories.map((category) => (
+              {categories.map((item) => (
                 <li
-                  key={category._id}
+                  key={item._id}
                   className="list-item d-flex align-items-center justify-content-between"
                 >
                   <label className="list-group-item">
@@ -97,7 +98,7 @@ const ShopFilter = (props) => {
                       type="checkbox"
                       defaultValue
                     />
-                    {category.name}
+                    {item.name}
                   </label>
                   <Badge className="px-3">{categories.length}</Badge>
                 </li>

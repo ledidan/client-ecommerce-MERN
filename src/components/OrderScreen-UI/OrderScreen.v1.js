@@ -459,7 +459,7 @@ const OrderScreen = ({ match }) => {
                   <Stack className="col-md-12 border-top mb-4 mt-4">
                     <Flex className="order-btn pt-3" gap={5}>
                       {!order.isPaid && (
-                        <Link to={""}>
+                        <Link>
                           <Text
                             fontSize="18px"
                             textTransform="uppercase"

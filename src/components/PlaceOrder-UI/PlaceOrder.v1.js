@@ -47,12 +47,6 @@ const PlaceOrder = ({ history }) => {
   const orderCreate = useSelector((state) => state.orderCreate);
 
   const { order, success, error } = orderCreate;
-  useEffect(() => {
-    if (success) {
-      history.push(`/order/${order._id}`);
-      dispatch({ type: ORDER_CREATE_RESET });
-    }
-  }, [history, order, dispatch, success]);
 
   const placeOrderHandler = () => {
     dispatch(
@@ -67,6 +61,13 @@ const PlaceOrder = ({ history }) => {
       })
     );
   };
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [history, order, dispatch, success]);
+
   return (
     <section className="order-id-wrapper">
       <Container maxW="container.xxl">
@@ -179,10 +180,7 @@ const PlaceOrder = ({ history }) => {
                       <Flex className="card-body border-top" justify="end">
                         {cart.cartItems.length === 0 ? null : (
                           <button type="submit" onClick={placeOrderHandler}>
-                            <Link
-                              to="/order"
-                              className="text-light btn btn-dark"
-                            >
+                            <Link className="text-light btn btn-dark">
                               Xác nhận đơn hàng
                             </Link>
                           </button>
