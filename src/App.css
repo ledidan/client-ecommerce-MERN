@@ -434,7 +434,7 @@ textarea:focus {
   height: 100px;
   width: 100%;
   background-size: cover;
-  background-image: url("https://gust.com/assets/blank_slate/Gust_Profile_CoverPhoto_Blank-21edf1e2890708d5a507204f49afc10b7dc58eb7baea100b68a1bc2c96948297.png");
+  background: url("https://i.pinimg.com/736x/af/44/ea/af44ea07fa5bfd828004747f62f63bc3.jpg");
 }
 .author-card-profile {
   padding: 20px 10px;
