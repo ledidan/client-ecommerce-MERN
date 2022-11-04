@@ -10,21 +10,31 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+const ApplyButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: 15px;
+`;
 const ShopFilter = (props) => {
-  const ApplyButton = styled.button`
-    width: 100%;
-    padding: 10px;
-    background-color: black;
-    color: white;
-    border: 0;
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-top: 15px;
-  `;
   const { products, categories } = props;
+
+  const [isSelected, setIsSelected] = useState({});
+
+  useEffect(() => {
+    const isSelected = {};
+
+    const categoryNames = products.map((item) => item.category.name);
+    categoryNames.forEach((item) => (isSelected[item] = false));
+    setIsSelected(isSelected);
+  }, []);
 
   return (
     <aside className="col-md-3">

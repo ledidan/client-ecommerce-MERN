@@ -18,8 +18,8 @@ const Header = () => {
         w="100%"
         borderBottomWidth={4}
         borderRadius="2px"
-        borderColor="gray.300"
         className="Announcement"
+        borderColor="gray.300"
         bg="blackAlpha.300"
       >
         <Container maxW="container.xl">

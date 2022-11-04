@@ -39,10 +39,6 @@ const Navbar = () => {
       url: "/shop",
     },
     {
-      title: "Blog",
-      url: "/blog",
-    },
-    {
       title: "Liên hệ",
       url: "/contact",
     },
@@ -51,15 +47,13 @@ const Navbar = () => {
   return (
     <Box
       as="section"
-      pb={{
-        md: "5",
+      mt={{
+        md: "4",
       }}
+      mb={{ md: "4" }}
+      bg="blackAlpha.200"
     >
-      <Box
-        as="nav"
-        bg="bg-surface"
-        boxShadow={useColorModeValue("sm", "sm-dark")}
-      >
+      <Box as="nav" bg="bg-surface">
         <Container
           py={{
             base: "4",

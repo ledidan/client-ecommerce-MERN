@@ -23,6 +23,7 @@ import ShopScreen from "./views/ShopScreen";
 import NotFound from "./views/NotFound";
 import PlaceOrder from "./components/PlaceOrder-UI/PlaceOrder.v1";
 import OrderScreen from "./components/OrderScreen-UI/OrderScreen.v1";
+import ContactScreen from "./views/ContactScreen";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
           <HomeRouter path="/register" component={Register} />
           <HomeRouter path="/cart/:id?" component={CartScreen} />
           <PrivateRouter path="/profile" component={ProfileScreen} />
+          <HomeRouter path="/contact" component={ContactScreen} />
           <PrivateRouter path="/shipping" component={ShippingScreen} />
           <PrivateRouter path="/payment" component={PaymentScreen} />
           <HomeRouter path="/cartitem" component={CartItem} />
