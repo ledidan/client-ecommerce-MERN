@@ -20,6 +20,7 @@ import {
   orderPayReducer,
 } from "./reducers/OrderReducers";
 import { categoryListAllReducer } from "./reducers/CategoryReducer";
+import { mailCreateReducer } from "./reducers/MailReducer";
 
 const reducer = combineReducers({
   // PRODUCT
@@ -40,6 +41,8 @@ const reducer = combineReducers({
   myListOrder: myListOrderReducer,
   // CATEGORIES
   categoryList: categoryListAllReducer,
+  // EMAIL
+  sendEmail: mailCreateReducer,
 });
 
 // SAVE CartItem

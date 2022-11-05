@@ -1,4 +1,4 @@
-import { Container, Heading, Stack } from "@chakra-ui/react";
+import { Container, Heading, Stack, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import InlineError from "../components/ContactForm/InlineError";
 import {
@@ -7,7 +7,9 @@ import {
   validateName,
   validateSubject,
 } from "../components/ContactForm/Validation";
-
+import { sendEmailAction } from "../redux/actions/ContactMailAction";
+import { useDispatch, useSelector } from "react-redux";
+import { SEND_EMAIL_RESET } from "../redux/constants/MailConstants";
 const ContactScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,6 +19,11 @@ const ContactScreen = () => {
   const [emailError, setEmailError] = useState();
   const [subjectError, setSubjectError] = useState();
   const [messageError, setMessageError] = useState();
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const sendEmail = useSelector((state) => state.sendEmail);
+  const { loading, success } = sendEmail;
 
   useEffect(() => {
     // VALIDATION
@@ -24,8 +31,36 @@ const ContactScreen = () => {
     validateEmail({ email, setEmailError });
     validateSubject({ subject, setSubjectError });
     validateMessage({ message, setMessageError });
-  }, [name, email, subject, message]);
 
+    if (success) {
+      toast({
+        title: "Gửi mail thành công ! .",
+        description:
+          "Cảm ơn đã gửi cho tôi thắc mắc của bạn. Xin hãy kiểm tra hộp thư - tôi sẽ liên hệ sóm thôi !",
+        status: "success",
+        position: "top-right",
+        duration: 3000,
+        isClosable: true,
+      });
+
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+      dispatch({ type: SEND_EMAIL_RESET });
+      setTimeout(() => {
+        setButtonLoading(false);
+      }, 1000);
+    }
+  }, [name, email, subject, message, toast, success]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setButtonLoading(true);
+    if (!nameError && !emailError && !subjectError && !messageError) {
+      dispatch(sendEmailAction({ name, email, subject, message }));
+    }
+  };
   return (
     <div className="content">
       <Container maxW="container.sm">
@@ -40,17 +75,16 @@ const ContactScreen = () => {
                 method="post"
                 id="contact-form"
                 name="contact-form"
+                onSubmit={submitHandler}
               >
                 <div className="row">
                   <div className="col-md-6 form-group mb-5">
-                    <label htmlFor className="col-form-label">
-                      Họ Tê<n></n>
+                    <label htmlFor="name" className="col-form-label">
+                      Họ Tên
                     </label>
                     <input
                       type="text"
                       className="form-control"
-                      name="name"
-                      id="name"
                       placeholder="Nhập tên"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -59,14 +93,12 @@ const ContactScreen = () => {
                     {nameError && <InlineError error={nameError} />}
                   </div>
                   <div className="col-md-6 form-group mb-5">
-                    <label htmlFor className="col-form-label">
+                    <label htmlFor="email" className="col-form-label">
                       Email
                     </label>
                     <input
                       type="text"
                       className="form-control"
-                      name="email"
-                      id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -77,14 +109,12 @@ const ContactScreen = () => {
                 </div>
                 <div className="row">
                   <div className="col-md-12 form-group mb-5">
-                    <label htmlFor className="col-form-label">
+                    <label htmlFor="subject" className="col-form-label">
                       Tiều đề
                     </label>
                     <input
                       type="text"
                       className="form-control"
-                      name="subject"
-                      id="subject"
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       placeholder="Nhập tiêu đề "
@@ -100,22 +130,23 @@ const ContactScreen = () => {
                     </label>
                     <textarea
                       className="form-control"
-                      name="message"
-                      id="message"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       cols={55}
                       rows={4}
                       placeholder="Viết lời nhắn bạn muốn gửi"
-                      defaultValue={""}
                       required
                     />
                     {messageError && <InlineError error={messageError} />}
                   </div>
                 </div>
                 <div className="row">
-                  <button type="submit" className="btn btn-dark">
-                    GỬI
+                  <button
+                    type="submit"
+                    className="btn btn-dark"
+                    disabled={buttonLoading && true}
+                  >
+                    {buttonLoading ? "Loading..." : "Gửi"}
                   </button>
                 </div>
               </form>
