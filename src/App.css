@@ -1405,6 +1405,9 @@ a[class*="card"]:hover .title {
 
 .content {
   padding: 7rem 0;
+  background: url("https://images.unsplash.com/photo-1516767254874-281bffac9e9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60");
+  background-size: cover;
+  background-position: center center;
 }
 
 .form-control-contact {
@@ -1471,6 +1474,7 @@ a[class*="card"]:hover .title {
 }
 .contact-wrap .form {
   background: #fff;
+  border-radius: 10px;
 }
 .contact-wrap .form h3 {
   color: #35477d;

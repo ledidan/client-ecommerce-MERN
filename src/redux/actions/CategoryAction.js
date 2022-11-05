@@ -10,7 +10,7 @@ export const categoryListAllAction = () => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/categories");
+    const { data } = await axios.get("/api/v1/categories");
 
     dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data });
   } catch (error) {

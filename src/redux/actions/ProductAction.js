@@ -19,7 +19,7 @@ export const listProduct =
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `/api/v1/products?keyword=${keyword}&pageNumber=${pageNumber}`
       );
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
@@ -41,7 +41,7 @@ export const listProductByCategory =
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `/api/products?categories=${categories}`
+        `/api/v1/products?categories=${categories}`
       );
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
@@ -62,7 +62,7 @@ export const listProductByCategory =
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await axios.get(`/api/v1/products/${id}`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -96,7 +96,7 @@ export const productCreateReviewAction =
       };
 
       const { data } = await axios.post(
-        `/api/products/${productId}/review`,
+        `/api/v1/products/${productId}/review`,
         review,
         config
       );
