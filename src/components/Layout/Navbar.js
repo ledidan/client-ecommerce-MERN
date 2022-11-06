@@ -39,6 +39,10 @@ const Navbar = () => {
       url: "/shop",
     },
     {
+      title: "Giới thiệu",
+      url: "/about-us",
+    },
+    {
       title: "Liên hệ",
       url: "/contact",
     },
