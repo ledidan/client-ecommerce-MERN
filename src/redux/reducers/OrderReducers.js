@@ -15,6 +15,9 @@ import {
   ORDER_LIST_MY_SUCCESS,
   ORDER_LIST_MY_FAIL,
   ORDER_LIST_MY_RESET,
+  ORDER_DELETE_FAIL,
+  ORDER_DELETE_SUCCESS,
+  ORDER_DELETE_REQUEST,
 } from "../constants/OrderConstants";
 
 // CREATE ORDER
@@ -111,6 +114,26 @@ export const myListOrderReducer = (state = { orders: [] }, action) => {
       };
     case ORDER_LIST_MY_RESET:
       return { orders: [] };
+    default:
+      return state;
+  }
+};
+
+export const orderDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ORDER_DELETE_REQUEST:
+      return {
+        loading: true,
+      };
+    case ORDER_DELETE_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+      };
+    case ORDER_DELETE_FAIL:
+      return {
+        loading: false,
+      };
     default:
       return state;
   }

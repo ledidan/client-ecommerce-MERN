@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrder, payOrder } from "../../redux/actions/OrderAction";
+import {
+  deleteOrderAction,
+  getOrder,
+  payOrder,
+} from "../../redux/actions/OrderAction";
 import Loading from "../../components/LoadingError/Loading";
 import Message from "../../components/LoadingError/Error";
 import moment from "moment";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/OrderConstants";
 import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
   Box,
+  Button,
   Container,
   Flex,
   Heading,
@@ -20,17 +31,24 @@ import {
   Td,
   Text,
   Tr,
+  useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 const OrderScreen = ({ match }) => {
-  window.scrollTo(0, 0);
   const orderId = match.params.id;
+  const history = useHistory();
+  const toast = useToast();
   const [sdkReady, setSdkReady] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
   const orderPay = useSelector((state) => state.orderPay);
+  const orderDelete = useSelector((state) => state.orderDelete);
+  const { success: successDelete } = orderDelete;
   const { loading: loadingPay, success: successPay } = orderPay;
 
   //* Address loading event to catching itemsPrice when clicked continue in cart!! Very Important
@@ -66,14 +84,61 @@ const OrderScreen = ({ match }) => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, successPay, order]);
+    if (successDelete) {
+      history.push("/cart");
+      toast({
+        title: "Xoá đơn hàng thành công",
+        description: `Bạn đã xoá đơn hàng ID: ${order._id} thành công !!`,
+        status: "success",
+        position: "top-right",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  }, [dispatch, orderId, successPay, order, successDelete, history, toast]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
   };
+
+  const deleteHandler = (e) => {
+    e.preventDefault();
+    dispatch(deleteOrderAction(order._id));
+  };
   return (
     <section className="order-id-wrapper mt-5">
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Xoá đơn hàng ?
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Bạn có chắc chắn muốn xoá đơn hàng ? Hành động này sẽ không thể
+              hoãn lại được!!
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={onClose}>
+                Trở lại
+              </Button>
+              <Button
+                colorScheme="red"
+                onClick={(onClose, deleteHandler)}
+                ml={3}
+              >
+                Xoá
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
       <Container maxW="container.xxl">
         {loading ? (
           <Loading />
@@ -458,7 +523,7 @@ const OrderScreen = ({ match }) => {
                   <Stack className="col-md-12 border-top mb-4 mt-4">
                     <Flex className="order-btn pt-3" gap={5}>
                       {!order.isPaid && (
-                        <Link>
+                        <Button onClick={onOpen}>
                           <Text
                             fontSize="18px"
                             textTransform="uppercase"
@@ -466,12 +531,14 @@ const OrderScreen = ({ match }) => {
                           >
                             huỷ đơn hàng
                           </Text>
-                        </Link>
+                        </Button>
                       )}
-                      <Link className="btn btn-light" to="/shop">
-                        <i className="fa fa-chevron-left p-2" />
-                        Tiếp tục mua hàng
-                      </Link>
+                      <Button className="btn btn-light">
+                        <a href="/shop">
+                          <i className="fa fa-chevron-left p-2" />
+                          Tiếp tục mua hàng
+                        </a>
+                      </Button>
                     </Flex>
                   </Stack>
                 </div>

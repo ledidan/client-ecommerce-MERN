@@ -137,15 +137,67 @@ const RatingDetail = (props) => {
           </TabPanels>
         </Tabs>
       ) : (
-        <div className="my-3">
-          <Message variant={"alert-warning"}>
-            Xin vui lòng{" "}
-            <Link to="/login">
-              <strong>Đăng nhập </strong>
-            </Link>
-            để viết đánh giá{" "}
-          </Message>
-        </div>
+        <>
+          <Tabs isFitted variant="enclosed">
+            <TabList mb="1em">
+              <Tab>
+                <Heading as="h3" size="md">
+                  Đánh giá sản phẩm
+                </Heading>
+              </Tab>
+              <Tab>
+                <Heading as="h3" size="md">
+                  Mô tả sản phẩm
+                </Heading>
+              </Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <div className="row">
+                  <div className="col-md-6">
+                    <Heading as="h6" size="md" className="mb-3">
+                      ĐÁNH GIÁ
+                    </Heading>
+                    {product.reviews.length === 0 && (
+                      <Message variant={"alert-secondary mt-3"}>
+                        Không có đánh giá
+                      </Message>
+                    )}
+                    {product.reviews.map((review) => (
+                      <Box
+                        className="mb-5 mb-md-3 bg-light p-3 shadow-sm rounded-0"
+                        key={review._id}
+                      >
+                        <Text fontSize="lg" fontWeight="bold">
+                          {review.name}
+                        </Text>
+                        <Rating value={review.rating} />
+                        <Text fontSize="14px" fontWeight="light">
+                          {moment(review.createdAt).calendar()}
+                        </Text>
+                        <Text fontSize="16px" className="alert alert-info mt-3">
+                          {review.comment}
+                        </Text>
+                      </Box>
+                    ))}
+                  </div>
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <Text fontSize="16px">{product.description}</Text>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+          <div className="my-3">
+            <Message variant={"alert-warning"}>
+              Xin vui lòng{" "}
+              <Link to="/login">
+                <strong>Đăng nhập </strong>
+              </Link>
+              để viết đánh giá{" "}
+            </Message>
+          </div>
+        </>
       )}
     </div>
   );
