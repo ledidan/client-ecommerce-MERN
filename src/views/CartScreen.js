@@ -47,7 +47,7 @@ const CartScreen = ({ match, location, history }) => {
                   >
                     Giỏ hàng của bạn trống
                   </Heading>
-                  <Link href="/" color="black">
+                  <Link href="/shop" color="black">
                     <Flex align="center" gap={2} justify="center">
                       <IoReturnDownBackOutline size={20} />
                       Quay trở lại cửa hàng

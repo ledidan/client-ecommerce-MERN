@@ -21,6 +21,7 @@ export const listProduct =
       const { data } = await axios.get(
         `/api/v1/products?keyword=${keyword}&pageNumber=${pageNumber}`
       );
+
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
         payload: data,
@@ -36,12 +37,12 @@ export const listProduct =
     }
   };
 export const listProductByCategory =
-  (categories = " ") =>
+  (categoryId = " ") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `/api/v1/products?categories=${categories}`
+        `/api/v1/products?categoryId=${categoryId}`
       );
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
@@ -57,6 +58,7 @@ export const listProductByCategory =
       });
     }
   };
+
 // [GET] SINGLE PRODUCT
 
 export const listProductDetails = (id) => async (dispatch) => {

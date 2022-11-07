@@ -130,7 +130,7 @@ const CartItem = (props) => {
                   </Tbody>
                 </Table>
                 <Flex className="card-body border-top">
-                  <Link className="ml-2 btn btn-light">
+                  <Link className="ml-2 btn btn-light" to="/shop">
                     <i className="fa fa-chevron-left p-2" />
                     Trở lại cửa hàng
                   </Link>

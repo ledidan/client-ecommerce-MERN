@@ -8,12 +8,20 @@ import Pagination from "../homeComponents/pagination";
 import Rating from "../homeComponents/Rating";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/CartAction";
+import { BsCartPlus } from "react-icons/bs";
 const CartButton = styled.button`
   padding: 10px;
-  background-color: black;
-  border-radius: 3px;
+  background-color: #333;
+  border-radius: 5px;
   font-size: 14px;
   text-transform: uppercase;
+  color: white;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    background-color: white;
+    border: 1px solid #333;
+    color: black;
+  }
 `;
 const ShopProduct = (props) => {
   const { loading, error, keyword, products, page, pages } = props;
@@ -79,7 +87,7 @@ const ShopProduct = (props) => {
                       />
                     </div>
                     <CartButton
-                      className="text-white my-2"
+                      className="my-2"
                       onClick={() => {
                         dispatch(addToCart(item._id, 1)) &&
                           toast({
@@ -91,7 +99,10 @@ const ShopProduct = (props) => {
                           });
                       }}
                     >
-                      Thêm giỏ hàng
+                      <Flex align="center">
+                        <BsCartPlus size="20px" className="mx-1" />
+                        thêm giỏ hàng
+                      </Flex>
                     </CartButton>
                   </figcaption>
                 </figure>

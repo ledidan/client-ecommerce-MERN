@@ -45,7 +45,7 @@ const CallToAction = () => (
               Sự tự tin
             </Heading>
             <Heading size="xl" fontWeight="normal">
-              Làm mới quần áo của bạn
+              Làm mới Sneaker của bạn
             </Heading>
           </Stack>
           <HStack spacing="3">

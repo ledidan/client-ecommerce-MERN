@@ -24,6 +24,7 @@ import Description from "../components/ProductDetail/Description";
 import RatingDetail from "../components/ProductDetail/RatingDetail";
 import PreferProduct from "../components/ProductDetail/PreferProduct";
 const SingleProduct = ({ match }) => {
+  window.scrollTo(0, 0);
   // Set up Hooks State
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);

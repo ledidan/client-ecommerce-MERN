@@ -27,12 +27,11 @@ const ShopFilter = (props) => {
   const { products, categories } = props;
   // eslint-disable-next-line
   const [isSelected, setIsSelected] = useState({});
-
   useEffect(() => {
     const isSelected = {};
 
     const categoryNames = products.map((item) => item.category.name);
-    categoryNames.forEach((item) => (isSelected[item] = false));
+    categoryNames.map((item) => (isSelected[item] = false));
     setIsSelected(isSelected);
   }, [products]);
 
@@ -106,7 +105,9 @@ const ShopFilter = (props) => {
                     <input
                       className="form-check-input me-3"
                       type="checkbox"
-                      defaultValue
+                      onChange={(e) =>
+                        setIsSelected(console.log(e.target.value))
+                      }
                     />
                     {item.name}
                   </label>
