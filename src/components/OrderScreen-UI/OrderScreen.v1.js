@@ -523,7 +523,11 @@ const OrderScreen = ({ match }) => {
                   <Stack className="col-md-12 border-top mb-4 mt-4">
                     <Flex className="order-btn pt-3" gap={5}>
                       {!order.isPaid && (
-                        <Button onClick={onOpen}>
+                        <Button
+                          onClick={onOpen}
+                          variant="ghost"
+                          colorScheme="red"
+                        >
                           <Text
                             fontSize="18px"
                             textTransform="uppercase"
@@ -533,7 +537,11 @@ const OrderScreen = ({ match }) => {
                           </Text>
                         </Button>
                       )}
-                      <Button className="btn btn-light">
+                      <Button
+                        className="btn"
+                        variant="ghost"
+                        colorScheme="telegram"
+                      >
                         <a href="/shop">
                           <i className="fa fa-chevron-left p-2" />
                           Tiếp tục mua hàng
