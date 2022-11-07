@@ -25,7 +25,7 @@ const ApplyButton = styled.button`
 `;
 const ShopFilter = (props) => {
   const { products, categories } = props;
-
+  // eslint-disable-next-line
   const [isSelected, setIsSelected] = useState({});
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const ShopFilter = (props) => {
     const categoryNames = products.map((item) => item.category.name);
     categoryNames.forEach((item) => (isSelected[item] = false));
     setIsSelected(isSelected);
-  }, []);
+  }, [products]);
 
   return (
     <aside className="col-md-3">
@@ -44,7 +44,7 @@ const ShopFilter = (props) => {
             <Heading
               as="h5"
               size="md"
-              class="accordion-button title"
+              className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -85,7 +85,7 @@ const ShopFilter = (props) => {
             <Heading
               as="h5"
               size="md"
-              class="accordion-button title"
+              className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseTwo"
@@ -96,7 +96,7 @@ const ShopFilter = (props) => {
             </Heading>
           </header>
           <div className="filter-content collapse show" id="collapseTwo">
-            <ul class="list-group p-1">
+            <ul className="list-group p-1">
               {categories.map((item) => (
                 <li
                   key={item._id}
@@ -121,7 +121,7 @@ const ShopFilter = (props) => {
             <Heading
               as="h5"
               size="md"
-              class="accordion-button title"
+              className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseThree"
@@ -171,7 +171,7 @@ const ShopFilter = (props) => {
             <Heading
               as="h5"
               size="md"
-              class="accordion-button title"
+              className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseFour"
@@ -207,7 +207,7 @@ const ShopFilter = (props) => {
             <Heading
               as="h5"
               size="md"
-              class="accordion-button title"
+              className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseFive"

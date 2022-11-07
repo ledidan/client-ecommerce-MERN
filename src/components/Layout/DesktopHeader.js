@@ -1,15 +1,17 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, HStack } from "@chakra-ui/react";
 import React from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../redux/actions/UserAction";
+import { CiUser } from "react-icons/ci";
+import { AiOutlineUserAdd } from "react-icons/ai";
 const DesktopHeader = (props) => {
   const { userInfo, keyword, setKeyword, cartItems, dispatch } = props;
-  const history = useHistory();
   const logoutHandler = (e) => {
     e.preventDefault();
     dispatch(logout());
   };
+  const history = useHistory();
   const submitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
@@ -26,17 +28,25 @@ const DesktopHeader = (props) => {
         </Link>
       </div>
       <div className="col-md-6 col-8 d-flex align-items-center">
-        <form onSubmit={submitHandler} className="input-group">
-          <input
-            type="search"
-            className="form-control rounded search"
-            placeholder="Tìm kiếm..."
-            onChange={(e) => setKeyword(e.target.value)}
-          />
-          <button type="submit" className="search-button">
-            Tìm kiếm
-          </button>
-        </form>
+        <div className="col-md-12 col-8 d-flex mx-auto">
+          <form className="input-group" onSubmit={submitHandler}>
+            <input
+              className="form-control border-end-0 border"
+              type="search"
+              id="example-search-input"
+              placeholder="Tìm kiếm..."
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+            <span className="input-group-append">
+              <button
+                className="btn bg-white border-start-0 border ms-n5"
+                type="button"
+              >
+                <i className="fa fa-search" />
+              </button>
+            </span>
+          </form>
+        </div>
       </div>
       <Flex align="center" justify="end" className="col-md-4 Login-Register ">
         {userInfo ? (
@@ -72,15 +82,20 @@ const DesktopHeader = (props) => {
             </ul>
           </div>
         ) : (
-          <Flex marginRight={8}>
-            <Link to="/login" className="mx-4">
-              <Text fontSize="16px">Đăng nhập</Text>
+          <HStack marginRight={10} align="center">
+            <Link to="/login" className="mx-3">
+              <Flex fontSize="16px" align="center">
+                <CiUser />
+                Đăng nhập
+              </Flex>
             </Link>
-
             <Link to="/register" className="mx-3">
-              <Text fontSize="16px">Đăng ký</Text>
+              <Flex fontSize="16px" align="center">
+                <AiOutlineUserAdd />
+                Đăng ký
+              </Flex>
             </Link>
-          </Flex>
+          </HStack>
         )}
 
         <Link to="/cart">

@@ -20,7 +20,6 @@ import "@fontsource/cabin/500.css";
 import theme from "./utils/ChakraUI/theme";
 import HomeRouter from "./routes/HomeRouter";
 import ShopScreen from "./views/ShopScreen";
-import NotFound from "./views/NotFound";
 import PlaceOrder from "./components/PlaceOrder-UI/PlaceOrder.v1";
 import OrderScreen from "./components/OrderScreen-UI/OrderScreen.v1";
 import ContactScreen from "./views/ContactScreen";

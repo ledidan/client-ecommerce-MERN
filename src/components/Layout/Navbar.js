@@ -11,10 +11,8 @@ import {
   HStack,
   IconButton,
   Image,
-  Stack,
   Text,
   useBreakpointValue,
-  useColorModeValue,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
@@ -24,25 +22,31 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  // eslint-disable-next-line
   const [placement, setPlacement] = React.useState("left");
+
   const isDesktop = useBreakpointValue({
     base: false,
     lg: true,
   });
   const navMenu = [
     {
+      id: 1,
       title: "Trang chủ",
       url: "/",
     },
     {
+      id: 2,
       title: "Cửa hàng",
       url: "/shop",
     },
     {
+      id: 3,
       title: "Giới thiệu",
       url: "/about-us",
     },
     {
+      id: 4,
       title: "Liên hệ",
       url: "/contact",
     },
@@ -72,7 +76,7 @@ const Navbar = () => {
                   {navMenu.map((item) => (
                     <Link to={`${item.url}`}>
                       <Text
-                        fontSize="16px"
+                        fontSize="15px"
                         fontWeight="600"
                         textTransform="uppercase"
                       >
@@ -98,8 +102,8 @@ const Navbar = () => {
                     </DrawerHeader>
                     <DrawerBody>
                       <VStack spacing="8">
-                        {navMenu.map((item) => (
-                          <Link to={`${item.url}`}>
+                        {navMenu.map((item, index) => (
+                          <Link to={`${item.url}`} key={index}>
                             <Text
                               fontSize="20px"
                               fontWeight="600"

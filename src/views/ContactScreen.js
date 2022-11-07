@@ -23,7 +23,7 @@ const ContactScreen = () => {
   const dispatch = useDispatch();
   const toast = useToast();
   const sendEmail = useSelector((state) => state.sendEmail);
-  const { loading, success } = sendEmail;
+  const { success } = sendEmail;
 
   useEffect(() => {
     // VALIDATION
@@ -52,7 +52,7 @@ const ContactScreen = () => {
         setButtonLoading(false);
       }, 1000);
     }
-  }, [name, email, subject, message, toast, success]);
+  }, [name, email, subject, message, toast, success, dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();

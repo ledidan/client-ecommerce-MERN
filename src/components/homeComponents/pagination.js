@@ -8,23 +8,21 @@ export default function Pagination(props) {
       <nav>
         <ul className="pagination justify-content-center">
           {[...Array(pages).keys()].map((x) => (
-            <>
-              <li
-                className={`page-item ${x + 1 === page ? "active" : ""}`}
-                key={x + 1}
+            <li
+              className={`page-item ${x + 1 === page ? "active" : ""}`}
+              key={x + 1}
+            >
+              <Link
+                className="page-link"
+                to={
+                  keyword
+                    ? `/search/${keyword}/page/${x + 1}`
+                    : `/shop/page/${x + 1}`
+                }
               >
-                <Link
-                  className="page-link"
-                  to={
-                    keyword
-                      ? `/search/${keyword}/page/${x + 1}`
-                      : `/shop/page/${x + 1}`
-                  }
-                >
-                  {x + 1}
-                </Link>
-              </li>
-            </>
+                {x + 1}
+              </Link>
+            </li>
           ))}
         </ul>
       </nav>

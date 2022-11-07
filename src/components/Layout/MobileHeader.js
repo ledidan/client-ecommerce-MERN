@@ -33,12 +33,12 @@ const MobileHeader = (props) => {
             <div className="btn-group">
               <ul className="nav nav-pills">
                 <li className="nav-item dropdown">
-                  <Link
-                    className="nav-link text-dark"
+                  <button
+                    className="nav-link text-dark cursor"
                     data-bs-toggle="dropdown"
                   >
                     <FaRegUserCircle size="18px" />
-                  </Link>
+                  </button>
                   <ul className="dropdown-menu">
                     <li>
                       <Link className="dropdown-item" to="/profile">
@@ -57,7 +57,7 @@ const MobileHeader = (props) => {
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <Link to={`/wishlist`} className="nav-link">
+                  <Link to="/wishlist " className="nav-link">
                     <AiOutlineHeart size="18px" color="black" />
                   </Link>
                 </li>
@@ -74,12 +74,12 @@ const MobileHeader = (props) => {
             <div className="btn-group">
               <ul className="nav nav-pills">
                 <li className="nav-item dropdown">
-                  <Link
+                  <button
                     className="nav-link text-dark"
                     data-bs-toggle="dropdown"
                   >
                     <FaRegUserCircle size="18px" />
-                  </Link>
+                  </button>
                   <ul className="dropdown-menu">
                     <li>
                       <Link className="dropdown-item" to="/login">
@@ -106,7 +106,7 @@ const MobileHeader = (props) => {
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <Link to={`/wishlist`} className="nav-link">
+                  <Link to="/wishlist" className="nav-link">
                     <AiOutlineHeart size="18px" color="black" />
                   </Link>
                 </li>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Container, Flex, Text } from "@chakra-ui/react";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
 import MobileHeader from "./Layout/MobileHeader";
 import DesktopHeader from "./Layout/DesktopHeader";
+import { CiFacebook, CiInstagram, CiMail } from "react-icons/ci";
 const Header = () => {
   const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
@@ -22,29 +22,26 @@ const Header = () => {
         borderColor="gray.300"
         bg="blackAlpha.300"
       >
-        <Container maxW="container.xl">
+        <Container maxW="container.xl" className="py-1">
           <Flex className="row" align="center" justify="between">
-            <Flex align="center" className="col-md-4 display-none">
-              <Text marginRight="2" className="fw-bold">
-                VN
-              </Text>
-              <Text>EN</Text>
+            <Flex align="center" className="col-md-3 display-none">
+              <CiMail className="mx-2" />
+              <a href="mailto:didan.mobe@gmail.com">
+                <Text marginRight="2" fontSize="14px">
+                  didan.mobe@gmail.com
+                </Text>
+              </a>
             </Flex>
-            <Flex align="center" justify="end" className="col-md-2">
-              <Text fontSize="lg" className="fw-bold">
-                Giảm Giá 40%
-              </Text>
-            </Flex>
+
             <Flex
               align="center"
-              justify="center"
-              className="col-12 col-lg-6 justify-content-lg-end display-none"
+              className="col-12 col-lg-9 justify-content-lg-end display-none"
             >
               <a href="https://www.facebook.com/ledidan">
-                <FaFacebook />
+                <CiFacebook fontSize="20px" />
               </a>
               <a href="https://instagram.com/blackdouble.d">
-                <FaInstagram />
+                <CiInstagram fontSize="20px" />
               </a>
             </Flex>
           </Flex>
@@ -65,7 +62,10 @@ const Header = () => {
           </div>
 
           {/* PC HEADER */}
-          <Container class="navbar-expand-lg display-none" maxW="container.xl">
+          <Container
+            className="navbar-expand-lg display-none"
+            maxW="container.xl"
+          >
             <DesktopHeader
               cartItems={cartItems}
               userInfo={userInfo}

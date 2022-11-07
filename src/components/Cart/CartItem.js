@@ -61,6 +61,9 @@ const CartItem = (props) => {
                       <Th scope="col" width={100} textAlign="center">
                         Giá
                       </Th>
+                      <Th scope="col" width={120} textAlign="center">
+                        Hành động
+                      </Th>
                     </Tr>
                   </Thead>
                   <Tbody>
@@ -116,8 +119,7 @@ const CartItem = (props) => {
                         </Td>
                         <Td textAlign="center">
                           <Button
-                            colorScheme="blackAlpha"
-                            className="btn btn-light"
+                            colorScheme="red"
                             onClick={() => removeCartHandler(item.product)}
                           >
                             Xoá

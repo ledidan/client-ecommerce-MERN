@@ -5,6 +5,7 @@ import ContactInfo from "../components/homeComponents/ContactInfo";
 import HeroCarousel from "../components/homeComponents/HeroCarousel";
 import ClientsLogo from "../components/LogoSlider/ClientsLogo";
 import GenderCategory from "../components/homeComponents/genderCategory";
+import CallToAction from "../components/homeComponents/CalltoActionSection";
 const HomeScreen = () => {
   // window.scrollTo(0, 0);
 
@@ -15,6 +16,7 @@ const HomeScreen = () => {
       <ClientsLogo />
       <ShopSection />
       <GenderCategory />
+      <CallToAction />
     </Flex>
   );
 };

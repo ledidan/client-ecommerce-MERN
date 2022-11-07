@@ -9,7 +9,6 @@ import moment from "moment";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/OrderConstants";
 import {
-  Badge,
   Box,
   Container,
   Flex,
