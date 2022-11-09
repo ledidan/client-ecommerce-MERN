@@ -5,7 +5,16 @@ import Orders from "./../components/profileComponents/Orders";
 import { getUserDetails } from "../redux/actions/UserAction";
 import moment from "moment";
 import { listMyOrderAction } from "../redux/actions/OrderAction";
-import { Container, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Image,
+  Link,
+  Text,
+} from "@chakra-ui/react";
 const ProfileScreen = () => {
   window.scrollTo(0, 0);
 
@@ -26,12 +35,12 @@ const ProfileScreen = () => {
     <>
       <Container className="container mt-lg-5 mt-3" maxW="container.2xl">
         <div className="row align-items-start">
-          <div className="col-lg-4 p-0 shadow ">
+          <Box className="col-lg-4 p-0 shadow" borderRadius="lg">
             <div className="author-card pb-0 pb-md-3">
               <div className="author-card-cover"></div>
               <div className="author-card-profile row">
                 <div className="author-card-avatar col-md-5">
-                  <img src="./images/user.png" alt="userprofileimage" />
+                  <Image src="./images/user.png" alt="userprofileimage" />
                 </div>
                 <div className="author-card-details col-md-7">
                   <Heading as="h5" size="md" className="author-card-name mb-2">
@@ -44,15 +53,15 @@ const ProfileScreen = () => {
               </div>
             </div>
             <div className="wizard pt-3 ">
-              <div className="d-flex align-items-start">
+              <Flex align="center">
                 <div
                   className="nav align-items-start flex-column col-12 nav-pills me-3"
                   id="v-pills-tab"
                   role="tablist"
                   aria-orientation="vertical"
                 >
-                  <button
-                    className="nav-link active"
+                  <Button
+                    className="nav-link active justify-content-between"
                     id="v-pills-home-tab"
                     data-bs-toggle="pill"
                     data-bs-target="#v-pills-home"
@@ -62,8 +71,8 @@ const ProfileScreen = () => {
                     aria-selected="true"
                   >
                     Cài đặt tài khoản
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     className="nav-link d-flex justify-content-between"
                     id="v-pills-profile-tab"
                     data-bs-toggle="pill"
@@ -75,11 +84,21 @@ const ProfileScreen = () => {
                   >
                     Danh sách đơn hàng
                     <span className="badge2">{orders ? orders.length : 0}</span>
-                  </button>
+                  </Button>
+                  {!!userInfo.isAdmin && (
+                    <Button className="nav-link d-flex justify-content-between">
+                      <Link
+                        href="https://admin-ecommerce-mern.vercel.app"
+                        isExternal
+                      >
+                        Trang quản lý Admin
+                      </Link>
+                    </Button>
+                  )}
                 </div>
-              </div>
+              </Flex>
             </div>
-          </div>
+          </Box>
 
           {/* panels */}
           <div
