@@ -41,11 +41,6 @@ const Navbar = () => {
       url: "/shop",
     },
     {
-      id: 3,
-      title: "Giới thiệu",
-      url: "/about-us",
-    },
-    {
       id: 4,
       title: "Liên hệ",
       url: "/contact",

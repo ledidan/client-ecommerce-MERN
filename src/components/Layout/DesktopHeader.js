@@ -7,6 +7,7 @@ import { CiUser } from "react-icons/ci";
 import { AiOutlineUserAdd } from "react-icons/ai";
 const DesktopHeader = (props) => {
   const { userInfo, keyword, setKeyword, cartItems, dispatch } = props;
+
   const logoutHandler = (e) => {
     e.preventDefault();
     dispatch(logout());

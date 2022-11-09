@@ -48,8 +48,8 @@ const reducer = combineReducers({
 });
 
 // SAVE CartItem
-const cartItemsFromLocalStorage = localStorage.getItem("cartItem")
-  ? JSON.parse(localStorage.getItem("cartItem"))
+const cartItemsFromLocalStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
 // SAVE USER Login

@@ -13,16 +13,19 @@ import {
   Center,
   Flex,
   Heading,
+  Icon,
   Image,
   Select,
   Stack,
   Text,
   useToast,
 } from "@chakra-ui/react";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import { addToCart } from "../redux/actions/CartAction";
 import Description from "../components/ProductDetail/Description";
 import RatingDetail from "../components/ProductDetail/RatingDetail";
 import PreferProduct from "../components/ProductDetail/PreferProduct";
+import { Link } from "react-router-dom";
 const SingleProduct = ({ match }) => {
   window.scrollTo(0, 0);
   // Set up Hooks State
@@ -90,6 +93,12 @@ const SingleProduct = ({ match }) => {
           <>
             <div className="row">
               <div className="col-md-6">
+                <Link to="/shop">
+                  <Flex align="center">
+                    <Icon as={IoIosArrowRoundBack} w={10} h={10} />
+                    <Text fontSize="20px">Trở lại cửa hàng</Text>
+                  </Flex>
+                </Link>
                 <div className="single-image">
                   <Image src={product.image} alt={product.name} />
                 </div>
