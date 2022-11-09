@@ -1,4 +1,5 @@
 import axios from "axios";
+import URL from "../../URL";
 import {
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_CREATE_REVIEW_REQUEST,
@@ -19,7 +20,7 @@ export const listProduct =
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `/api/v1/products?&keyword=${keyword}&pageNumber=${pageNumber}`
+        `${URL}/api/v1/products?&keyword=${keyword}&pageNumber=${pageNumber}`
       );
 
       dispatch({
@@ -42,7 +43,7 @@ export const listProduct =
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/v1/products/${id}`);
+    const { data } = await axios.get(`${URL}/api/v1/products/${id}`);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -76,7 +77,7 @@ export const productCreateReviewAction =
       };
 
       const { data } = await axios.post(
-        `/api/v1/products/${productId}/review`,
+        `${URL}/api/v1/products/${productId}/review`,
         review,
         config
       );
@@ -103,7 +104,7 @@ export const getProducts = (sortBy) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
     const { data } = await axios.get(
-      `/api/v1/products?sortBy=${sortBy}&order=desc&limit=6`
+      `${URL}/api/v1/products?sortBy=${sortBy}&order=desc&limit=6`
     );
 
     dispatch({

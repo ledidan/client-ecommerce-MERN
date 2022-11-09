@@ -1,4 +1,5 @@
 import axios from "axios";
+import URL from "../../URL";
 import {
   SEND_EMAIL_FAILED,
   SEND_EMAIL_REQUEST,
@@ -11,7 +12,7 @@ export const sendEmailAction =
     try {
       const getData = { name, email, subject, message };
       dispatch({ type: SEND_EMAIL_REQUEST });
-      const { res } = await axios.post(`/api/v1/contact`, getData);
+      const { res } = await axios.post(`${URL}/api/v1/contact`, getData);
 
       dispatch({ type: SEND_EMAIL_SUCCESS, payload: res });
     } catch (error) {

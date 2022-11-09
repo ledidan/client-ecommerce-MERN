@@ -1,4 +1,5 @@
 import axios from "axios";
+import URL from "../../URL";
 import { ORDER_LIST_MY_RESET } from "../constants/OrderConstants";
 
 import {
@@ -31,7 +32,7 @@ export const login = (email, password) => async (dispatch) => {
 
     // use axios.[POST] to compare user with server's user,
     const { data } = await axios.post(
-      "/api/v1/users/login",
+      `${URL}/api/v1/users/login`,
       { email, password },
       config
     );
@@ -76,7 +77,7 @@ export const register = (name, email, password) => async (dispatch) => {
 
     // use axios.[POST] to compare user with server's user,
     const { data } = await axios.post(
-      "/api/v1/users",
+      `${URL}/api/v1/users`,
       { name, email, password },
       config
     );
@@ -114,7 +115,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     };
 
     // use axios.[POST] to compare user with server's user,
-    const { data } = await axios.get(`/api/v1/users/${id}`, config);
+    const { data } = await axios.get(`${URL}/api/v1/users/${id}`, config);
 
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -151,7 +152,11 @@ export const updateProfile = (user) => async (dispatch, getState) => {
     };
 
     // use axios.[PUT] to update user with server's user,
-    const { data } = await axios.put(`/api/v1/users/profile`, user, config);
+    const { data } = await axios.put(
+      `${URL}/api/v1/users/profile`,
+      user,
+      config
+    );
 
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
 

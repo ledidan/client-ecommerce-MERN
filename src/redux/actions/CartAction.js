@@ -5,10 +5,11 @@ import {
   CART_SAVE_PAYMENT_METHOD,
   CART_SAVE_SHIPPING_ADDRESS,
 } from "../constants/CartConstants";
+import URL from "../../URL";
 // ADD PRODUCT TO CART
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/v1/products/${id}`);
+  const { data } = await axios.get(`${URL}/api/v1/products/${id}`);
 
   dispatch({
     type: CART_ADD_ITEM,

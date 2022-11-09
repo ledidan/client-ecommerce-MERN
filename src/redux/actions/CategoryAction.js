@@ -1,4 +1,5 @@
 import axios from "axios";
+import URL from "../../URL";
 import {
   CATEGORY_LIST_FAIL,
   CATEGORY_LIST_REQUEST,
@@ -10,7 +11,7 @@ export const categoryListAllAction = () => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/v1/categories");
+    const { data } = await axios.get(`${URL}/api/v1/categories`);
 
     dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data });
   } catch (error) {

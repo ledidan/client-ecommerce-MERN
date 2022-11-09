@@ -34,6 +34,7 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
+import URL from "../../URL";
 const OrderScreen = ({ match }) => {
   const orderId = match.params.id;
   const history = useHistory();
@@ -64,7 +65,7 @@ const OrderScreen = ({ match }) => {
 
   useEffect(() => {
     const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get(`/api/config/paypal`);
+      const { data: clientId } = await axios.get(`${URL}/api/config/paypal`);
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
