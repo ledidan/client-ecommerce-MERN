@@ -2,10 +2,15 @@ import {
   Box,
   Center,
   Container,
+  Flex,
+  Grid,
+  GridItem,
   Heading,
   HStack,
+  SimpleGrid,
   Stack,
   Text,
+  VStack,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -39,47 +44,35 @@ export default function ContactInfo() {
   ];
 
   return (
-    <Container className="contactInfo container" mt={100}>
-      <Stack>
-        <Box className="col-lg-12 col-md-12 col-sm-12 contact-Box">
-          {headingInfo.map((item) => (
-            <Stack key={item.id}>
-              <Wrap spacing="30px">
-                <WrapItem>
-                  <Center
-                    w={{ base: "350px", md: "280px", lg: "450px" }}
-                    h={{ base: "320px", md: "350px", lg: "400px" }}
-                    bg="gray.50"
-                    borderRadius={10}
-                  >
-                    <Center
-                      className="box-info"
-                      alignItems="center"
-                      gap="20px"
-                      w={{ base: "300px", md: "400px", lg: "500px" }}
-                    >
-                      <HStack className="info-image">{item.icon}</HStack>
-                      <Heading
-                        as="h3"
-                        size="md"
-                        w={[200, 300, 400]}
-                        textTransform="uppercase"
-                        textAlign="center"
-                        fontWeight="bold"
-                      >
-                        {item.heading}
-                      </Heading>
-                      <Text size="sm" textAlign="center">
-                        {item.description}
-                      </Text>
-                    </Center>
-                  </Center>
-                </WrapItem>
-              </Wrap>
-            </Stack>
-          ))}
-        </Box>
-      </Stack>
+    <Container mt={100}>
+      <Flex justify="center" align="center">
+        {headingInfo.map((item) => (
+          <SimpleGrid key={item.id} maxW={["row", "column"]}>
+            <VStack
+              gap="10px"
+              bg="gray.50"
+              borderRadius={10}
+              marginRight={5}
+              p={5}
+            >
+              <Center className="info-image">{item.icon}</Center>
+              <Heading
+                as="h3"
+                size="md"
+                w={[200, 300, 400]}
+                textTransform="uppercase"
+                textAlign="center"
+                fontWeight="bold"
+              >
+                {item.heading}
+              </Heading>
+              <Text size="sm" textAlign="center">
+                {item.description}
+              </Text>
+            </VStack>
+          </SimpleGrid>
+        ))}
+      </Flex>
     </Container>
   );
 }
