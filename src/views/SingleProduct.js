@@ -94,9 +94,9 @@ const SingleProduct = ({ match }) => {
             <div className="row">
               <div className="col-md-6">
                 <Link to="/shop">
-                  <Flex align="center">
-                    <Icon as={IoIosArrowRoundBack} w={10} h={10} />
-                    <Text fontSize="20px">Trở lại cửa hàng</Text>
+                  <Flex align="center" justify="start" mb={10}>
+                    <Icon as={IoIosArrowRoundBack} w={10} h={15} />
+                    <Text fontSize="18px">Trở lại cửa hàng</Text>
                   </Flex>
                 </Link>
                 <div className="single-image">

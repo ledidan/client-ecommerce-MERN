@@ -42,7 +42,7 @@ const ShopFilter = (props) => {
           <header className=" accordion-header" id="headingOne">
             <Heading
               as="h5"
-              size="md"
+              size="sm"
               className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
@@ -50,7 +50,7 @@ const ShopFilter = (props) => {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Product Type
+              Loại sản phẩm
             </Heading>
           </header>
           <div className="filter-content collapse show" id="collapseOne">
@@ -83,7 +83,7 @@ const ShopFilter = (props) => {
           <header className=" accordion-header" id="headingTwo">
             <Heading
               as="h5"
-              size="md"
+              size="sm"
               className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
@@ -91,7 +91,7 @@ const ShopFilter = (props) => {
               aria-expanded="true"
               aria-controls="collapseTwo"
             >
-              Brands
+              Thương hiệu
             </Heading>
           </header>
           <div className="filter-content collapse show" id="collapseTwo">
@@ -121,7 +121,7 @@ const ShopFilter = (props) => {
           <header className="accordion-header" id="headingThree">
             <Heading
               as="h5"
-              size="md"
+              size="sm"
               className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
@@ -129,7 +129,7 @@ const ShopFilter = (props) => {
               aria-expanded="true"
               aria-controls="collapseThree"
             >
-              Price Range
+              Khoảng giá
             </Heading>
           </header>
           <div className="filter-content collapse show" id="collapseThree">
@@ -147,7 +147,7 @@ const ShopFilter = (props) => {
               </RangeSlider>
               <div className="row">
                 <div className="col col-md-6 col-lg-6">
-                  <label>Min</label>
+                  <label>Nhỏ nhất</label>
                   <input
                     className="form-control"
                     placeholder="$0"
@@ -155,7 +155,7 @@ const ShopFilter = (props) => {
                   />
                 </div>
                 <div className="col  text-right col-md-6 col-lg-6">
-                  <label>Max</label>
+                  <label>Cao nhất</label>
                   <input
                     className="form-control"
                     placeholder="$1,00"
@@ -171,7 +171,7 @@ const ShopFilter = (props) => {
           <header className=" accordion-header" id="headingFour">
             <Heading
               as="h5"
-              size="md"
+              size="sm"
               className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
@@ -179,7 +179,7 @@ const ShopFilter = (props) => {
               aria-expanded="true"
               aria-controls="collapseFour"
             >
-              Sizes
+              Kích thước
             </Heading>
           </header>
           <div className="filter-content collapse show" id="collapseFour">
@@ -207,7 +207,7 @@ const ShopFilter = (props) => {
           <header className="accordion-header" id="headingFive">
             <Heading
               as="h5"
-              size="md"
+              size="sm"
               className="accordion-button title"
               type="button"
               data-bs-toggle="collapse"
@@ -215,7 +215,7 @@ const ShopFilter = (props) => {
               aria-expanded="true"
               aria-controls="collapseFive"
             >
-              More Filters
+              Lọc điều kiện khác
             </Heading>
           </header>
           <div className="filter-content collapse in" id="collapseFive">
