@@ -1,18 +1,11 @@
 import {
   Box,
   Center,
-  Container,
   Flex,
-  Grid,
-  GridItem,
   Heading,
-  HStack,
   SimpleGrid,
-  Stack,
   Text,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
 import React from "react";
 import { CiDeliveryTruck } from "react-icons/ci";
@@ -24,41 +17,35 @@ export default function ContactInfo() {
       id: 1,
       heading: "Miễn phí ship trên $100",
       description:
-        "Free shipping to all over the world with many specials only for our dear customers",
+        "Miễn phí vận chuyển trên toàn thế giới với nhiều ưu đãi dành riêng cho khách hàng thân yêu",
       icon: <CiDeliveryTruck size={80} />,
     },
     {
       id: 2,
       heading: "-10% đăng ký nhận thông tin email",
       description:
-        "Many customers entrust varius shoes needs to us, and customer satisfaction is our pride",
+        "Nhiều khách hàng tin tưởng giao những nhu cầu về giày varius cho chúng tôi, và sự hài lòng của khách hàng là niềm tự hào của chúng tôi",
       icon: <SlEnvolopeLetter size={50} />,
     },
     {
       id: 3,
       heading: "Đổi trả miễn phí tại cửa hàng",
       description:
-        "You can get various shoes with the highest quality an affoddable price",
+        "Bạn có thể nhận được nhiều loại giày khác nhau với chất lượng cao nhất với giá cả phải chăng",
       icon: <TfiPackage size={50} />,
     },
   ];
 
   return (
-    <Container mt={100}>
-      <Flex justify="center" align="center">
-        {headingInfo.map((item) => (
-          <SimpleGrid key={item.id} maxW={["row", "column"]}>
-            <VStack
-              gap="10px"
-              bg="gray.50"
-              borderRadius={10}
-              marginRight={5}
-              p={5}
-            >
+    <Box as="section" py="14" px={{ base: "4", md: "8" }} mt={100}>
+      <Flex align="center" justify="center">
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: "6", md: "12" }}>
+          {headingInfo.map((item) => (
+            <VStack gap="15px" border="2px dashed #333" borderRadius={10} p={5}>
               <Center className="info-image">{item.icon}</Center>
               <Heading
                 as="h3"
-                size="md"
+                size={{ base: "sm", md: "md" }}
                 w={[200, 300, 400]}
                 textTransform="uppercase"
                 textAlign="center"
@@ -70,9 +57,9 @@ export default function ContactInfo() {
                 {item.description}
               </Text>
             </VStack>
-          </SimpleGrid>
-        ))}
+          ))}
+        </SimpleGrid>
       </Flex>
-    </Container>
+    </Box>
   );
 }

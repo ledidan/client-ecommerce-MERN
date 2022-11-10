@@ -24,19 +24,18 @@ const ClientsLogo = () => {
       id: 5,
       sourceImages: "/images/vansLogo.png",
     },
-    {
-      id: 6,
-      sourceImages: "/images/converseLogo.png",
-    },
-    {
-      id: 7,
-      sourceImages: "/images/crocsLogo.png",
-    },
+    // {
+    //   id: 6,
+    //   sourceImages: "/images/converseLogo.png",
+    // },
   ];
 
   return (
-    <Container maxW="container.xl" className="mt-5">
-      <Center height={200}>
+    <Container
+      maxW={{ base: "container.lg", md: "container.xl" }}
+      className="mt-5"
+    >
+      <Center height={[50, 200, 300]}>
         <Heading as="h2" size="2xl" textTransform="uppercase" fontWeight={700}>
           Thương hiệu đối tác
         </Heading>
@@ -44,7 +43,7 @@ const ClientsLogo = () => {
 
       <SliderItem height={300}>
         {logoRender.map((item) => (
-          <Marquee speed={100} gradientWidth="50px" key={item.id}>
+          <Marquee speed={100} gradientWidth={true} key={item.id}>
             <Image
               src={item.sourceImages}
               width={100}
