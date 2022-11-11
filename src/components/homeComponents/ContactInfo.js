@@ -46,7 +46,6 @@ export default function ContactInfo() {
               <Heading
                 as="h3"
                 size={{ base: "sm", md: "md" }}
-                w={[200, 300, 400]}
                 textTransform="uppercase"
                 textAlign="center"
                 fontWeight="bold"
