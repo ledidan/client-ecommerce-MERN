@@ -52,8 +52,42 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-// LOGOUT
+export const loginOAuth2 = () => async (dispatch) => {
+  try {
+    dispatch({ type: USER_LOGIN_REQUEST });
 
+    // Using callback Auth headers config to identify json content
+    const config = {
+      credentials: "include",
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    };
+
+    // use axios.[POST] to compare user with server's user,
+    const { data } = await axios.get(
+      `http://localhost:4000/auth/login/success`,
+      config
+    );
+
+    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+    // Update User Info with Server's User in localStorage
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: USER_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+    throw new Error("Authentication has been failed");
+  }
+};
+// LOGOUT
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });

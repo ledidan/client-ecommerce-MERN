@@ -5,6 +5,13 @@ const theme = extendTheme({
     heading: "Montserrat, sans-serif",
     body: "Cabin, sans-serif",
   },
+  styles: {
+    global: {
+      body: {
+        // bg: "#f7fafa",
+      },
+    },
+  },
 });
 
 export default theme;

@@ -1,72 +1,178 @@
-# Getting Started with Create React App !!!
+# MERN Stacks Shoes Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my React and Node to build a fully-functional e-commerce website exactly like shopify. This e-commerce website using MERN stack (MongoDB, ExpressJS, React and Node.JS). This project was built about 1 month and it is inspired on a top rated ecommerce developer.
+</br>
+</br>
 
-## Available Scripts
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668135812/danz-shop-image/danz-header_ykoqof.png)
 
-In the project directory, you can run:
+# Details Image Preview
 
-### `npm start`
+<details>
+  <summary>Shop Client Preview</summary>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Header
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668135812/danz-shop-image/danz-header_ykoqof.png)
 
-### `npm test`
+### Shop Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668139461/danz-shop-image/danz-shop_qfxpik.png)
 
-### `npm run build`
+### Single Product
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668139505/danz-shop-image/danz-singleProduct_hxi3jt.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Shopping Cart
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668139395/danz-shop-image/danz-cart_xpca3x.png)
 
-### `npm run eject`
+#### Place Order
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668139295/danz-shop-image/danz-placeOrder_kccnqc.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Payment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668139551/danz-shop-image/danz-thanhtoan_oy0k7y.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Contact
 
-## Learn More
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668139185/danz-shop-image/Screenshot_2022-11-11_at_10.59.23_yetvbo.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+</details>
+<details>
+  <summary>Shop Admin Dashboard Preview</summary>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Home
 
-### Code Splitting
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668138837/danz-shop-image/dAdmin-home_ekjtuw.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Product
 
-### Analyzing the Bundle Size
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668138834/danz-shop-image/dAdmin-products_ji2tox.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Add Product
 
-### Making a Progressive Web App
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668138834/danz-shop-image/dAdmin-addProduct_pfsvb3.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Category
 
-### Advanced Configuration
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668138834/danz-shop-image/dAdmin-category_owtm4q.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### All Order
 
-### Deployment
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668138834/danz-shop-image/dAdmin-allOrder_tzdp8c.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### All User
 
-### `npm run build` fails to minify
+![Image](https://res.cloudinary.com/dfaejacdn/image/upload/v1668138838/danz-shop-image/dAdmin-allUser_fhsjev.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</details>
 
-# client-ecommerce-MERN
+### Live Preview
+
+👉 Vercel Client : https://shop-client-danz.vercel.app
+
+👉 Vercel Admin Dashboard: http://admin-ecommerce-mern.vercel.app
+
+👉 Heroku Backend : https://shop-server-danz.herokuapp.com
+
+#### Clone repo & Run locally
+
+#### Client
+
+```
+$ git clone git@github.com:ledidan/client-ecommerce-MERN.git
+$ cd client-ecommerce-MERN
+$ npm install
+$ npm start
+```
+
+#### Admin
+
+```
+$ git clone git@github.com:ledidan/admin-ecommerce-MERN.git
+$ cd admin-ecommerce-MERN
+$ npm install
+$ npm start
+```
+
+#### Backend
+
+```
+$ git clone git@github.com:ledidan/server-ecommere-MERN.git
+$ cd server-ecommere-MERN
+$ npm install
+$ npm run dev
+```
+
+## Important Guide
+
+### About `.env` file in client and admin folder
+
+- You need to change your Server URL, where you deploy at
+
+```
+REACT_APP_SERVER_URL = YOUR_SERVER_URL
+```
+
+### About `.env` file in NodeJS Backend
+
+\*\* Install Cors before starting server or you must use proxy localhost to connect with server in `package.json`
+
+👉 [Install Cors](https://www.npmjs.com/package/cors)
+
+```
+$ npm i cors
+
+```
+
+1. In Server.js
+
+```
+const cors = require("cors");
+app.use(cors());
+```
+
+2.  `.env` file
+
+```
+PORT = YOUR_PORT
+NODE_ENV = development
+MONGO_URL = YOUR_MONGO_URL_DATABASE
+JWT_SECRET = TEST_JWT_PASSWORD
+PAYPAL_CLIENT_ID = YOUR_PAYPAL_CLIENT_ID
+
+EMAIL_SERVICE = YOUR_EMAIL_SERVICE
+EMAIL_USERNAME = YOUR_EMAIL_USERNAME
+EMAIL_PASSWORD = YOUR_EMAIL_PASSWORD
+SMTP_HOST= YOUR_SMTP_HOST
+SMTP_TYPE = SMTP
+SMTP_PORT= YOUR_PORT
+EMAIL_SENDER = YOUR_EMAIL_SENDER
+```
+
+### Specific Guide
+
+👉 [How to create Paypal Sanbox App & Get Client ID with Secret Key](https://www.youtube.com/watch?v=7s4lxhO4lwM)
+
+👉 [How to you Nodemailer to recieve email](https://www.youtube.com/watch?v=nF9g1825mwk)
+
+👉 [How to deploy ReactJS App on Vercel](https://www.youtube.com/watch?v=lAJ6LyvW_cw&t=65s)
+
+👉 [How to deploy NodeJS or ReactJS on Heroku](https://www.youtube.com/watch?v=r2S89Hm1Uq0)
+
+👉 [How to set up & connect MongoDB with NodeJS Server](https://www.youtube.com/watch?v=bhiEJW5poHU)
+
+# About Project
+
+### Project Techs Used
+
+- HTML5 and CSS3: Semantic Elements, CSS Grid, Flexbox
+- CSS Library: Chakra UI, Bootstrap 5, Styled Components
+- React: Components, Props, Events, Hooks, Router, Axios, js-cookie,
+- Context API: Store, Reducers, Actions, Redux Thunk
+- Node & Express: Rest API, Body Parser, Auth JWT, Bcryptjs, Concurrently, Cors, Eexpress-async-handler, Nodemailer
+- MongoDB: Mongoose, Aggregation
+- Development: ESLint, Babel, Git, Github,
+- Deployment: Heroku, Vercel

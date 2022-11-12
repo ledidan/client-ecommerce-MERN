@@ -23,6 +23,8 @@ import ShopScreen from "./views/ShopScreen";
 import PlaceOrder from "./components/PlaceOrder-UI/PlaceOrder.v1";
 import OrderScreen from "./components/OrderScreen-UI/OrderScreen.v1";
 import ContactScreen from "./views/ContactScreen";
+import LoginMain from "./components/LoginScreen-UI/LoginMain-v1";
+import SignUp from "./components/SignupScreen-UI/SignupMain-v1";
 
 const App = () => {
   return (
@@ -37,8 +39,10 @@ const App = () => {
             exact
           />
           <HomeRouter path="/products/:id" component={SingleProduct} />
-          <HomeRouter path="/login" component={Login} />
+          {/* <HomeRouter path="/login" component={Login} /> */}
+          <HomeRouter path="/login" component={LoginMain} />
           <HomeRouter path="/register" component={Register} />
+          <HomeRouter path="/register-v1" component={SignUp} />
           <HomeRouter path="/cart/:id?" component={CartScreen} />
           <PrivateRouter path="/profile" component={ProfileScreen} />
           <HomeRouter path="/contact" component={ContactScreen} />
