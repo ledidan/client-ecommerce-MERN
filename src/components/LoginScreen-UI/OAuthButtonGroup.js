@@ -1,11 +1,12 @@
 import { Button, ButtonGroup, VisuallyHidden } from "@chakra-ui/react";
 import { GitHubIcon, GoogleIcon, FacebookIcon } from "./ProviderIcons";
+import URL from "../../URL";
 const providers = [
   {
     name: "Google",
     icon: <GoogleIcon boxSize="5" />,
     google: () => {
-      window.open("http://localhost:4000/auth/google", "_self");
+      window.open(`${URL}/auth/google`, "_self");
     },
   },
   {
