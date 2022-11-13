@@ -68,10 +68,8 @@ export const loginOAuth2 = () => async (dispatch) => {
     };
 
     // use axios.[POST] to compare user with server's user,
-    const { data } = await axios.get(
-      `http://localhost:4000/auth/login/success`,
-      config
-    );
+    const { data } = await axios.get(`${URL}/auth/login/success`, config);
+    console.log(data);
 
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     // Update User Info with Server's User in localStorage

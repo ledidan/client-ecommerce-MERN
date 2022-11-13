@@ -16,7 +16,7 @@ import {
 } from "../constants/UserContants";
 
 const stateDefault = {
-  user: {},
+  user: [],
   userInfo: [],
 };
 

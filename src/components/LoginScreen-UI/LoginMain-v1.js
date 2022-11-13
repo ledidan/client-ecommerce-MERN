@@ -25,6 +25,8 @@ import { Link } from "react-router-dom";
 import { login, loginOAuth2 } from "../../redux/actions/UserAction";
 import Message from "../../components/LoadingError/Error";
 import Loading from "../../components/LoadingError/Loading";
+import axios from "axios";
+import URL from "../../URL";
 const LoginMain = ({ location, history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
@@ -38,9 +40,24 @@ const LoginMain = ({ location, history }) => {
   const toast = useToast();
   // Executing side-effect in process of user login
   useEffect(() => {
+    const getuser = async () => {
+      axios
+        .get(`${URL}/auth/login/success`, {
+          withCredentials: true,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Credentials": true,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) return res.json();
+          throw new Error("authentication has been failed");
+        })
+        .catch((err) => console.log(err));
+    };
     if (userInfo) {
       history.push(redirect);
-
       toast({
         title: `Xác minh tài khoản thành công!`,
         status: "success",
