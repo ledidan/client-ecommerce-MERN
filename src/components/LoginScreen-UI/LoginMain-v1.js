@@ -54,8 +54,10 @@ const LoginMain = ({ location, history }) => {
           if (res.status === 200) return res.json();
           throw new Error("authentication has been failed");
         })
+        .then((resObject) => setUser(resObject.user))
         .catch((err) => console.log(err));
     };
+    getUser();
     if (userInfo) {
       history.push(redirect);
       toast({
@@ -66,7 +68,6 @@ const LoginMain = ({ location, history }) => {
         position: "top-right",
       });
     }
-    getUser();
     // eslint-disable-next-line
   }, [userInfo, redirect, history]);
   console.log(user);
