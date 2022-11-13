@@ -36,11 +36,11 @@ const LoginMain = ({ location, history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
   // eslint-disable-next-line
-
+  const [user, setUser] = useState();
   const toast = useToast();
   // Executing side-effect in process of user login
   useEffect(() => {
-    const getuser = async () => {
+    const getUser = async () => {
       axios
         .get(`${URL}/auth/login/success`, {
           withCredentials: true,
@@ -66,9 +66,10 @@ const LoginMain = ({ location, history }) => {
         position: "top-right",
       });
     }
+    getUser();
     // eslint-disable-next-line
   }, [userInfo, redirect, history]);
-
+  console.log(user);
   const submitHandler = (e) => {
     e.preventDefault();
     // Todo
