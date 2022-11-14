@@ -7,7 +7,9 @@ import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../redux/actions/UserAction";
 const MobileHeader = (props) => {
   const { userInfo, keyword, setKeyword, cartItems, dispatch } = props;
+
   const history = useHistory();
+
   const logoutHandler = (e) => {
     e.preventDefault();
     dispatch(logout());

@@ -21,12 +21,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
-import { Link } from "react-router-dom";
 import { login, loginOAuth2 } from "../../redux/actions/UserAction";
 import Message from "../../components/LoadingError/Error";
 import Loading from "../../components/LoadingError/Loading";
-import axios from "axios";
-import URL from "../../URL";
+
 const LoginMain = ({ location, history }) => {
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
@@ -36,28 +34,10 @@ const LoginMain = ({ location, history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
   // eslint-disable-next-line
-  const [user, setUser] = useState();
   const toast = useToast();
   // Executing side-effect in process of user login
   useEffect(() => {
-    const getUser = async () => {
-      axios
-        .get(`${URL}/auth/login/success`, {
-          withCredentials: true,
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) return res.json();
-          throw new Error("authentication has been failed");
-        })
-        .then((resObject) => setUser(resObject.user))
-        .catch((err) => console.log(err));
-    };
-    getUser();
+    // USEEFFECT CALLING USERInfo
     if (userInfo) {
       history.push(redirect);
       toast({
@@ -69,18 +49,17 @@ const LoginMain = ({ location, history }) => {
       });
     }
     // eslint-disable-next-line
-  }, [userInfo, redirect, history]);
-  console.log(user);
+  }, [userInfo, redirect, history, dispatch]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     // Todo
     dispatch(login(email, password));
   };
-
   return (
     <Container
       maxW="lg"
-      py={{
+      mb={{
         base: "12",
         md: "20",
       }}

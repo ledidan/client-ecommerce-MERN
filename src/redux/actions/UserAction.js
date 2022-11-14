@@ -53,46 +53,56 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const loginOAuth2 = () => async (dispatch) => {
-  try {
-    dispatch({ type: USER_LOGIN_REQUEST });
-
-    // Using callback Auth headers config to identify json content
-    const config = {
-      credentials: "include",
-      withCredentials: true,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
-      },
-    };
-
-    // use axios.[POST] to compare user with server's user,
-    const { data } = await axios.get(`${URL}/auth/login/success`, config);
-    console.log(data);
-
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    // Update User Info with Server's User in localStorage
-    localStorage.setItem("userInfo", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_LOGIN_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+  await fetch(`http://localhost:4000/auth/login/success`, {
+    withCredentials: true,
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true,
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) return res.json();
+      throw new Error("failed authorized");
+    })
+    .then((resObject) => {
+      dispatch({
+        type: USER_LOGIN_SUCCESS,
+        payload: JSON.stringify(resObject.user),
+      });
+      console.log(resObject.user);
+      localStorage.setItem("userInfo", JSON.stringify(resObject.user));
+    })
+    .catch((error) => {
+      dispatch({
+        type: USER_LOGIN_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
     });
-    throw new Error("Authentication has been failed");
-  }
 };
 // LOGOUT
-export const logout = () => (dispatch) => {
+export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: ORDER_LIST_MY_RESET });
   // Redirect to /login
   document.location.href = "/login";
+  fetch("http://localhost:4000/auth/logout", {
+    withCredentials: true,
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true,
+    },
+  })
+    .then((res) => console.log("successfully logout", res))
+    .catch((err) => console.log(err));
 };
 
 // REGISTER USER

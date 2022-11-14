@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import MobileHeader from "./Layout/MobileHeader";
 import DesktopHeader from "./Layout/DesktopHeader";
 import { CiFacebook, CiInstagram, CiMail } from "react-icons/ci";
+import axios from "axios";
+import {
+  USER_LOGIN_FAIL,
+  USER_LOGIN_SUCCESS,
+} from "../redux/constants/UserContants";
 const Header = () => {
   const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
@@ -11,7 +16,6 @@ const Header = () => {
   const { cartItems } = cart;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
   return (
     <div>
       {/* Top Header */}
