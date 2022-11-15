@@ -21,9 +21,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
-import { login, loginOAuth2 } from "../../redux/actions/UserAction";
+import { login } from "../../redux/actions/UserAction";
 import Message from "../../components/LoadingError/Error";
 import Loading from "../../components/LoadingError/Loading";
+import { Link } from "react-router-dom";
 
 const LoginMain = ({ location, history }) => {
   window.scrollTo(0, 0);
@@ -37,7 +38,6 @@ const LoginMain = ({ location, history }) => {
   const toast = useToast();
   // Executing side-effect in process of user login
   useEffect(() => {
-    // USEEFFECT CALLING USERInfo
     if (userInfo) {
       history.push(redirect);
       toast({
@@ -87,15 +87,19 @@ const LoginMain = ({ location, history }) => {
               })}
               fontWeight="800"
             >
-              Log in to your account
+              ĐĂNG NHẬP
             </Heading>
             <HStack spacing="1" justify="center">
-              <Text fontSize="14px" color="muted">
-                Don't have an account?
+              <Text size="sm" fontSize="14px">
+                Bạn chưa có tài khoản ?{" "}
+                <Link
+                  to={redirect ? `/register?redirect=${redirect}` : "/register"}
+                >
+                  <Button variant="link" colorScheme="blue">
+                    Đăng ký
+                  </Button>
+                </Link>
               </Text>
-              <Button variant="link" colorScheme="blue">
-                Sign up
-              </Button>
             </HStack>
           </Stack>
         </Stack>
@@ -141,19 +145,19 @@ const LoginMain = ({ location, history }) => {
               />
             </Stack>
             <HStack justify="space-between" mt={4}>
-              <Checkbox defaultChecked>Remember me</Checkbox>
+              <Checkbox defaultChecked>Nhớ mật khẩu</Checkbox>
               <Button variant="link" colorScheme="blue" size="sm">
-                Forgot password?
+                Quên mật khẩu?
               </Button>
             </HStack>
             <Stack spacing="6" mt={5}>
-              <Button colorScheme="red" type="submit">
+              <Button colorScheme="blue" type="submit">
                 Sign in
               </Button>
               <HStack>
                 <Divider />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                  or continue with
+                  hoặc tiếp tục với
                 </Text>
                 <Divider />
               </HStack>

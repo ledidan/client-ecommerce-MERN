@@ -175,6 +175,43 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   }
 };
 
+// GET USER AUTH DETAIL
+export const getUserAuthDetail = (googleId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_DETAILS_REQUEST });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    // Using callback Auth headers config to identify json content
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    // use axios.[POST] to compare user with server's user,
+    const { data } = await axios.get(
+      `http://localhost:4000/users/${googleId}`,
+      config
+    );
+
+    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, no token") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload: message,
+    });
+  }
+};
 // UPDATE PROFILE
 
 export const updateProfile = (user) => async (dispatch, getState) => {

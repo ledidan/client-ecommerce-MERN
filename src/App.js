@@ -39,10 +39,8 @@ const App = () => {
             exact
           />
           <HomeRouter path="/products/:id" component={SingleProduct} />
-          {/* <HomeRouter path="/login" component={Login} /> */}
           <HomeRouter path="/login" component={LoginMain} />
-          <HomeRouter path="/register" component={Register} />
-          <HomeRouter path="/register-v1" component={SignUp} />
+          <HomeRouter path="/register" component={SignUp} />
           <HomeRouter path="/cart/:id?" component={CartScreen} />
           <PrivateRouter path="/profile" component={ProfileScreen} />
           <HomeRouter path="/contact" component={ContactScreen} />
@@ -52,7 +50,6 @@ const App = () => {
           <PrivateRouter path="/dat-hang" component={PlaceOrder} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
           <HomeRouter path="/shop/page/:pageNumber" component={ShopScreen} />
-          {/* <HomeRouter path="/shop/page/:categoryId" component={ShopScreen} /> */}
           <HomeRouter
             path="/search/:keyword/shop/page/:pageNumber"
             component={ShopScreen}
