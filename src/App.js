@@ -32,10 +32,10 @@ const App = () => {
       <Router>
         <Switch>
           <HomeRouter path="/" component={HomeScreen} exact />
-          <HomeRouter path="/search/:keyword" component={HomeScreen} exact />
+          <HomeRouter path="/search/:keyword" component={ShopScreen} exact />
           <HomeRouter
             path="/search/:keyword/page/:pageNumber"
-            component={HomeScreen}
+            component={ShopScreen}
             exact
           />
           <HomeRouter path="/products/:id" component={SingleProduct} />
