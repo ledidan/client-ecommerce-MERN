@@ -1505,3 +1505,15 @@ a[class*="card"]:hover .title {
 .contant_box_404 {
   margin-top: -50px;
 }
+
+/* USER PROFILE */
+.user-info-wrapper {
+  width: 100%;
+  margin-bottom: -1px;
+  padding-top: 90px;
+  padding-bottom: 30px;
+  border: 1px solid #e1e7ec;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  overflow: hidden;
+}
