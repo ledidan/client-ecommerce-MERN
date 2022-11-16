@@ -1,4 +1,5 @@
 import {
+  Badge,
   Table,
   TableContainer,
   Tbody,
@@ -47,12 +48,7 @@ const Orders = (props) => {
                 </Thead>
                 <Tbody>
                   {orders.map((order) => (
-                    <Tr
-                      className={`${
-                        order.isPaid ? "alert-success" : "alert-danger"
-                      }`}
-                      key={order._id}
-                    >
+                    <Tr key={order._id}>
                       <Td>
                         <a href={`/order/${order._id}`} className="link">
                           {order._id}
@@ -60,9 +56,13 @@ const Orders = (props) => {
                       </Td>
                       <Td>
                         {order.isPaid ? (
-                          <>Đã thanh toán</>
+                          <Badge variant="solid" colorScheme="green">
+                            Đã thanh toán
+                          </Badge>
                         ) : (
-                          <>Chưa thanh toán</>
+                          <Badge variant="solid" colorScheme="red">
+                            Chưa thanh toán
+                          </Badge>
                         )}
                       </Td>
                       <Td>

@@ -36,8 +36,8 @@ const ProfileScreen = () => {
       <Container className="container mt-lg-5 mt-3" maxW="container.2xl">
         <div className="row align-items-start">
           <Box className="col-lg-4 p-0 shadow" borderRadius="lg">
-            <div className="author-card pb-0 pb-md-3">
-              <div className="author-card-cover"></div>
+            <div className="pb-0 pb-md-3">
+              <div className="author-card-cover user-info-wrapper "></div>
               <div className="author-card-profile row">
                 <div className="author-card-avatar col-md-5">
                   <Image src="./images/user.png" alt="userprofileimage" />
@@ -55,7 +55,7 @@ const ProfileScreen = () => {
             <div className="wizard pt-3 ">
               <Flex align="center">
                 <div
-                  className="nav align-items-start flex-column col-12 nav-pills me-3"
+                  className="nav align-items-start flex-column col-12 nav-pills me-3 list-group"
                   id="v-pills-tab"
                   role="tablist"
                   aria-orientation="vertical"
