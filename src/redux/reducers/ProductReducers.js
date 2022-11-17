@@ -1,4 +1,7 @@
 import {
+  FILTER_LIST_FAIL,
+  FILTER_LIST_REQUEST,
+  FILTER_LIST_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_CREATE_REVIEW_REQUEST,
   PRODUCT_CREATE_REVIEW_RESET,
@@ -25,18 +28,18 @@ export const productListReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
       return {
+        ...state,
         loading: true,
         products: [],
       };
     case PRODUCT_LIST_SUCCESS:
       return {
         loading: false,
-        pages: action.payload.pages,
-        page: action.payload.page,
         products: action.payload.products,
       };
     case PRODUCT_LIST_FAIL:
       return {
+        ...state,
         loading: false,
         error: action.payload,
       };
@@ -50,7 +53,6 @@ export const productDetailReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return {
-        ...state,
         loading: true,
       };
     case PRODUCT_DETAILS_SUCCESS:
@@ -87,6 +89,30 @@ export const productCreateReviewReducer = (state = {}, action) => {
       };
     case PRODUCT_CREATE_REVIEW_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const filterListReducer = (state = stateDefault, action) => {
+  switch (action.type) {
+    case FILTER_LIST_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FILTER_LIST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        products: action.payload,
+      };
+    case FILTER_LIST_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

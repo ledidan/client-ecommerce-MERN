@@ -1,6 +1,9 @@
 import axios from "axios";
 import URL from "../../URL";
 import {
+  FILTER_LIST_FAIL,
+  FILTER_LIST_REQUEST,
+  FILTER_LIST_SUCCESS,
   PRODUCT_CREATE_REVIEW_FAIL,
   PRODUCT_CREATE_REVIEW_REQUEST,
   PRODUCT_CREATE_REVIEW_SUCCESS,
@@ -15,12 +18,12 @@ import { logout } from "./UserAction";
 
 // [GET] ALL PRODUCT
 export const listProduct =
-  (keyword = " ", pageNumber = " ") =>
+  (keyword = " ", category = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `${URL}/api/v1/products?&keyword=${keyword}&pageNumber=${pageNumber}`
+        `${URL}/api/v1/products?&keyword=${keyword}&category=${category}`
       );
 
       dispatch({
@@ -30,6 +33,29 @@ export const listProduct =
     } catch (error) {
       dispatch({
         type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+// [POST] GET FILTERED PRODUCTS LIST
+export const getFilteredProducts =
+  (skip, limit, filters = []) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: FILTER_LIST_REQUEST });
+      const { data } = await axios.post(`${URL}/api/v1/products/search`, {
+        skip,
+        limit,
+        filters,
+      });
+      dispatch({ type: FILTER_LIST_SUCCESS, payload: data.data });
+    } catch (error) {
+      dispatch({
+        type: FILTER_LIST_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

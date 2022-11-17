@@ -20,7 +20,7 @@ const MobileHeader = (props) => {
     if (keyword.trim()) {
       history.push(`/search/${keyword}`);
     } else {
-      history.push("/");
+      history.push("/shop");
     }
   };
   return (

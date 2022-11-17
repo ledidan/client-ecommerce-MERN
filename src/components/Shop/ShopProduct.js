@@ -4,7 +4,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Message from "../LoadingError/Error";
 import Loading from "../LoadingError/Loading";
-import Pagination from "../homeComponents/pagination";
 import Rating from "../homeComponents/Rating";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/actions/CartAction";
@@ -24,14 +23,16 @@ const CartButton = styled.button`
   }
 `;
 const ShopProduct = (props) => {
-  const { loading, error, keyword, products, page, pages } = props;
+  const { loading, error, activeProducts } = props;
   const toast = useToast();
   const dispatch = useDispatch();
   return (
     <main className="col-md-9">
       <header className="border-bottom mb-4 pb-3 mt-4">
         <Flex align="center" textAlign="center" justify="end" gap={5}>
-          <Text className="mr-md-auto ">{products.length} Items found</Text>
+          <Text className="mr-md-auto ">
+            {activeProducts.length} Items found
+          </Text>
           <Select size="md" maxW={{ base: "sm", md: "md", lg: "3xs" }}>
             <option>Latest items</option>
             <option>Trending</option>
@@ -65,7 +66,7 @@ const ShopProduct = (props) => {
       ) : (
         <>
           <div className="row">
-            {products.map((item) => (
+            {activeProducts.map((item) => (
               <div className="col-sm-6 col-md-6 col-lg-4" key={item._id}>
                 <figure className="card card-product-grid">
                   <Badge backgroundColor="red" color="white" className="badge">
@@ -109,11 +110,6 @@ const ShopProduct = (props) => {
               </div>
             ))}
           </div>
-          <Pagination
-            page={page}
-            pages={pages}
-            keyword={keyword ? keyword : ""}
-          />
         </>
       )}
     </main>

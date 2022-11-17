@@ -7,12 +7,18 @@ import {
   RangeSliderFilledTrack,
   RangeSliderThumb,
   RangeSliderTrack,
+  Select,
   Stack,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { categoryListAllAction } from "../../redux/actions/CategoryAction";
+import { getFilteredProducts } from "../../redux/actions/ProductAction";
+import CheckboxCategoryFilter from "./Checkbox";
+import { prices } from "./PriceChart";
+import RadioBox from "./RadioBox";
 const ApplyButton = styled.button`
   width: 100%;
   padding: 10px;
@@ -24,20 +30,94 @@ const ApplyButton = styled.button`
   margin-top: 15px;
 `;
 const ShopFilter = (props) => {
-  const { products, categories } = props;
-  // eslint-disable-next-line
-  const [isSelected, setIsSelected] = useState({});
+  const { products } = props;
+  const dispatch = useDispatch();
+  const [myFilters, setMyFilters] = useState({
+    filters: { category: [], price: [] },
+  });
+  const [limit, setLimit] = useState(100);
+  const [skip, setSkip] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [activePage, setActivePage] = useState(1);
+  const categoryList = useSelector((state) => state.categoryList);
+  const { categories } = categoryList;
+  const size = products.length;
+  const init = () => {
+    dispatch(categoryListAllAction());
+  };
+  const loadFilteredResults = (newFilters) => {
+    dispatch(getFilteredProducts(skip, limit, newFilters));
+    setActivePage(1);
+  };
+
+  const handleFilters = (filters, filterBy) => {
+    const newFilters = { ...myFilters };
+    newFilters.filters[filterBy] = filters;
+
+    if (filterBy === "price") {
+      let priceValues = handlePrice(filters);
+      newFilters.filters[filterBy] = priceValues;
+    }
+    loadFilteredResults(skip, limit, myFilters.filters);
+    setMyFilters(newFilters);
+  };
+
+  const handlePrice = (value) => {
+    const data = prices;
+    let array = [];
+
+    for (let key in data) {
+      if (data[key]._id === parseInt(value)) {
+        array = data[key].array;
+      }
+    }
+    return array;
+  };
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
+  };
+  const totalItems = products.length;
+  let activeProducts = products.slice(
+    itemsPerPage * activePage - itemsPerPage,
+    itemsPerPage * activePage
+  );
+
+  const onChange = (e) => {
+    setItemsPerPage(e.target.value);
+  };
   useEffect(() => {
-    const isSelected = {};
-
-    const categoryNames = products.map((item) => item.category.name);
-    categoryNames.map((item) => (isSelected[item] = false));
-    setIsSelected(isSelected);
-  }, [products]);
-
+    init();
+    loadFilteredResults(skip, limit, myFilters.filters);
+  }, []);
   return (
     <aside className="col-md-3">
       <Box className="card border-0">
+        <article className="filter-group accordion-item">
+          <header className="accordion-header" id="headingFour">
+            <Heading
+              as="h5"
+              size="sm"
+              className="accordion-button title"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseFour"
+              aria-expanded="true"
+              aria-controls="collapseFour"
+            >
+              Sản phẩm mỗi trang
+            </Heading>
+          </header>
+          <div className="filter-content collapse show" id="collapseFour">
+            <div className="card-body">
+              <Select onChange={onChange}>
+                <option value={6}>6</option>
+                <option value={9}>9</option>
+                <option value={12}>12</option>
+              </Select>
+            </div>
+          </div>
+        </article>
+
         <article className="filter-group accordion-item">
           <header className=" accordion-header" id="headingOne">
             <Heading
@@ -96,24 +176,10 @@ const ShopFilter = (props) => {
           </header>
           <div className="filter-content collapse show" id="collapseTwo">
             <ul className="list-group p-1">
-              {categories.map((item) => (
-                <li
-                  key={item._id}
-                  className="list-item d-flex align-items-center justify-content-between"
-                >
-                  <label className="list-group-item">
-                    <input
-                      className="form-check-input me-3"
-                      type="checkbox"
-                      onChange={(e) =>
-                        setIsSelected(console.log(e.target.value))
-                      }
-                    />
-                    {item.name}
-                  </label>
-                  <Badge className="px-3">{categories.length}</Badge>
-                </li>
-              ))}
+              <CheckboxCategoryFilter
+                categories={categories}
+                handleFilters={(filters) => handleFilters(filters, "category")}
+              />
             </ul>
           </div>
         </article>
@@ -134,103 +200,10 @@ const ShopFilter = (props) => {
           </header>
           <div className="filter-content collapse show" id="collapseThree">
             <div className="card-body">
-              <RangeSlider
-                // eslint-disable-next-line
-                aria-label={["min", "max"]}
-                defaultValue={[10, 30]}
-              >
-                <RangeSliderTrack>
-                  <RangeSliderFilledTrack />
-                </RangeSliderTrack>
-                <RangeSliderThumb index={0} />
-                <RangeSliderThumb index={1} />
-              </RangeSlider>
-              <div className="row">
-                <div className="col col-md-6 col-lg-6">
-                  <label>Nhỏ nhất</label>
-                  <input
-                    className="form-control"
-                    placeholder="$0"
-                    type="number"
-                  />
-                </div>
-                <div className="col  text-right col-md-6 col-lg-6">
-                  <label>Cao nhất</label>
-                  <input
-                    className="form-control"
-                    placeholder="$1,00"
-                    type="number"
-                  />
-                </div>
-              </div>
-              <ApplyButton type="submit">Tìm kiếm</ApplyButton>
-            </div>
-          </div>
-        </article>
-        <article className="filter-group accordion-item">
-          <header className=" accordion-header" id="headingFour">
-            <Heading
-              as="h5"
-              size="sm"
-              className="accordion-button title"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseFour"
-              aria-expanded="true"
-              aria-controls="collapseFour"
-            >
-              Kích thước
-            </Heading>
-          </header>
-          <div className="filter-content collapse show" id="collapseFour">
-            <div className="card-body">
-              <label className="checkbox-btn">
-                <input type="checkbox" />
-                <span className="btn btn-light m-lg-1"> XS </span>
-              </label>
-              <label className="checkbox-btn">
-                <input type="checkbox" />
-                <span className="btn btn-light m-lg-1"> SM </span>
-              </label>
-              <label className="checkbox-btn">
-                <input type="checkbox" />
-                <span className="btn btn-light m-lg-1"> LG </span>
-              </label>
-              <label className="checkbox-btn">
-                <input type="checkbox" />
-                <span className="btn btn-light m-lg-1">XXL</span>
-              </label>
-            </div>
-          </div>
-        </article>
-        <article className="filter-group accordion-item">
-          <header className="accordion-header" id="headingFive">
-            <Heading
-              as="h5"
-              size="sm"
-              className="accordion-button title"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseFive"
-              aria-expanded="true"
-              aria-controls="collapseFive"
-            >
-              Lọc điều kiện khác
-            </Heading>
-          </header>
-          <div className="filter-content collapse in" id="collapseFive">
-            <div className="card-body">
-              <Stack spacing={[1, 5]} direction={["row", "column"]}>
-                <Checkbox size="md" colorScheme="gray">
-                  New items
-                </Checkbox>
-                <Checkbox size="md" colorScheme="gray">
-                  Old Items
-                </Checkbox>
-                <Checkbox size="md" colorScheme="gray">
-                  Other conditions
-                </Checkbox>
-              </Stack>
+              <RadioBox
+                prices={prices}
+                handleFilters={(filters) => handleFilters(filters, "price")}
+              />
             </div>
           </div>
         </article>

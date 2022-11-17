@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
+  filterListReducer,
   productCreateReviewReducer,
   productDetailReducer,
   productListReducer,
@@ -28,6 +29,7 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailReducer,
   productCreateReview: productCreateReviewReducer,
+  productFilter: filterListReducer,
   // CART
   cart: cartReducer,
   // USERS
