@@ -35,7 +35,7 @@ export const productListReducer = (state = stateDefault, action) => {
     case PRODUCT_LIST_SUCCESS:
       return {
         loading: false,
-        products: action.payload.products,
+        products: action.payload,
       };
     case PRODUCT_LIST_FAIL:
       return {
@@ -103,7 +103,6 @@ export const filterListReducer = (state = stateDefault, action) => {
       };
     case FILTER_LIST_SUCCESS:
       return {
-        ...state,
         loading: false,
         products: action.payload,
       };

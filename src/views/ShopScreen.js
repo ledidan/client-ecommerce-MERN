@@ -27,7 +27,6 @@ const ShopScreen = ({ match }) => {
   const [skip, setSkip] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [activePage, setActivePage] = useState(1);
-  const size = products.length;
   const init = () => {
     dispatch(categoryListAllAction());
   };
@@ -247,15 +246,17 @@ const ShopScreen = ({ match }) => {
               activeProducts={activeProducts}
               error={error}
             />
+            <Pagination
+              activePage={activePage}
+              itemsCountPerPage={itemsPerPage || 1}
+              totalItemsCount={totalItems}
+              pageRangeDisplayed={5}
+              onChange={handlePageChange}
+              innerClass="pagination justify-content-center"
+              itemClass="page-item "
+              linkClass="page-link"
+            />
           </div>
-
-          <Pagination
-            activePage={activePage}
-            itemsCountPerPage={itemsPerPage || 0}
-            totalItemsCount={totalItems}
-            pageRangeDisplayed={5}
-            onChange={handlePageChange}
-          />
         </div>
       </section>
     </>

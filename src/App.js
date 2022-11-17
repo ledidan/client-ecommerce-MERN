@@ -32,7 +32,7 @@ const App = () => {
       <Router>
         <Switch>
           <HomeRouter path="/" component={HomeScreen} exact />
-          <HomeRouter path="/search/:keyword" component={ShopScreen} exact />
+          <HomeRouter path="/shop" component={ShopScreen} />
           <HomeRouter path="/products/:id" component={SingleProduct} />
           <HomeRouter path="/login" component={LoginMain} />
           <HomeRouter path="/register" component={SignUp} />
@@ -44,10 +44,8 @@ const App = () => {
           <HomeRouter path="/cartitem" component={CartItem} />
           <PrivateRouter path="/dat-hang" component={PlaceOrder} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
-          <HomeRouter path="/shop" component={ShopScreen} />
-          <HomeRouter path="/shop/:category" component={ShopScreen} />
           <HomeRouter
-            path="/search/:keyword/:category/shop"
+            path="/search/:category/:keyword"
             component={ShopScreen}
           />
           <HomeRouter path="*" component={ShopScreen} />

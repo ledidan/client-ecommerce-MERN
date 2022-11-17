@@ -11,9 +11,9 @@ export const categoryListAllAction = () => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_LIST_REQUEST });
 
-    const { data } = await axios.get(`${URL}/api/v1/categories`);
+    const data = await axios.get(`${URL}/api/v1/categories`);
 
-    dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data });
+    dispatch({ type: CATEGORY_LIST_SUCCESS, payload: data.data });
   } catch (error) {
     const message =
       error.response && error.response.data.message
