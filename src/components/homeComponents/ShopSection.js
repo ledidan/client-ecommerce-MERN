@@ -47,7 +47,7 @@ const ShopSection = () => {
                   <Message variant="alert-danger">{error}</Message>
                 ) : (
                   <>
-                    {products.map((product) => (
+                    {products.slice(0, 9).map((product) => (
                       <Box
                         className="shop col-lg-4 col-md-6 col-sm-6"
                         key={product._id}
