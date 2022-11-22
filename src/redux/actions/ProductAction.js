@@ -18,12 +18,12 @@ import { logout } from "./UserAction";
 
 // [GET] ALL PRODUCT
 export const listProduct =
-  (keyword = " ", category = "") =>
+  (keyword = "", category = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       const { data } = await axios.get(
-        `${URL}/api/v1/products?&keyword=${keyword}&category=${category}`
+        `${URL}/api/v1/products?keyword=${keyword}&category=${category}`
       );
 
       dispatch({

@@ -14,11 +14,12 @@ import RadioBox from "../components/Shop/RadioBox";
 
 const ShopScreen = ({ match }) => {
   const keyword = match.params.keyword;
-  const category = match.params.category ? match.params.category : "";
+  const category = match.params.category;
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
+
   const { loading, error, products } = productList;
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] },
