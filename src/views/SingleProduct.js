@@ -191,7 +191,7 @@ const SingleProduct = ({ match }) => {
           </Center>
           <div className="marquee">
             <div className="maylike-products-container track">
-              {products.slice(0, 5).map((item) => (
+              {products.map((item) => (
                 <PreferProduct key={item._id} productPrefer={item} />
               ))}
             </div>

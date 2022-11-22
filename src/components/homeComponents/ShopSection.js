@@ -47,50 +47,52 @@ const ShopSection = () => {
                   <Message variant="alert-danger">{error}</Message>
                 ) : (
                   <>
-                    {products.slice(0, 9).map((product) => (
-                      <Box
-                        className="shop col-lg-4 col-md-6 col-sm-6"
-                        key={product._id}
-                      >
-                        <div className="border-product">
-                          <Link to={`/products/${product._id}`}>
-                            <div className="shopBack">
-                              <Image src={product.image} alt={product.name} />
-                            </div>
-                          </Link>
-                          <div className="shopText">
-                            <Text fontSize="xl" isTruncated>
-                              <Link to={`/products/${product._id}`}>
-                                {product.name}
-                              </Link>
-                            </Text>
-                            <Rating
-                              value={product.rating}
-                              text={`${product.numReviews} reviews`}
-                            />
-                            <Flex align="center">
-                              <Heading as="h4" size="sm">
-                                ${product.price}
-                              </Heading>
-                              <Spacer />
-                            </Flex>
+                    {products.map((product, i) => {
+                      return i < 5 ? (
+                        <Box
+                          className="shop col-lg-4 col-md-6 col-sm-6"
+                          key={i}
+                        >
+                          <div className="border-product">
                             <Link to={`/products/${product._id}`}>
-                              <Flex align="center">
-                                <Text
-                                  fontSize="sm"
-                                  color="blue.500"
-                                  px={1}
-                                  py={2}
-                                >
-                                  Xem sản phẩm
-                                </Text>
-                                <BsArrowRight color="#3182ce" />
-                              </Flex>
+                              <div className="shopBack">
+                                <Image src={product.image} alt={product.name} />
+                              </div>
                             </Link>
+                            <div className="shopText">
+                              <Text fontSize="xl" isTruncated>
+                                <Link to={`/products/${product._id}`}>
+                                  {product.name}
+                                </Link>
+                              </Text>
+                              <Rating
+                                value={product.rating}
+                                text={`${product.numReviews} reviews`}
+                              />
+                              <Flex align="center">
+                                <Heading as="h4" size="sm">
+                                  ${product.price}
+                                </Heading>
+                                <Spacer />
+                              </Flex>
+                              <Link to={`/products/${product._id}`}>
+                                <Flex align="center">
+                                  <Text
+                                    fontSize="sm"
+                                    color="blue.500"
+                                    px={1}
+                                    py={2}
+                                  >
+                                    Xem sản phẩm
+                                  </Text>
+                                  <BsArrowRight color="#3182ce" />
+                                </Flex>
+                              </Link>
+                            </div>
                           </div>
-                        </div>
-                      </Box>
-                    ))}
+                        </Box>
+                      ) : null;
+                    })}
                   </>
                 )}
               </div>
