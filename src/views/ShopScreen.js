@@ -12,11 +12,9 @@ import { prices } from "../components/Shop/PriceChart";
 import { Box, Heading, Select, Stack } from "@chakra-ui/react";
 import RadioBox from "../components/Shop/RadioBox";
 
-const ShopScreen = ({ match }) => {
-  const keyword = match.params.keyword;
-  const category = match.params.category;
+const ShopScreen = () => {
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.productFilter);
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
 
@@ -28,10 +26,11 @@ const ShopScreen = ({ match }) => {
   const [skip, setSkip] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [activePage, setActivePage] = useState(1);
-  const size = products.length;
+
   const init = () => {
     dispatch(categoryListAllAction());
   };
+
   const loadFilteredResults = (newFilters) => {
     dispatch(getFilteredProducts(skip, limit, newFilters));
     setActivePage(1);
@@ -45,7 +44,7 @@ const ShopScreen = ({ match }) => {
       let priceValues = handlePrice(filters);
       newFilters.filters[filterBy] = priceValues;
     }
-    loadFilteredResults(skip, limit, myFilters.filters);
+    loadFilteredResults(myFilters.filters);
     setMyFilters(newFilters);
   };
 
@@ -73,9 +72,7 @@ const ShopScreen = ({ match }) => {
     setItemsPerPage(e.target.value);
   };
   useEffect(() => {
-    dispatch(listProduct(keyword));
     init();
-    dispatch(categoryListAllAction(category));
     loadFilteredResults(skip, limit, myFilters.filters);
   }, []);
 
@@ -250,7 +247,7 @@ const ShopScreen = ({ match }) => {
             />
             <Pagination
               activePage={activePage}
-              itemsCountPerPage={itemsPerPage || 0}
+              itemsCountPerPage={itemsPerPage}
               totalItemsCount={totalItems}
               pageRangeDisplayed={5}
               innerClass="pagination justify-content-center"
