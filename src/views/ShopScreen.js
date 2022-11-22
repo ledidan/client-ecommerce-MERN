@@ -170,7 +170,7 @@ const ShopScreen = ({ match }) => {
                         </div>
                       </form>
                       <ul className="list-menu">
-                        {products.map((product) => (
+                        {products.slice(0, 6).map((product) => (
                           <li key={product._id}>
                             <Link to={`/products/${product._id}`}>
                               {product.name}
@@ -247,15 +247,17 @@ const ShopScreen = ({ match }) => {
               activeProducts={activeProducts}
               error={error}
             />
+            <Pagination
+              activePage={activePage}
+              itemsCountPerPage={itemsPerPage || 0}
+              totalItemsCount={totalItems}
+              pageRangeDisplayed={5}
+              innerClass="pagination justify-content-center"
+              itemClass="page-item"
+              linkClass="page-link"
+              onChange={handlePageChange}
+            />
           </div>
-
-          <Pagination
-            activePage={activePage}
-            itemsCountPerPage={itemsPerPage || 0}
-            totalItemsCount={totalItems}
-            pageRangeDisplayed={5}
-            onChange={handlePageChange}
-          />
         </div>
       </section>
     </>
