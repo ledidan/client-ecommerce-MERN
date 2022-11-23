@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listProduct } from "../redux/actions/ProductAction";
 import { categoryListAllAction } from "../redux/actions/CategoryAction";
 import ShopProduct from "../components/Shop/ShopProduct";
-// import Pagination from "../components/homeComponents/pagination";
 import Pagination from "react-js-pagination";
 import { getFilteredProducts } from ".././redux/actions/ProductAction";
 import CheckboxCategoryFilter from "../components/Shop/Checkbox";
@@ -22,11 +20,14 @@ const ShopScreen = () => {
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] },
   });
+  // eslint-disable-next-line
   const [limit, setLimit] = useState(100);
+  // eslint-disable-next-line
   const [skip, setSkip] = useState(0);
+
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [activePage, setActivePage] = useState(1);
-
+  // eslint-disable-next-line
   const init = () => {
     dispatch(categoryListAllAction());
   };
@@ -74,6 +75,7 @@ const ShopScreen = () => {
   useEffect(() => {
     init();
     loadFilteredResults(skip, limit, myFilters.filters);
+    // eslint-disable-next-line
   }, []);
 
   return (

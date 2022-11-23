@@ -4,13 +4,10 @@ import "./responsive.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import HomeScreen from "./views/HomeScreen";
 import SingleProduct from "./views/SingleProduct";
-import Login from "./views/Login";
-import Register from "./views/Register";
 import CartScreen from "./views/CartScreen";
 import ShippingScreen from "./views/ShippingScreen";
 import ProfileScreen from "./views/ProfileScreen";
 import PaymentScreen from "./views/PaymentScreen";
-// import OrderScreen from "./views/OrderScreen";
 import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
 // Chakra Font CSS
