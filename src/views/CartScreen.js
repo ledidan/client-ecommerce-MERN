@@ -6,7 +6,6 @@ import { Container, Flex, Heading, Image, Link, Stack } from "@chakra-ui/react";
 import { IoReturnDownBackOutline } from "react-icons/io5";
 const CartScreen = ({ match, location, history }) => {
   // keep window screen always top
-  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const productId = match.params.id;
   // Finding URL contain " = "

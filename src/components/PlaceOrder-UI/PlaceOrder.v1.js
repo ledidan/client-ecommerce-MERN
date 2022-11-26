@@ -17,7 +17,6 @@ import Message from "../LoadingError/Error";
 import { ORDER_CREATE_RESET } from "../../redux/constants/OrderConstants";
 import { createOrder } from "../../redux/actions/OrderAction";
 const PlaceOrder = ({ history }) => {
-  window.scrollTo(0, 0);
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
