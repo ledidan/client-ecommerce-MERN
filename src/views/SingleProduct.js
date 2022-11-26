@@ -27,7 +27,6 @@ import RatingDetail from "../components/ProductDetail/RatingDetail";
 import PreferProduct from "../components/ProductDetail/PreferProduct";
 import { Link } from "react-router-dom";
 const SingleProduct = ({ match }) => {
-  window.scrollTo(0, 0);
   // Set up Hooks State
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);

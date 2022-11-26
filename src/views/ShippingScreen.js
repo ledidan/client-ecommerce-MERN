@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../redux/actions/CartAction";
 const ShippingScreen = ({ history }) => {
-  window.scrollTo(0, 0);
-
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 

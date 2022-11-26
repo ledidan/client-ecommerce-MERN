@@ -7,7 +7,6 @@ import Loading from "../components/LoadingError/Loading";
 
 import { Flex, Heading, Text, useToast } from "@chakra-ui/react";
 const Login = ({ location, history }) => {
-  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
