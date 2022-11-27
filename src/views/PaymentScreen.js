@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { savePaymentMethod } from "../redux/actions/CartAction";
 
 const PaymentScreen = ({ history }) => {
-  window.scrollTo(0, 0);
-
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
 

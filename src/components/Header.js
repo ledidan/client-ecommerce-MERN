@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import MobileHeader from "./Layout/MobileHeader";

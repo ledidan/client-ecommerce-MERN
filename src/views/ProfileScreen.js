@@ -16,8 +16,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 const ProfileScreen = () => {
-  window.scrollTo(0, 0);
-
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);

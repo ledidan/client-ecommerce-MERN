@@ -27,7 +27,6 @@ import Loading from "../../components/LoadingError/Loading";
 import { Link } from "react-router-dom";
 
 const LoginMain = ({ location, history }) => {
-  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

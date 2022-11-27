@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import Message from "../components/LoadingError/Error";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 const Register = ({ location, history }) => {
-  window.scrollTo(0, 0);
   const ToastObjects = {
     pauseOnFocusLoss: false,
     draggable: false,

@@ -25,7 +25,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import Message from "../../components/LoadingError/Error";
 const SignUp = ({ location, history }) => {
-  window.scrollTo(0, 0);
   const ToastObjects = {
     pauseOnFocusLoss: false,
     draggable: false,

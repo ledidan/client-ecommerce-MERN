@@ -4,13 +4,10 @@ import "./responsive.css";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import HomeScreen from "./views/HomeScreen";
 import SingleProduct from "./views/SingleProduct";
-import Login from "./views/Login";
-import Register from "./views/Register";
 import CartScreen from "./views/CartScreen";
 import ShippingScreen from "./views/ShippingScreen";
 import ProfileScreen from "./views/ProfileScreen";
 import PaymentScreen from "./views/PaymentScreen";
-// import OrderScreen from "./views/OrderScreen";
 import PrivateRouter from "./routes/PrivateRouter";
 import { ChakraProvider } from "@chakra-ui/react";
 // Chakra Font CSS
@@ -32,6 +29,7 @@ const App = () => {
       <Router>
         <Switch>
           <HomeRouter path="/" component={HomeScreen} exact />
+          <HomeRouter path="/shop/:category" component={ShopScreen} />
           <HomeRouter path="/shop" component={ShopScreen} />
           <HomeRouter path="/products/:id" component={SingleProduct} />
           <HomeRouter path="/login" component={LoginMain} />
@@ -44,10 +42,6 @@ const App = () => {
           <HomeRouter path="/cartitem" component={CartItem} />
           <PrivateRouter path="/dat-hang" component={PlaceOrder} />
           <PrivateRouter path="/order/:id" component={OrderScreen} />
-          <HomeRouter
-            path="/search/:category/:keyword"
-            component={ShopScreen}
-          />
           <HomeRouter path="*" component={ShopScreen} />
         </Switch>
       </Router>

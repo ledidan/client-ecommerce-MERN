@@ -11,6 +11,7 @@ import { USER_LOGIN_SUCCESS } from "../redux/constants/UserContants";
 import axios from "axios";
 const HomeScreen = () => {
   // window.scrollTo(0, 0);
+
   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
 
@@ -36,7 +37,9 @@ const HomeScreen = () => {
   };
   useEffect(() => {
     getUser();
-  }, []);
+    // eslint-disable-next-line
+  }, [getUser()]);
+
   console.log(user);
   return (
     <Flex direction="column" flex="1">

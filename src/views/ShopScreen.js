@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { listProduct } from "../redux/actions/ProductAction";
 import { categoryListAllAction } from "../redux/actions/CategoryAction";
 import ShopProduct from "../components/Shop/ShopProduct";
-// import Pagination from "../components/homeComponents/pagination";
 import Pagination from "react-js-pagination";
 import { getFilteredProducts } from ".././redux/actions/ProductAction";
 import CheckboxCategoryFilter from "../components/Shop/Checkbox";
@@ -12,24 +10,28 @@ import { prices } from "../components/Shop/PriceChart";
 import { Box, Heading, Select, Stack } from "@chakra-ui/react";
 import RadioBox from "../components/Shop/RadioBox";
 
-const ShopScreen = ({ match }) => {
-  const keyword = match.params.keyword;
-  const category = match.params.category ? match.params.category : "";
+const ShopScreen = () => {
   const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.productFilter);
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
+
   const { loading, error, products } = productList;
   const [myFilters, setMyFilters] = useState({
     filters: { category: [], price: [] },
   });
+  // eslint-disable-next-line
   const [limit, setLimit] = useState(100);
+  // eslint-disable-next-line
   const [skip, setSkip] = useState(0);
+
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [activePage, setActivePage] = useState(1);
+  // eslint-disable-next-line
   const init = () => {
     dispatch(categoryListAllAction());
   };
+
   const loadFilteredResults = (newFilters) => {
     dispatch(getFilteredProducts(skip, limit, newFilters));
     setActivePage(1);
@@ -43,7 +45,7 @@ const ShopScreen = ({ match }) => {
       let priceValues = handlePrice(filters);
       newFilters.filters[filterBy] = priceValues;
     }
-    loadFilteredResults(skip, limit, myFilters.filters);
+    loadFilteredResults(myFilters.filters);
     setMyFilters(newFilters);
   };
 
@@ -71,10 +73,9 @@ const ShopScreen = ({ match }) => {
     setItemsPerPage(e.target.value);
   };
   useEffect(() => {
-    dispatch(listProduct(keyword));
     init();
-    dispatch(categoryListAllAction(category));
     loadFilteredResults(skip, limit, myFilters.filters);
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -169,7 +170,7 @@ const ShopScreen = ({ match }) => {
                         </div>
                       </form>
                       <ul className="list-menu">
-                        {products.map((product) => (
+                        {products.slice(0, 6).map((product) => (
                           <li key={product._id}>
                             <Link to={`/products/${product._id}`}>
                               {product.name}
@@ -248,13 +249,13 @@ const ShopScreen = ({ match }) => {
             />
             <Pagination
               activePage={activePage}
-              itemsCountPerPage={itemsPerPage || 1}
+              itemsCountPerPage={itemsPerPage}
               totalItemsCount={totalItems}
               pageRangeDisplayed={5}
-              onChange={handlePageChange}
               innerClass="pagination justify-content-center"
-              itemClass="page-item "
+              itemClass="page-item"
               linkClass="page-link"
+              onChange={handlePageChange}
             />
           </div>
         </div>

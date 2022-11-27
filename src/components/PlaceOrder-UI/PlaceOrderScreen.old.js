@@ -6,7 +6,6 @@ import { ORDER_CREATE_RESET } from "../../redux/constants/OrderConstants";
 import { createOrder } from "../../redux/actions/OrderAction";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
 const PlaceOrderScreen = ({ history }) => {
-  window.scrollTo(0, 0);
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);

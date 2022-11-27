@@ -27,7 +27,6 @@ import RatingDetail from "../components/ProductDetail/RatingDetail";
 import PreferProduct from "../components/ProductDetail/PreferProduct";
 import { Link } from "react-router-dom";
 const SingleProduct = ({ match }) => {
-  window.scrollTo(0, 0);
   // Set up Hooks State
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -191,7 +190,7 @@ const SingleProduct = ({ match }) => {
           </Center>
           <div className="marquee">
             <div className="maylike-products-container track">
-              {products.map((item) => (
+              {products.slice(0, 6).map((item) => (
                 <PreferProduct key={item._id} productPrefer={item} />
               ))}
             </div>
