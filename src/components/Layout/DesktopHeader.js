@@ -59,7 +59,7 @@ const DesktopHeader = (props) => {
                   className="nav-link dropdown-toggle name-button text-dark"
                   data-bs-toggle="dropdown"
                 >
-                  Chào,{" "}
+                  Hi,{" "}
                   {userInfo.isAdmin
                     ? `Admin ${userInfo.name}`
                     : `${userInfo.name}`}
@@ -67,7 +67,7 @@ const DesktopHeader = (props) => {
                 <ul className="dropdown-menu">
                   <li>
                     <Link className="dropdown-item" to="/profile">
-                      Tài khoản
+                      Profile
                     </Link>
                   </li>
                   <li>
@@ -76,7 +76,7 @@ const DesktopHeader = (props) => {
                       to="#"
                       onClick={logoutHandler}
                     >
-                      Thoát
+                      Sign out
                     </Link>
                   </li>
                 </ul>

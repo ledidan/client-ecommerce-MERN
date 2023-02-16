@@ -88,8 +88,8 @@ const OrderScreen = ({ match }) => {
     if (successDelete) {
       history.push("/cart");
       toast({
-        title: "Xoá đơn hàng thành công",
-        description: `Bạn đã xoá đơn hàng ID: ${order._id} thành công !!`,
+        title: "Order successfully deleted",
+        description: `You have successfully deleted ID: ${order._id} !!`,
         status: "success",
         position: "top-right",
         duration: 3000,

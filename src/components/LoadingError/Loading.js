@@ -6,7 +6,7 @@ export default function Loading() {
     <VStack className="justify-content-center">
       <Spinner />
       <Heading as="h4" size="md">
-        Đang tải...
+        Loading...
       </Heading>
     </VStack>
   );

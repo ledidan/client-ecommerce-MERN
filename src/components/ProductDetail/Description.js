@@ -36,7 +36,7 @@ const Description = (props) => {
           <Heading as="h3" size="18px">
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                Chính sách shipping và đổi trả
+                Shipping and return policy
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -47,7 +47,7 @@ const Description = (props) => {
                 <Flex align="center" className="my-2">
                   <BiPackage fontSize="22px" className="mx-2" color="gray.50" />
                   <Text fontSize="18px" color="gray.600" fontWeight="200">
-                    Miễn phí giao hàng & đổi trả
+                    Free Shipping & Returns
                   </Text>
                 </Flex>
                 <Flex align="center" className="my-2">
@@ -57,7 +57,7 @@ const Description = (props) => {
                     color="gray.50"
                   />
                   <Text fontSize="18px" color="gray.600" fontWeight="200">
-                    Bảo hành 12 tháng
+                    Warranty 12 months
                   </Text>
                 </Flex>
                 <Flex align="center" className="my-2">
@@ -67,7 +67,7 @@ const Description = (props) => {
                     color="gray.50"
                   />
                   <Text fontSize="18px" color="gray.600" fontWeight="200">
-                    Hỗ trợ 24/7
+                    Support 24/7
                   </Text>
                 </Flex>
               </VStack>

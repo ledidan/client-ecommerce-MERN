@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FiMenu } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -69,7 +69,13 @@ const Navbar = () => {
               <Flex justify="space-between" flex="1">
                 <ButtonGroup variant="link" spacing="8">
                   {navMenu.map((item) => (
-                    <Link to={`${item.url}`}>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "link-active" : "link-header"
+                      }
+                      exact
+                      to={`${item.url}`}
+                    >
                       <Text
                         fontSize="15px"
                         fontWeight="600"
@@ -77,7 +83,7 @@ const Navbar = () => {
                       >
                         {item.title}
                       </Text>
-                    </Link>
+                    </NavLink>
                   ))}
                 </ButtonGroup>
               </Flex>

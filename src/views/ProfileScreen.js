@@ -68,7 +68,7 @@ const ProfileScreen = () => {
                     aria-controls="v-pills-home"
                     aria-selected="true"
                   >
-                    Cài đặt tài khoản
+                    Profile Setting
                   </Button>
                   <Button
                     className="nav-link d-flex justify-content-between"
@@ -80,7 +80,7 @@ const ProfileScreen = () => {
                     aria-controls="v-pills-profile"
                     aria-selected="false"
                   >
-                    Danh sách đơn hàng
+                    Orders List
                     <span className="badge2">{orders ? orders.length : 0}</span>
                   </Button>
                   {!!userInfo.isAdmin && (
@@ -89,7 +89,7 @@ const ProfileScreen = () => {
                         href="https://admin-ecommerce-mern.vercel.app"
                         isExternal
                       >
-                        Trang quản lý Admin
+                        Go to admin dashboard
                       </Link>
                     </Button>
                   )}

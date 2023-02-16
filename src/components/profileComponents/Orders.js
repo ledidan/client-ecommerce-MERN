@@ -41,9 +41,9 @@ const Orders = (props) => {
                 <Thead>
                   <Tr>
                     <Th>ID</Th>
-                    <Th>TRẠNG THÁI</Th>
-                    <Th>NGÀY</Th>
-                    <Th>TỔNG TIỀN</Th>
+                    <Th>STATUS</Th>
+                    <Th>DATE</Th>
+                    <Th>TOTAL</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -57,11 +57,11 @@ const Orders = (props) => {
                       <Td>
                         {order.isPaid ? (
                           <Badge variant="solid" colorScheme="green">
-                            Đã thanh toán
+                            Paid
                           </Badge>
                         ) : (
                           <Badge variant="solid" colorScheme="red">
-                            Chưa thanh toán
+                            Not Paid
                           </Badge>
                         )}
                       </Td>

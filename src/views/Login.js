@@ -22,7 +22,7 @@ const Login = ({ location, history }) => {
       history.push(redirect);
 
       toast({
-        title: `Xác minh tài khoản thành công!`,
+        title: `Account verified successfully!`,
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -72,7 +72,7 @@ const Login = ({ location, history }) => {
               to={redirect ? `/register?redirect=${redirect}` : "/register"}
             >
               {" "}
-              Tạo tài khoản
+              Create an account
             </Link>
           </Text>
         </form>

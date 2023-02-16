@@ -40,7 +40,7 @@ const LoginMain = ({ location, history }) => {
     if (userInfo) {
       history.push(redirect);
       toast({
-        title: `Xác minh tài khoản thành công!`,
+        title: `Account verified successfully`,
         status: "success",
         duration: 3000,
         isClosable: true,
