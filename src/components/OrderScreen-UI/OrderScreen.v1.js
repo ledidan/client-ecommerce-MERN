@@ -117,12 +117,12 @@ const OrderScreen = ({ match }) => {
         <AlertDialogOverlay>
           <AlertDialogContent>
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Xoá đơn hàng ?
+              Canceled Order
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              Bạn có chắc chắn muốn xoá đơn hàng ? Hành động này sẽ không thể
-              hoãn lại được!!
+              Are you sure to delete this order, it's cannot be undo your action
+              ?
             </AlertDialogBody>
 
             <AlertDialogFooter>
@@ -134,7 +134,7 @@ const OrderScreen = ({ match }) => {
                 onClick={(onClose, deleteHandler)}
                 ml={3}
               >
-                Xoá
+                Remove
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>

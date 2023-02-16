@@ -78,7 +78,7 @@ const PlaceOrder = ({ history }) => {
           <div className="col-md-10">
             <div className="order-id-content">
               <Heading as="h4" size="lg" className="order-id">
-                Đặt Hàng
+                Place Order
               </Heading>
               {/* <ul className="order-meta">
                 <li>
@@ -99,7 +99,7 @@ const PlaceOrder = ({ history }) => {
           <div className="col-md-10">
             <div className="row">
               {cart.cartItems.length === 0 ? (
-                <Message variant="alert-info mt-5">Giỏ hàng trống</Message>
+                <Message variant="alert-info mt-5">Your cart is empty</Message>
               ) : (
                 <>
                   <div className="col-md-7">
@@ -160,27 +160,27 @@ const PlaceOrder = ({ history }) => {
                       </div>
                       <div className="order-product-total">
                         <div className="sub-total">
-                          <Text className="value">Tiền hàng:</Text>
+                          <Text className="value">Subtotal:</Text>
                           <Text className="price">${cart.itemsPrice}</Text>
                         </div>
                         <div className="sub-total">
-                          <Text className="value">Phí ship (+):</Text>
+                          <Text className="value">Shipping (+):</Text>
                           <Text className="price">${cart.shippingPrice}</Text>
                         </div>
                         <div className="sub-total">
-                          <Text className="value">Phí thuế (+):</Text>
+                          <Text className="value">Tax (+):</Text>
                           <Text className="price">${cart.taxPrice}</Text>
                         </div>
                       </div>
                       <div className="payable-total">
-                        <Text className="value">Tổng tiền:</Text>
+                        <Text className="value">Total:</Text>
                         <Text className="price">${cart.totalPrice}</Text>
                       </div>
                       <Flex className="card-body border-top" justify="end">
                         {cart.cartItems.length === 0 ? null : (
                           <button type="submit" onClick={placeOrderHandler}>
                             <Link className="text-light btn btn-dark">
-                              Xác nhận đơn hàng
+                              Confirm order
                             </Link>
                           </button>
                         )}
@@ -233,7 +233,7 @@ const PlaceOrder = ({ history }) => {
                     <Stack className="single-order-details mt-2">
                       <div className="order-title mt-4">
                         <Heading as="h5" size="md" className="title">
-                          Thông tin cá nhân
+                          Personal Information
                         </Heading>
                       </div>
                       <Stack className="order-details-content">
@@ -243,7 +243,7 @@ const PlaceOrder = ({ history }) => {
                         >
                           <div className="details-title">
                             <Heading as="h6" size="xs">
-                              Tên:
+                              Name:
                             </Heading>
                           </div>
                           <div className="details-content">
@@ -282,7 +282,7 @@ const PlaceOrder = ({ history }) => {
                         >
                           <div className="details-title">
                             <Heading as="h6" size="xs">
-                              Địa chỉ:
+                              Address:
                             </Heading>
                           </div>
                           <div className="details-content">
@@ -298,7 +298,7 @@ const PlaceOrder = ({ history }) => {
                     <Stack className="single-order-details mt-4">
                       <Box className="order-title">
                         <Heading as="h5" size="md" className="title">
-                          Địa chỉ người nhận
+                          Recipient Address
                         </Heading>
                       </Box>
                       <Stack className="order-details-content">
@@ -308,7 +308,7 @@ const PlaceOrder = ({ history }) => {
                         >
                           <Box className="details-title">
                             <Heading as="h6" size="xs" className="title">
-                              Tên người nhận:
+                              Recipient name:
                             </Heading>
                           </Box>
                           <Box className="details-content">
@@ -347,7 +347,7 @@ const PlaceOrder = ({ history }) => {
                         >
                           <div className="details-title">
                             <Heading as="h6" size="xs" className="title">
-                              Địa chỉ:
+                              Address:
                             </Heading>
                           </div>
                           <div className="details-content">

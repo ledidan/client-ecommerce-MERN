@@ -10,19 +10,21 @@ const ShippingScreen = ({ history }) => {
   const [city, setCity] = useState(shippingAddress.city);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
-
+  const [phoneNumber, setPhoneNumber] = useState(shippingAddress.phoneNumber);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    dispatch(
+      saveShippingAddress({ address, city, postalCode, country, phoneNumber })
+    );
     history.push("/payment");
   };
   return (
     <>
       <div className="container d-flex justify-content-center align-items-center login-center">
         <form
-          className="Login col-md-8 col-lg-4 col-11"
+          className="Login col-md-8 col-lg-4 col-11 rounded-3"
           onSubmit={submitHandler}
         >
           <h6>DELIVERY ADDRESS</h6>
@@ -32,6 +34,13 @@ const ShippingScreen = ({ history }) => {
             required
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+          />
+          <input
+            type="tel"
+            placeholder="Enter phone number"
+            required
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
           <input
             type="text"
