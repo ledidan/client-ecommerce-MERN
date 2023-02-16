@@ -88,13 +88,13 @@ const DesktopHeader = (props) => {
             <Link to="/login" className="mx-3">
               <Flex fontSize="16px" align="center">
                 <CiUser />
-                Đăng nhập
+                Login
               </Flex>
             </Link>
             <Link to="/register" className="mx-3">
               <Flex fontSize="16px" align="center">
                 <AiOutlineUserAdd />
-                Đăng ký
+                Sign up
               </Flex>
             </Link>
           </HStack>

@@ -37,7 +37,7 @@ const ClientsLogo = () => {
     >
       <Center height={[50, 200, 300]}>
         <Heading as="h2" size="2xl" textTransform="uppercase" fontWeight={700}>
-          Thương hiệu đối tác
+          Brands Partner
         </Heading>
       </Center>
 

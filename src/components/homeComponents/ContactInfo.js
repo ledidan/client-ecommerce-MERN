@@ -15,23 +15,23 @@ export default function ContactInfo() {
   const headingInfo = [
     {
       id: 1,
-      heading: "Miễn phí ship trên $100",
+      heading: "Free ship over $100",
       description:
-        "Miễn phí vận chuyển trên toàn thế giới với nhiều ưu đãi dành riêng cho khách hàng thân yêu",
+        "Free shipping worldwide with many special offers for dear customers",
       icon: <CiDeliveryTruck size={80} />,
     },
     {
       id: 2,
-      heading: "-10% đăng ký nhận thông tin email",
+      heading: "-10% sign up to receive email information",
       description:
-        "Nhiều khách hàng tin tưởng giao những nhu cầu về giày varius cho chúng tôi, và sự hài lòng của khách hàng là niềm tự hào của chúng tôi",
+        "Many customers trust us with their varius shoe needs, and customer satisfaction is our pride.",
       icon: <SlEnvolopeLetter size={50} />,
     },
     {
       id: 3,
-      heading: "Đổi trả miễn phí tại cửa hàng",
+      heading: "Free returns in store",
       description:
-        "Bạn có thể nhận được nhiều loại giày khác nhau với chất lượng cao nhất với giá cả phải chăng",
+        "You can get a wide variety of shoes with the highest quality at an affordable price",
       icon: <TfiPackage size={50} />,
     },
   ];

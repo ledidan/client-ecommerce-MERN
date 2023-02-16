@@ -85,14 +85,14 @@ const SignUp = ({ location, history }) => {
               })}
               fontWeight="800"
             >
-              ĐĂNG KÝ
+              SIGN UP
             </Heading>
             <HStack spacing="1" justify="center">
               <Text size="sm" fontSize="14px">
-                Bạn đã có tài khoản ?{" "}
+                Do you have an account ?{" "}
                 <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
                   <Button variant="link" colorScheme="blue">
-                    Đăng nhập
+                    LOGIN
                   </Button>
                 </Link>
               </Text>
@@ -126,11 +126,11 @@ const SignUp = ({ location, history }) => {
           <form onSubmit={submitRegisterHandler}>
             <Stack spacing="5">
               <FormControl>
-                <FormLabel htmlFor="username">Tên đăng nhập</FormLabel>
+                <FormLabel htmlFor="username">Username</FormLabel>
                 <Input
                   id="username"
                   type="text"
-                  placeholder="Tên đăng nhập"
+                  placeholder="Enter username"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -144,20 +144,20 @@ const SignUp = ({ location, history }) => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Email"
+                  placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </FormControl>
               <PasswordField
-                placeholder="Mật khẩu"
+                placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Stack>
             <Stack spacing="6" mt={6}>
               <Button colorScheme="red" type="submit">
-                Đăng ký
+                SIGN UP
               </Button>
             </Stack>
           </form>

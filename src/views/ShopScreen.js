@@ -118,7 +118,7 @@ const ShopScreen = () => {
                       aria-expanded="true"
                       aria-controls="collapseFour"
                     >
-                      Sản phẩm mỗi trang
+                      Product per page
                     </Heading>
                   </header>
                   <div
@@ -147,7 +147,7 @@ const ShopScreen = () => {
                       aria-expanded="true"
                       aria-controls="collapseOne"
                     >
-                      Loại sản phẩm
+                      Kind of product
                     </Heading>
                   </header>
                   <div
@@ -193,7 +193,7 @@ const ShopScreen = () => {
                       aria-expanded="true"
                       aria-controls="collapseTwo"
                     >
-                      Thương hiệu
+                      Brands
                     </Heading>
                   </header>
                   <div
@@ -222,7 +222,7 @@ const ShopScreen = () => {
                       aria-expanded="true"
                       aria-controls="collapseThree"
                     >
-                      Khoảng giá
+                      Range of price
                     </Heading>
                   </header>
                   <div

@@ -54,8 +54,8 @@ const SingleProduct = ({ match }) => {
   useEffect(() => {
     if (successCreateReview) {
       toast({
-        title: `Gửi đánh giá thành công !`,
-        description: `Bạn đã thêm thành công đánh giá cho sản phẩm ${product.name}`,
+        title: `Successfully Submit Review !`,
+        description: `You have successful reviewed for product ${product.name}`,
         status: "success",
         duration: 4000,
         isClosable: true,
@@ -74,8 +74,8 @@ const SingleProduct = ({ match }) => {
     e.preventDefault();
     dispatch(addToCart(productId, qty));
     toast({
-      title: `Thêm ${qty} sản phẩm thành công.`,
-      description: `Bạn đã thêm ${product.name} vào giỏ hàng`,
+      title: `Added ${qty} product successfully.`,
+      description: `You've added ${product.name} into cart`,
       status: "success",
       duration: 2000,
       isClosable: true,
@@ -95,7 +95,7 @@ const SingleProduct = ({ match }) => {
                 <Link to="/shop">
                   <Flex align="center" justify="start" mb={10}>
                     <Icon as={IoIosArrowRoundBack} w={10} h={15} />
-                    <Text fontSize="18px">Trở lại cửa hàng</Text>
+                    <Text fontSize="18px">Go to the shop</Text>
                   </Flex>
                 </Link>
                 <div className="single-image">
@@ -113,21 +113,21 @@ const SingleProduct = ({ match }) => {
 
                   <Stack className="product-count col-lg-10">
                     <Flex className="flex-box d-flex justify-content-between align-items-center">
-                      <Heading as="h6">Giá</Heading>
+                      <Heading as="h6">Price</Heading>
                       <Text fontSize="18px">${product.price}</Text>
                     </Flex>
                     <Flex className="flex-box d-flex justify-content-between align-items-center">
-                      <Heading as="h6">Tình trạng</Heading>
+                      <Heading as="h6">Status</Heading>
                       {product.countInStock > 0 ? (
-                        <Text color="green.600">Còn hàng</Text>
+                        <Text color="green.600">In stock</Text>
                       ) : (
                         <Text color="tomato" textTransform="uppercase">
-                          Tạm hết hàng
+                          Out of stock
                         </Text>
                       )}
                     </Flex>
                     <Flex className="flex-box d-flex justify-content-between align-items-center">
-                      <Heading as="h6">Đánh giá</Heading>
+                      <Heading as="h6">Review</Heading>
                       <Rating
                         value={product.rating}
                         text={`${product.numReviews} reviews`}
@@ -136,7 +136,7 @@ const SingleProduct = ({ match }) => {
                     {product.countInStock > 0 ? (
                       <>
                         <Flex className="flex-box d-flex justify-content-between align-items-center">
-                          <Heading as="h6">Số lượng</Heading>
+                          <Heading as="h6">Quantity</Heading>
                           <Box>
                             <Select
                               value={qty}
@@ -157,7 +157,7 @@ const SingleProduct = ({ match }) => {
                           onClick={AddToCartHandle}
                           className="round-black-btn"
                         >
-                          Thêm giỏ hàng
+                          Add to cart
                         </button>
                       </>
                     ) : null}
@@ -185,7 +185,7 @@ const SingleProduct = ({ match }) => {
         <div className="maylike-products-wrapper">
           <Center>
             <Heading as="h4" size="md" textTransform="uppercase">
-              Sản phẩm bạn có thể thích
+              Maybe you like
             </Heading>
           </Center>
           <div className="marquee">

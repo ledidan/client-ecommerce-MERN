@@ -91,7 +91,7 @@ const MobileHeader = (props) => {
                           fontWeight="600"
                           textTransform="uppercase"
                         >
-                          đăng nhập
+                          Login
                         </Text>
                       </Link>
                     </li>
@@ -102,7 +102,7 @@ const MobileHeader = (props) => {
                           fontWeight="600"
                           textTransform="uppercase"
                         >
-                          đăng ký
+                          Sign up
                         </Text>
                       </Link>
                     </li>

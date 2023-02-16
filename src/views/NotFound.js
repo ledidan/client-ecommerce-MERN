@@ -17,11 +17,13 @@ const NotFound = () => {
                 </div>
                 <div className="contant_box_404">
                   <Heading as="h2" fontSize="30px">
-                    Bạn đang bị lạc đường hả
+                    Are you astray
                   </Heading>
-                  <Text>Có vẻ như trang của bạn tìm kiếm không tồn tại !</Text>
+                  <Text>
+                    Looks like the page you're looking for doesn't exist!
+                  </Text>
                   <Link to="/" className="link_404">
-                    Trở về của hàng
+                    Comeback
                   </Link>
                 </div>
               </div>

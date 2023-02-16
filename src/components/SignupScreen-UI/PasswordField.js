@@ -25,7 +25,7 @@ export const PasswordField = React.forwardRef((props, ref) => {
   };
   return (
     <FormControl>
-      <FormLabel htmlFor="password">Mật khẩu</FormLabel>
+      <FormLabel htmlFor="password">Password</FormLabel>
       <InputGroup>
         <InputRightElement>
           <IconButton

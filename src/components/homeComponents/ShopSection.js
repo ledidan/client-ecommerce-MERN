@@ -35,7 +35,7 @@ const ShopSection = () => {
               <div className="shop container row">
                 <Center mb={45} mt={20}>
                   <Heading as="h2" size="2xl" textTransform="uppercase">
-                    sneakers bán chạy nhất
+                    Best selling sneakers
                   </Heading>
                 </Center>
 
@@ -82,7 +82,7 @@ const ShopSection = () => {
                                   px={1}
                                   py={2}
                                 >
-                                  Xem sản phẩm
+                                  Watch product
                                 </Text>
                                 <BsArrowRight color="#3182ce" />
                               </Flex>

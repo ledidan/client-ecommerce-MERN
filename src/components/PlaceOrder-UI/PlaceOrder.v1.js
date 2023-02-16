@@ -106,7 +106,7 @@ const PlaceOrder = ({ history }) => {
                     <div className="order-product mt-3">
                       <div className="order-title">
                         <Heading as="h5" size="md" className="title">
-                          Thông tin sản phẩm
+                          Product Information
                         </Heading>
                       </div>
                       <div className="order-product-table table-responsive">

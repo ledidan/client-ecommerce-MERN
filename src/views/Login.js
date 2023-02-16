@@ -50,7 +50,7 @@ const Login = ({ location, history }) => {
           className="Login col-md-8 col-lg-4 col-11"
           onSubmit={submitHandler}
         >
-          <Heading as="h4">ĐĂNG NHẬP</Heading>
+          <Heading as="h4">LOGIN</Heading>
           <input
             type="email"
             placeholder="Địa chỉ email"
@@ -59,15 +59,15 @@ const Login = ({ location, history }) => {
           />
           <input
             type="password"
-            placeholder="Mật khẩu"
+            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit" className="bg-dark">
-            ĐĂNG NHẬP
+            LOGIN
           </button>
           <Text size="sm" fontSize="14px">
-            Không phải là thành viên?
+            Aren't a member ?
             <Link
               to={redirect ? `/register?redirect=${redirect}` : "/register"}
             >

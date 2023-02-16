@@ -127,7 +127,7 @@ const OrderScreen = ({ match }) => {
 
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
-                Trở lại
+                Comeback
               </Button>
               <Button
                 colorScheme="red"
@@ -159,7 +159,7 @@ const OrderScreen = ({ match }) => {
                   </Heading>
                   <ul className="order-meta">
                     <li>
-                      <Text className="product" color="blackAlpha.500">
+                      <Text className="product" color="purple.500">
                         {order.orderItems.length}
                         {""}
                         {""} Product
@@ -183,7 +183,7 @@ const OrderScreen = ({ match }) => {
                     <div className="order-product mt-3">
                       <div className="order-title">
                         <Heading as="h5" size="md" className="title">
-                          Thông tin sản phẩm
+                          Product Information
                         </Heading>
                       </div>
                       <div className="order-product-table table-responsive">
@@ -205,7 +205,12 @@ const OrderScreen = ({ match }) => {
                                         size="md"
                                         className="title"
                                       >
-                                        <a href="#0">{item.name}</a>
+                                        <Link
+                                          to={`/products/${item._id}`}
+                                          target="_blank"
+                                        >
+                                          {item.name}
+                                        </Link>
                                       </Heading>
                                       <ul>
                                         {/* <li>
@@ -237,20 +242,20 @@ const OrderScreen = ({ match }) => {
                       </div>
                       <div className="order-product-total">
                         <div className="sub-total">
-                          <Text className="value">Tiền hàng:</Text>
+                          <Text className="value">Subtotal:</Text>
                           <Text className="price">${order.itemsPrice}</Text>
                         </div>
                         <div className="sub-total">
-                          <Text className="value">Phí ship (+):</Text>
+                          <Text className="value">Shipping price (+):</Text>
                           <Text className="price">${order.shippingPrice}</Text>
                         </div>
                         <div className="sub-total">
-                          <Text className="value">Phí thuế (+):</Text>
+                          <Text className="value">Tax(+):</Text>
                           <Text className="price">${order.taxPrice}</Text>
                         </div>
                       </div>
                       <div className="payable-total">
-                        <Text className="value">Tổng tiền:</Text>
+                        <Text className="value">Total:</Text>
                         <Text className="price">${order.totalPrice}</Text>
                       </div>
                       <Flex justify="end" align="center">
@@ -262,7 +267,7 @@ const OrderScreen = ({ match }) => {
                             variant="solid"
                           >
                             <Text className="text-sm-start">
-                              Đã thanh toán {moment(order.paidAt).calendar()}
+                              Paid {moment(order.paidAt).calendar()}
                             </Text>
                           </Tag>
                         ) : (
@@ -273,7 +278,7 @@ const OrderScreen = ({ match }) => {
                             variant="solid"
                             className=""
                           >
-                            <Text>Chưa thanh toán</Text>
+                            <Text>Not paid</Text>
                           </Tag>
                         )}
                       </Flex>
@@ -298,7 +303,7 @@ const OrderScreen = ({ match }) => {
                     <div className="single-order-details mt-3">
                       <div className="order-title ">
                         <Heading as="h5" size="md" className="title">
-                          Thông tin đơn hàng
+                          Order Information
                         </Heading>
                       </div>
                       <Stack className="order-details-content">
@@ -335,7 +340,7 @@ const OrderScreen = ({ match }) => {
                     <Stack className="single-order-details mt-2">
                       <div className="order-title mt-4">
                         <Heading as="h5" size="md" className="title">
-                          Thông tin cá nhân
+                          Personal Information
                         </Heading>
                       </div>
                       <Stack className="order-details-content">
@@ -345,7 +350,7 @@ const OrderScreen = ({ match }) => {
                         >
                           <div className="details-title">
                             <Heading as="h6" size="xs">
-                              Tên:
+                              Name:
                             </Heading>
                           </div>
                           <div className="details-content">
@@ -384,7 +389,7 @@ const OrderScreen = ({ match }) => {
                         >
                           <div className="details-title">
                             <Heading as="h6" size="xs">
-                              Địa chỉ:
+                              Address:
                             </Heading>
                           </div>
                           <div className="details-content">
@@ -400,7 +405,7 @@ const OrderScreen = ({ match }) => {
                     <Stack className="single-order-details mt-4">
                       <Box className="order-title">
                         <Heading as="h5" size="md" className="title">
-                          Địa chỉ người nhận
+                          Recipient
                         </Heading>
                       </Box>
 
@@ -411,7 +416,7 @@ const OrderScreen = ({ match }) => {
                         >
                           <Box className="details-title">
                             <Heading as="h6" size="xs" className="title">
-                              Tên người nhận:
+                              Recipient name:
                             </Heading>
                           </Box>
                           <Box className="details-content">
@@ -450,7 +455,7 @@ const OrderScreen = ({ match }) => {
                         >
                           <div className="details-title">
                             <Heading as="h6" size="xs" className="title">
-                              Địa chỉ:
+                              Address:
                             </Heading>
                           </div>
                           <div className="details-content">
@@ -469,8 +474,7 @@ const OrderScreen = ({ match }) => {
                             variant="solid"
                           >
                             <Text className="text-center text-sm-start">
-                              Đang vận chuyển{" "}
-                              {moment(order.deliveredAt).calendar()}
+                              Delivering {moment(order.deliveredAt).calendar()}
                             </Text>
                           </Tag>
                         ) : (
@@ -481,7 +485,7 @@ const OrderScreen = ({ match }) => {
                             variant="solid"
                           >
                             <Text className="text-center text-sm-start">
-                              Chưa vận chuyển
+                              Not delivered
                             </Text>
                           </Tag>
                         )}
@@ -492,7 +496,7 @@ const OrderScreen = ({ match }) => {
                     <div className="order-policy mt-3">
                       <div className="order-title mb-3">
                         <Heading as="h5" size="md" className="title">
-                          Chính sách huỷ đơn hàng
+                          Canceled Order Policy
                         </Heading>
                       </div>
                       <div className="policy-content">
@@ -501,20 +505,23 @@ const OrderScreen = ({ match }) => {
                           color="purple.500"
                           fontWeight={600}
                         >
-                          1. Người mua chỉ có thể hủy đơn khi:
+                          1. Buyer can just be only allowed to cancel order
+                          when:
                         </Text>
                         <ul className="p-4">
                           <li>
                             <Text fontSize="15">
-                              Đơn hàng đang ở trạng thái Chờ xác nhận (Người bán
-                              chưa xác nhận đơn)
+                              The order is in the status of Waiting for
+                              confirmation (The seller has not confirmed the
+                              order)
                             </Text>
                           </li>
                           <li>
                             <Text fontSize="15">
-                              Khi đơn hàng ở trạng thái Chờ lấy hàng (Người bán
-                              đang đóng gói và chuẩn bị giao cho đơn vị vận
-                              chuyển), yêu cầu sẽ cần được Người bán phản hồi:
+                              When the order is in the status of Waiting for
+                              delivery (Seller is packing and preparing to
+                              ship), the request will need to be responded by
+                              Seller:
                             </Text>
                           </li>
                         </ul>
@@ -534,7 +541,7 @@ const OrderScreen = ({ match }) => {
                             textTransform="uppercase"
                             className="main-btn error-btn-text"
                           >
-                            huỷ đơn hàng
+                            Cancel order
                           </Text>
                         </Button>
                       )}
@@ -544,8 +551,8 @@ const OrderScreen = ({ match }) => {
                         colorScheme="telegram"
                       >
                         <a href="/shop">
-                          <i className="fa fa-chevron-left p-2" />
-                          Tiếp tục mua hàng
+                          <i className="fa fa-chevron-right p-2" />
+                          Continue shopping
                         </a>
                       </Button>
                     </Flex>

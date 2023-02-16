@@ -40,8 +40,8 @@ const GenderCategory = () => {
   return (
     <Container maxW="max-content" mb={40}>
       <Center h={150}>
-        <Heading as="h3" size="2xl">
-          Danh Mục Giày
+        <Heading as="h3" size="2xl" textTransform="uppercase">
+          Sneaker Category
         </Heading>
       </Center>
       <Stack spacing="8">

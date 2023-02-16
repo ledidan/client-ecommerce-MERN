@@ -44,12 +44,12 @@ const CartScreen = ({ match, location, history }) => {
                     fontSize="25px"
                     className="my-5"
                   >
-                    Giỏ hàng của bạn trống
+                    Your cart is empty
                   </Heading>
                   <Link href="/shop" color="black">
                     <Flex align="center" gap={2} justify="center">
                       <IoReturnDownBackOutline size={20} />
-                      Quay trở lại cửa hàng
+                      Come back to shop
                     </Flex>
                   </Link>
                 </div>

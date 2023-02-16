@@ -45,12 +45,12 @@ const RatingDetail = (props) => {
           <TabList mb="1em">
             <Tab>
               <Heading as="h3" size="md">
-                Đánh giá sản phẩm
+                Review Product
               </Heading>
             </Tab>
             <Tab>
               <Heading as="h3" size="md">
-                Mô tả sản phẩm
+                Product description
               </Heading>
             </Tab>
           </TabList>
@@ -59,11 +59,11 @@ const RatingDetail = (props) => {
               <div className="row">
                 <div className="col-md-6">
                   <Heading as="h6" size="md" className="mb-3">
-                    ĐÁNH GIÁ
+                    REVIEW
                   </Heading>
                   {product.reviews.length === 0 && (
                     <Message variant={"alert-secondary mt-3"}>
-                      Không có đánh giá
+                      No any reviews
                     </Message>
                   )}
                   {product.reviews.map((review) => (
@@ -86,7 +86,7 @@ const RatingDetail = (props) => {
                 </div>
                 <form className="col-md-6" onSubmit={submitHandler}>
                   <Heading as="h6" size="md" textTransform="uppercase">
-                    Viết đánh giá sản phẩm
+                    Write rating & review product
                   </Heading>
                   <div className="my-4">
                     {loadingCreateReview && <Loading />}
@@ -97,7 +97,7 @@ const RatingDetail = (props) => {
                     )}
                   </div>
                   <div className="my-4">
-                    <strong>Xếp hạng</strong>
+                    <strong>Rating</strong>
                     <select
                       value={rating}
                       onChange={(e) => setRating(e.target.value)}
@@ -112,7 +112,7 @@ const RatingDetail = (props) => {
                     </select>
                   </div>
                   <div className="my  -4">
-                    <strong>Bình luận</strong>
+                    <strong>Comment</strong>
                     <textarea
                       value={comment}
                       onChange={(e) => setComment(e.target.value)}
@@ -125,7 +125,7 @@ const RatingDetail = (props) => {
                       disabled={loadingCreateReview}
                       className="col-12 bg-dark border-0 p-3 rounded-0 text-white"
                     >
-                      Gửi
+                      Send
                     </button>
                   </div>
                 </form>
@@ -142,12 +142,12 @@ const RatingDetail = (props) => {
             <TabList mb="1em">
               <Tab>
                 <Heading as="h3" size="md">
-                  Đánh giá sản phẩm
+                  Review Product
                 </Heading>
               </Tab>
               <Tab>
                 <Heading as="h3" size="md">
-                  Mô tả sản phẩm
+                  Product description
                 </Heading>
               </Tab>
             </TabList>
@@ -156,11 +156,11 @@ const RatingDetail = (props) => {
                 <div className="row">
                   <div className="col-md-6">
                     <Heading as="h6" size="md" className="mb-3">
-                      ĐÁNH GIÁ
+                      REVIEW
                     </Heading>
                     {product.reviews.length === 0 && (
                       <Message variant={"alert-secondary mt-3"}>
-                        Không có đánh giá
+                        No any reviews
                       </Message>
                     )}
                     {product.reviews.map((review) => (
@@ -190,11 +190,11 @@ const RatingDetail = (props) => {
           </Tabs>
           <div className="my-3">
             <Message variant={"alert-warning"}>
-              Xin vui lòng{" "}
+              Please{" "}
               <Link to="/login">
-                <strong>Đăng nhập </strong>
+                <strong>LOGIN </strong>
               </Link>
-              để viết đánh giá{" "}
+              to write feedback{" "}
             </Message>
           </div>
         </>

@@ -14,7 +14,7 @@ import * as React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => (
-  <Container as="footer" role="contentinfo" maxW="container.xxl" bg="#4e5356">
+  <Container as="footer" maxW="container.xxl" mt={20}>
     <Stack
       spacing="8"
       direction={{
@@ -36,12 +36,9 @@ const Footer = () => (
       >
         <Image
           w={180}
-          h={50}
-          src="https://res.cloudinary.com/dfaejacdn/image/upload/v1667615733/Dan-Logo/logoLight-Didan_zam0dg.png"
+          h={70}
+          src="https://res.cloudinary.com/dfaejacdn/image/upload/v1667615733/Dan-Logo/logo_x77sj3.png"
         />
-        <Text color="white">
-          Tôi luôn muốn tạo ra những sản phẩm khác biệt và sáng tạo nhất.
-        </Text>
       </Stack>
       <Stack
         direction={{
@@ -56,38 +53,38 @@ const Footer = () => (
       >
         <Stack direction="row" spacing="8">
           <Stack spacing="4" minW="36" flex="1">
-            <Text fontSize="md" fontWeight="semibold" color="white">
-              Sản phẩm
+            <Text fontSize="md" fontWeight="semibold" color="black">
+              Product
             </Text>
             <Stack spacing="3" shouldWrapChildren>
-              <Link href="/about-us" color="whiteAlpha.700">
-                Giới thiệu
+              <Link href="/about-us" color="black.700">
+                Introduce
               </Link>
-              <Link href="/shop" color="whiteAlpha.700">
-                Cửa hàng
+              <Link href="/shop" color="black.700">
+                Shop
               </Link>
-              <Link href="/feedback" color="whiteAlpha.700">
+              <Link href="/feedback" color="black.700">
                 Feedback
               </Link>
             </Stack>
           </Stack>
           <Stack spacing="4" minW="36" flex="1">
-            <Text fontSize="md" fontWeight="semibold" color="white">
-              Chính sách
+            <Text fontSize="md" fontWeight="semibold" color="black">
+              Policy
             </Text>
             <Stack spacing="3" shouldWrapChildren>
-              <Link href="/privacy" color="whiteAlpha.700">
-                Chính sách & Quy định
+              <Link href="/privacy" color="black.700">
+                Policy & Terms
               </Link>
-              <Link href="/license" color="whiteAlpha.700">
-                Bản quyền
+              <Link href="/license" color="black.700">
+                Copyright
               </Link>
             </Stack>
           </Stack>
         </Stack>
         <Stack spacing="4">
-          <Text fontSize="sm" fontWeight="semibold" color="white">
-            Liên hệ với tôi
+          <Text fontSize="sm" fontWeight="semibold" color="black">
+            Contact me
           </Text>
           <Stack
             spacing="4"
@@ -101,12 +98,12 @@ const Footer = () => (
           >
             <Input placeholder="Enter your email" type="email" required />
             <Button
-              className="btn btn-outline-light"
+              className="btn btn-outline-dark"
               color="black"
               type="submit"
               flexShrink={0}
             >
-              Gửi
+              Send
             </Button>
           </Stack>
         </Stack>
@@ -123,30 +120,29 @@ const Footer = () => (
       }}
       align="center"
     >
-      <Text fontSize="sm" color="white">
-        &copy; {new Date().getFullYear()} Blackdouble.D, Inc. All rights
-        reserved.
+      <Text fontSize="sm" color="black">
+        &copy; {new Date().getFullYear()} Di Dan, Inc. All rights reserved.
       </Text>
       <ButtonGroup variant="link">
         <IconButton
           as="a"
           href="https://www.linkedin.com/in/ledidan/"
           aria-label="LinkedIn"
-          color="whiteAlpha.800"
+          color="black.800"
           icon={<FaLinkedin fontSize="1.25rem" />}
         />
         <IconButton
           as="a"
           href="https://www.github.com/ledidan"
           aria-label="GitHub"
-          color="whiteAlpha.800"
+          color="black.800"
           icon={<FaGithub fontSize="1.25rem" />}
         />
         <IconButton
           as="a"
           href="https://www.facebook.com/ledidan"
           aria-label="Facebook"
-          color="whiteAlpha.800"
+          color="black.800"
           icon={<FaFacebook fontSize="1.25rem" />}
         />
       </ButtonGroup>

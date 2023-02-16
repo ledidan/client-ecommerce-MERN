@@ -42,10 +42,10 @@ const CallToAction = () => (
               size="xl"
               color={useColorModeValue("red.500", "red.300")}
             >
-              Sự tự tin
+              Misguided
             </Heading>
             <Heading size="xl" fontWeight="normal">
-              Làm mới Sneaker của bạn
+              Refresh your wardrobe
             </Heading>
           </Stack>
           <HStack spacing="3">
@@ -55,7 +55,7 @@ const CallToAction = () => (
               fontSize="lg"
               href="/shop"
             >
-              Khám phá ngay
+              Discover now
             </Link>
             <Icon
               color={useColorModeValue("red.500", "red.300")}

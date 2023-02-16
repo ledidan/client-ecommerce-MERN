@@ -86,16 +86,16 @@ const LoginMain = ({ location, history }) => {
               })}
               fontWeight="800"
             >
-              ĐĂNG NHẬP
+              LOGIN
             </Heading>
             <HStack spacing="1" justify="center">
               <Text size="sm" fontSize="14px">
-                Bạn chưa có tài khoản ?{" "}
+                Don't you have account yet ?{" "}
                 <Link
                   to={redirect ? `/register?redirect=${redirect}` : "/register"}
                 >
                   <Button variant="link" colorScheme="blue">
-                    Đăng ký
+                    Sign Up
                   </Button>
                 </Link>
               </Text>
@@ -132,7 +132,7 @@ const LoginMain = ({ location, history }) => {
                 <FormLabel htmlFor="email">Email</FormLabel>
                 <Input
                   type="email"
-                  placeholder="Địa chỉ email"
+                  placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -140,13 +140,13 @@ const LoginMain = ({ location, history }) => {
               <PasswordField
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Nhập mật khẩu"
+                placeholder="Enter password"
               />
             </Stack>
             <HStack justify="space-between" mt={4}>
-              <Checkbox defaultChecked>Nhớ mật khẩu</Checkbox>
+              <Checkbox defaultChecked>Remember</Checkbox>
               <Button variant="link" colorScheme="blue" size="sm">
-                Quên mật khẩu?
+                Forgot password?
               </Button>
             </HStack>
             <Stack spacing="6" mt={5}>
@@ -156,7 +156,7 @@ const LoginMain = ({ location, history }) => {
               <HStack>
                 <Divider />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">
-                  hoặc tiếp tục với
+                  or continue with
                 </Text>
                 <Divider />
               </HStack>

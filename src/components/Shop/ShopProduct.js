@@ -92,8 +92,8 @@ const ShopProduct = (props) => {
                       onClick={() => {
                         dispatch(addToCart(item._id, 1)) &&
                           toast({
-                            title: `Thêm ${1} sản phẩm thành công.`,
-                            description: `Bạn đã thêm ${item.name} vào giỏ hàng`,
+                            title: `You've added ${1} product successfully.`,
+                            description: `You've added ${item.name} into cart`,
                             status: "success",
                             duration: 3000,
                             isClosable: true,
@@ -102,7 +102,7 @@ const ShopProduct = (props) => {
                     >
                       <Flex align="center">
                         <BsCartPlus size="20px" className="mx-1" />
-                        thêm giỏ hàng
+                        Add to cart
                       </Flex>
                     </CartButton>
                   </figcaption>

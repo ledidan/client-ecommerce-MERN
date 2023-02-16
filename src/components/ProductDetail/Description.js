@@ -24,7 +24,7 @@ const Description = (props) => {
           <Heading as="h3" size="18px">
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                Thông tin sản phẩm
+                Product Information
               </Box>
               <AccordionIcon />
             </AccordionButton>

@@ -54,15 +54,15 @@ const CartItem = (props) => {
                 >
                   <Thead className="text-muted">
                     <Tr className="small text-uppercase">
-                      <Th scope="col">Sản phẩm</Th>
+                      <Th scope="col">Product</Th>
                       <Th scope="col" width={140}>
-                        Số lượng
+                        Quantity
                       </Th>
                       <Th scope="col" width={100} textAlign="center">
-                        Giá
+                        Price
                       </Th>
                       <Th scope="col" width={120} textAlign="center">
-                        Hành động
+                        Action
                       </Th>
                     </Tr>
                   </Thead>
@@ -122,7 +122,7 @@ const CartItem = (props) => {
                             colorScheme="red"
                             onClick={() => removeCartHandler(item.product)}
                           >
-                            Xoá
+                            Remove
                           </Button>
                         </Td>
                       </Tr>
@@ -132,15 +132,15 @@ const CartItem = (props) => {
                 <Flex className="card-body border-top">
                   <Link className="ml-2 btn btn-light" to="/shop">
                     <i className="fa fa-chevron-left p-2" />
-                    Trở lại cửa hàng
+                    Come back to shop
                   </Link>
                 </Flex>
               </Stack>{" "}
               {/* card.// */}
               <div className="alert alert-success mt-3">
                 <p className="icontext">
-                  <i className="icon text-success fa fa-truck" /> Miễn phí giao
-                  hàng từ 1 - 3 ngày
+                  <i className="icon text-success fa fa-truck" /> Free shipping
+                  from 1 - 3 days
                 </p>
               </div>
             </main>
@@ -153,11 +153,11 @@ const CartItem = (props) => {
                   </Flex>
                    */}
                   <Flex className="dlist-align" justify="space-between">
-                    <dt>Giảm giá:</dt>
+                    <dt>Discount:</dt>
                     <dd className="text-right">$0</dd>
                   </Flex>
                   <Flex className="dlist-align" justify="space-between">
-                    <dt>Tổng tiền:</dt>
+                    <dt>Total:</dt>
                     <dd className="text-right  h5">
                       <strong>${total}</strong>
                     </dd>
@@ -176,7 +176,7 @@ const CartItem = (props) => {
                       className="btn btn-dark"
                       onClick={checkOutHandler}
                     >
-                      Thanh toán ngay <i className="fa fa-chevron-right" />
+                      Checkout now <i className="fa fa-chevron-right" />
                     </Link>
                   )}
                 </VStack>

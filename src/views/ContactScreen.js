@@ -68,7 +68,7 @@ const ContactScreen = () => {
           <div className="col-md-12">
             <Stack className="form h-100">
               <Heading as="h2" size="lg" h={70}>
-                Liên hệ với tôi
+                Contact me
               </Heading>
               <form
                 className="mb-5"

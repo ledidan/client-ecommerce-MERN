@@ -50,32 +50,32 @@ const Register = ({ location, history }) => {
           className="Login col-md-8 col-lg-4 col-11"
           onSubmit={submitRegisterHandler}
         >
-          <Heading as="h4">ĐĂNG KÝ</Heading>
+          <Heading as="h4">SIGN UP</Heading>
           <input
             type="text"
-            placeholder="Tên đăng nhập"
+            placeholder="enter username"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            placeholder="Mật khẩu"
+            placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit">Đăng ký</button>
+          <button type="submit">Sign up</button>
 
           <Text size="sm" fontSize="14px">
-            Bạn đã có tài khoản ?{" "}
+            Do you have an account ?{" "}
             <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-              Đăng nhập
+              Login
             </Link>
           </Text>
         </form>

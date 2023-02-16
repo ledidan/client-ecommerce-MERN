@@ -32,17 +32,17 @@ const Navbar = () => {
   const navMenu = [
     {
       id: 1,
-      title: "Trang chủ",
+      title: "Home",
       url: "/",
     },
     {
       id: 2,
-      title: "Cửa hàng",
+      title: "Shop",
       url: "/shop",
     },
     {
       id: 4,
-      title: "Liên hệ",
+      title: "Contact Us",
       url: "/contact",
     },
   ];

@@ -12,7 +12,7 @@ import { FiShoppingCart } from "react-icons/fi";
 const HeroCarousel = () => {
   return (
     <Container
-      maxW={{ base: "container.xs", md: "container.xl", lg: "container.2xl" }}
+      maxW={{ lg: "container.xl", md: "container.md", base: "container.sm" }}
       marginTop={5}
       className="hero-section bg-with-black carousel slide carousel-fade"
       id="carouselExampleFade"
@@ -46,7 +46,7 @@ const HeroCarousel = () => {
       </Box>
       <a className="hero-button" href="/shop">
         <Flex>
-          <FiShoppingCart /> <Text marginLeft={2}>Mua sắm ngay</Text>
+          <FiShoppingCart /> <Text marginLeft={2}>Shopping now</Text>
         </Flex>
       </a>
       <Box className="carousel-inner hero-banner-image">
